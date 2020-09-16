@@ -1,0 +1,7 @@
+com\seguros\residencial\cotacao\CotacaoApplication.class
+com\seguros\residencial\cotacao\model\AbstractEntity.class
+com\seguros\residencial\cotacao\endpoint\CotacaoController.class
+com\seguros\residencial\cotacao\services\CotacaoServices.class
+com\seguros\residencial\cotacao\model\Cotacao$CotacaoBuilder.class
+com\seguros\residencial\cotacao\model\Cotacao.class
+com\seguros\residencial\cotacao\repositoty\CotacaoRepository.class
