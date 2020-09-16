@@ -1,10 +1,9 @@
-package com.seguros.residencial.cotacao.model;
+package com.seguro.residencial.core.model;
+
 
 import lombok.*;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-
 
 /**
  * @criado 16/09/2020 - 00:35

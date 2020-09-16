@@ -1,7 +1,8 @@
-package com.seguros.residencial.cotacao.endpoint;
+package com.seguros.residencial.cotacao.endpoint.controller;
 
-import com.seguros.residencial.cotacao.model.Cotacao;
-import com.seguros.residencial.cotacao.services.CotacaoServices;
+
+import com.seguro.residencial.core.model.Cotacao;
+import com.seguros.residencial.cotacao.endpoint.service.CotacaoServices;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

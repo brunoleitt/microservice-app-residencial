@@ -1,7 +1,7 @@
-package com.seguros.residencial.cotacao.services;
+package com.seguros.residencial.cotacao.endpoint.service;
 
-import com.seguros.residencial.cotacao.model.Cotacao;
-import com.seguros.residencial.cotacao.repositoty.CotacaoRepository;
+import com.seguro.residencial.core.model.Cotacao;
+import com.seguro.residencial.core.repository.CotacaoRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,6 @@ public class CotacaoServices {
     private final CotacaoRepository cotacaoRepository;
 
     public Iterable<Cotacao> list(Pageable pageable) {
-
         log.info("Listando todas as cotaões");
         return cotacaoRepository.findAll(pageable);
     }

@@ -15,12 +15,10 @@
     <version>1.O-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <properties>
-        <java.version>11</java.version>
-    </properties>
 
     <modules>
         <module>cotacao</module>
+
     </modules>
 
     <dependencies>
@@ -29,7 +27,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -78,6 +75,5 @@
             </exclusions>
         </dependency>
     </dependencies>
-
 
 </project>

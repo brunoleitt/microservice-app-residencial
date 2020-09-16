@@ -1,4 +1,4 @@
-package com.seguros.residencial.cotacao.model;
+package com.seguro.residencial.core.model;
 
 import java.io.Serializable;
 

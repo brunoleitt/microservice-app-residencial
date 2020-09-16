@@ -1,10 +1,10 @@
-package com.seguros.residencial.cotacao.repositoty;
+package com.seguro.residencial.core.repository;
 
-import com.seguros.residencial.cotacao.model.Cotacao;
+import com.seguro.residencial.core.model.Cotacao;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
- * @criado 16/09/2020 - 00:34
+ * @criado 16/09/2020 - 15:55
  * @projeto Seguro Residencial Simplificado
  * @autor Bruno Leite
  */
