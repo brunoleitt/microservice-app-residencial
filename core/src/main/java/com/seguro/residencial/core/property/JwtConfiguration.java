@@ -1,0 +1,41 @@
+package com.seguro.residencial.core.property;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.NestedConfigurationProperty;
+import org.springframework.context.annotation.Configuration;
+
+/**
+ * @criado 18/09/2020 - 01:34
+ * @projeto Seguro Residencial Simplificado
+ * @autor Bruno Leite
+ */
+
+@Configuration
+@ConfigurationProperties(prefix = "jwt.config")
+@Getter
+@Setter
+@ToString
+public class JwtConfiguration {
+
+    private String loginUrl = "/login/**";
+
+    @NestedConfigurationProperty
+    private Header header = new Header();
+
+    private int expiration = 3600;
+
+    private String privateKey = "qxBEEQv7E8aviX1KUcdOiF5ve5COUPAr";
+
+    private String type = "encrypted";
+
+    @Getter
+    @Setter
+    public static class Header {
+        private String name = "Authorization";
+        private String prefix = "Bearer ";
+    }
+
+}
