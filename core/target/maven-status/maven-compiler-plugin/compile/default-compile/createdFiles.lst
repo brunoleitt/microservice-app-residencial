@@ -1,0 +1,4 @@
+com\seguro\residencial\core\model\AbstractEntity.class
+com\seguro\residencial\core\model\Cotacao$CotacaoBuilder.class
+com\seguro\residencial\core\model\Cotacao.class
+com\seguro\residencial\core\repository\CotacaoRepository.class
