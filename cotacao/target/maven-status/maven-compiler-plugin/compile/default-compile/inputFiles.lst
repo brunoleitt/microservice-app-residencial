@@ -1,6 +1,3 @@
 C:\Projetos\microservice-app-residencial\cotacao\src\main\java\com\seguros\residencial\cotacao\CotacaoApplication.java
-C:\Projetos\microservice-app-residencial\cotacao\src\main\java\com\seguros\residencial\cotacao\repositoty\CotacaoRepository.java
-C:\Projetos\microservice-app-residencial\cotacao\src\main\java\com\seguros\residencial\cotacao\model\AbstractEntity.java
-C:\Projetos\microservice-app-residencial\cotacao\src\main\java\com\seguros\residencial\cotacao\endpoint\CotacaoController.java
-C:\Projetos\microservice-app-residencial\cotacao\src\main\java\com\seguros\residencial\cotacao\model\Cotacao.java
-C:\Projetos\microservice-app-residencial\cotacao\src\main\java\com\seguros\residencial\cotacao\services\CotacaoServices.java
+C:\Projetos\microservice-app-residencial\cotacao\src\main\java\com\seguros\residencial\cotacao\endpoint\controller\CotacaoController.java
+C:\Projetos\microservice-app-residencial\cotacao\src\main\java\com\seguros\residencial\cotacao\endpoint\service\CotacaoServices.java
