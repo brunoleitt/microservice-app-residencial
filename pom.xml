@@ -19,6 +19,7 @@
     <modules>
         <module>cotacao</module>
         <module>core</module>
+        <module>token</module>
     </modules>
 
     <properties>
@@ -26,6 +27,13 @@
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+            <version>9.0</version>
+        </dependency>
+
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>

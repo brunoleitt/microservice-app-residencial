@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 8083
 
 eureka:
   instance:
@@ -9,10 +9,9 @@ eureka:
       defaultZone: http://localhost:8081/eureka/
     register-with-eureka: true
 
-
 spring:
   application:
-    name: cotacao
+    name: auth
   jpa:
     show-sql: false
     hibernate:
