@@ -1,4 +1,4 @@
-package com.seguros.residencial.cotacao.endpoint.service;
+package com.seguro.residencial.cotacao.endpoint.service;
 
 import com.seguro.residencial.core.model.Cotacao;
 import com.seguro.residencial.core.repository.CotacaoRepository;

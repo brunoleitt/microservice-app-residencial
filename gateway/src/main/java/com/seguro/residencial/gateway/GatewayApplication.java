@@ -1,13 +1,19 @@
-package com.seguro.residenical.gateway;
+package com.seguro.residencial.gateway;
 
+
+import com.seguro.residencial.core.property.JwtConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@EnableEurekaClient
 @EnableZuulProxy
+@EnableEurekaClient
+@EnableConfigurationProperties(value = JwtConfiguration.class)
+@ComponentScan("com.seguro.residencial")
 public class GatewayApplication {
 
     public static void main(String[] args) {

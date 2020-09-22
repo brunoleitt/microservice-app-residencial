@@ -1,4 +1,4 @@
-package com.seguros.residencial.cotacao;
+package com.seguro.residencial.cotacao;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

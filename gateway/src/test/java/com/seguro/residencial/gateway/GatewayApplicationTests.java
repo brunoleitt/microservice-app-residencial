@@ -1,4 +1,4 @@
-package com.seguro.residenical.gateway;
+package com.seguro.residencial.gateway;
 
 
 import org.springframework.boot.test.context.SpringBootTest;

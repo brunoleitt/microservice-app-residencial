@@ -36,15 +36,13 @@ import static java.util.stream.Collectors.toList;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class TokenCreator {
 
-
     private final JwtConfiguration jwtConfiguration;
 
     /*
-     * Criando as cleans
+     * - Criação dos cleans
      *
-     *  Os microservicos não mantem dados na seceção(STATELESS). Precisamos passar tudo o que pode ser utilizado
+     * - Os microservicos não mantem dados na seceção(STATELESS). Precisamos passar tudo o que pode ser utilizado
      * nos outros microservices.
-     *
      * */
     @SneakyThrows
     public SignedJWT createSignedJWT(Authentication auth) {
@@ -88,6 +86,7 @@ public class TokenCreator {
                         .stream()
                         .map(GrantedAuthority::getAuthority)
                         .collect(toList()))
+                .claim("userId",applicationUser.getId())
                 .issuer("http://seguros.residencial")
                 .issueTime(new Date())
                 .expirationTime(new Date(System.currentTimeMillis() + (jwtConfiguration.getExpiration() * 1000)))
@@ -104,7 +103,6 @@ public class TokenCreator {
 
         return generator.genKeyPair();
     }
-
 
     public String encryptToken(SignedJWT signedJWT) throws JOSEException {
         log.info("Iniciando o metodo de encryptToken");
@@ -123,6 +121,5 @@ public class TokenCreator {
 
         return jweObject.serialize();
     }
-
 
 }

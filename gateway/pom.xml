@@ -28,11 +28,16 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.seguro.residencial</groupId>
+            <artifactId>token</artifactId>
+            <version>1.O-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
 
     <build>
-        <finalName>discovery</finalName>
+        <finalName>gateway</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
