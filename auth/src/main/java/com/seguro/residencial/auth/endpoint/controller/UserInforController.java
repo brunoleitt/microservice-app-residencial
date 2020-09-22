@@ -17,13 +17,16 @@ import java.security.Principal;
  * @criado 20/09/2020 - 02:52
  * @projeto Seguro Residencial Simplificado
  * @autor Bruno Leite
+ *
+ *
+ * Retornar dados do usuarios cadastrados no applications User
  */
 @RestController
 @RequestMapping("user")
 @Api(value = "Endpoints para gerenciar as informações do usuário")
 public class UserInforController {
 
-    @GetMapping(path = "informação", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping(path = "infor", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ApiOperation(value = "Irá recuperar as informações do usuário disponíveis no token", response = ApplicationUser.class)
     public ResponseEntity<ApplicationUser> getUserInfo(Principal principal) {
         ApplicationUser applicationUser = (ApplicationUser) ((UsernamePasswordAuthenticationToken) principal).getPrincipal();

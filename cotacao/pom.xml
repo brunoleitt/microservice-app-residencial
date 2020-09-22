@@ -23,6 +23,13 @@
             <groupId>com.seguro.residencial</groupId>
             <artifactId>core</artifactId>
             <version>1.O-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.seguro.residencial</groupId>
+            <artifactId>token</artifactId>
+            <version>1.O-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
