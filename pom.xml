@@ -10,14 +10,14 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.seguro.residencial</groupId>
-    <artifactId>microservice-app-residencial</artifactId>
+    <groupId>com.seguro</groupId>
+    <artifactId>microservice-app-seguros</artifactId>
     <version>1.O-SNAPSHOT</version>
     <packaging>pom</packaging>
 
 
     <modules>
-        <module>cotacao</module>
+        <module>residencial</module>
         <module>core</module>
         <module>token</module>
     </modules>

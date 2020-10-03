@@ -7,21 +7,21 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="cotacao" />
         <module name="discovery" />
         <module name="token" />
         <module name="auth" />
         <module name="gateway" />
         <module name="core" />
+        <module name="residencial" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="auth" target="11" />
       <module name="core" target="1.8" />
-      <module name="cotacao" target="11" />
       <module name="discovery" target="11" />
       <module name="gateway" target="11" />
-      <module name="microservice-app-residencial" target="1.8" />
+      <module name="microservice-app-seguros" target="1.8" />
+      <module name="residencial" target="11" />
       <module name="token" target="11" />
     </bytecodeTargetLevel>
   </component>
@@ -29,9 +29,9 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="auth" options="-parameters" />
       <module name="core" options="-parameters" />
-      <module name="cotacao" options="-parameters" />
       <module name="discovery" options="-parameters" />
       <module name="gateway" options="-parameters" />
+      <module name="residencial" options="-parameters" />
       <module name="token" options="-parameters" />
     </option>
   </component>
