@@ -27,6 +27,6 @@ spring:
     username: root
     password: root
 
-jwt:
-  config:
-    type: signed
+#jwt:
+#  config:
+#    type: signed

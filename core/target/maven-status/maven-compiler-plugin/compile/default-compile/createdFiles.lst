@@ -1,4 +1,11 @@
-com\seguro\residencial\core\model\AbstractEntity.class
-com\seguro\residencial\core\model\Cotacao$CotacaoBuilder.class
-com\seguro\residencial\core\model\Cotacao.class
-com\seguro\residencial\core\repository\CotacaoRepository.class
+com\seguro\core\property\JwtConfiguration.class
+com\seguro\core\property\JwtConfiguration$Header.class
+com\seguro\core\model\Cotacao.class
+com\seguro\core\model\AbstractEntity.class
+com\seguro\core\model\ApplicationUser$ApplicationUserBuilder.class
+com\seguro\core\model\ApplicationUser.class
+com\seguro\core\model\Cotacao$CotacaoBuilder.class
+com\seguro\core\repository\CotacaoRepository.class
+com\seguro\core\docs\BaseSwaggerConfig.class
+com\seguro\core\repository\ApplicationUserRepository.class
+META-INF\spring-configuration-metadata.json

@@ -27,6 +27,7 @@ spring:
     username: root
     password: root
 
-jwt:
-  config:
-    type: signed
+#TODO EnabledJWT
+#jwt:
+#  config:
+#    type: signed

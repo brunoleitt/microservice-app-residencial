@@ -15,7 +15,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories({"com.seguro.core.repository"})
 @SpringBootApplication
 @ComponentScan("com.seguro")
-@EnableConfigurationProperties(value = JwtConfiguration.class)
+//@EnableConfigurationProperties(value = JwtConfiguration.class)
 public class ResidencialApplication {
     public static void main(String[] args) {
         SpringApplication.run(ResidencialApplication.class, args);

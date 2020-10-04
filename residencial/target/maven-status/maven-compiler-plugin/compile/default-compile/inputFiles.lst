@@ -1,3 +1,5 @@
-C:\Projetos\microservice-app-residencial\cotacao\src\main\java\com\seguros\residencial\cotacao\CotacaoApplication.java
-C:\Projetos\microservice-app-residencial\cotacao\src\main\java\com\seguros\residencial\cotacao\endpoint\controller\CotacaoController.java
-C:\Projetos\microservice-app-residencial\cotacao\src\main\java\com\seguros\residencial\cotacao\endpoint\service\CotacaoServices.java
+C:\Projetos\microservice-app-seguros\residencial\src\main\java\com\seguro\cotacao\endpoint\controller\CotacaoController.java
+C:\Projetos\microservice-app-seguros\residencial\src\main\java\com\seguro\cotacao\security\config\SecurityCredentialsConfig.java
+C:\Projetos\microservice-app-seguros\residencial\src\main\java\com\seguro\cotacao\endpoint\service\CotacaoServices.java
+C:\Projetos\microservice-app-seguros\residencial\src\main\java\com\seguro\cotacao\docs\SwaggerConfig.java
+C:\Projetos\microservice-app-seguros\residencial\src\main\java\com\seguro\cotacao\ResidencialApplication.java

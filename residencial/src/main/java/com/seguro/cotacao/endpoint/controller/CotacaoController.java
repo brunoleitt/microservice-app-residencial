@@ -23,10 +23,10 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping("v1/admin/cotacao")
+@RequestMapping("v1/admin/residencial")
 @Slf4j
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-@Api(value = "Endpoints para gerenciar cotações")
+@Api(value = "Endpoints para gerenciar cotacoes residencial")
 public class CotacaoController {
 
     private final CotacaoServices courseService;

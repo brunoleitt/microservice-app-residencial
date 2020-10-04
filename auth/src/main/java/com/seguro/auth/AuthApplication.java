@@ -14,7 +14,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories({"com.seguro.core.repository"})
 @EnableEurekaClient
 @EnableConfigurationProperties(value = JwtConfiguration.class)
-@ComponentScan("com.seguro.residencial")
+@ComponentScan("com.seguro")
 public class AuthApplication {
     public static void main(String[] args) {
         SpringApplication.run(AuthApplication.class, args);

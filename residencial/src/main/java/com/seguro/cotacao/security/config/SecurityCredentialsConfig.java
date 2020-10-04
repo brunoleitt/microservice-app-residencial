@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+
 /**
  * @criado 18/09/2020 - 01:48
  * @projeto Seguro Residencial Simplificado
@@ -25,8 +26,8 @@ public class SecurityCredentialsConfig extends SecurityTokenConfig {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .addFilterAfter(new JwtTokenAuthorizationFilter(jwtConfiguration, tokenConverter), UsernamePasswordAuthenticationFilter.class);
+//        http
+//                .addFilterAfter(new JwtTokenAuthorizationFilter(jwtConfiguration, tokenConverter), UsernamePasswordAuthenticationFilter.class);
         super.configure(http);
     }
 
