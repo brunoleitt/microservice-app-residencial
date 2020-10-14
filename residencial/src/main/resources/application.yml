@@ -1,15 +1,16 @@
 server:
   port: 8082
 
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    service-url:
-      defaultZone: http://localhost:8081/eureka/
-    register-with-eureka: true
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8081/eureka/
+#    register-with-eureka: true
 
 
+# -------------------------- Bruno Leite --------------------------
 spring:
   application:
     name: residencial
@@ -20,12 +21,23 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
-  jmx:
-    enabled: false
+#  jmx:
+#    enabled: false
   datasource:
-    url: jdbc:mysql://localhost:3306/seguros?useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true&sslMode=DISABLED
+    url : jdbc:mysql://localhost:3306/seguros?useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true&sslMode=DISABLED
     username: root
     password: root
+
+#  datasource_consulta:
+#    url: jdbc:mysql://localhost:3306/seguros_consulta?useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true&sslMode=DISABLED
+#    username: root
+#    password: root
+
+#  mysql_2:
+#    datasource:
+#        url: jdbc:mysql://localhost:3306/seguros_consulta?useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true&sslMode=DISABLED
+#        username: root
+#        password: root
 
 #TODO EnabledJWT
 #jwt:

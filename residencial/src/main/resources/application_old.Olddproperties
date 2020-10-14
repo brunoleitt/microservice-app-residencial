@@ -1,0 +1,15 @@
+spring.jpa.generate-ddl=true
+spring.jpa.database=default
+server.port=8082
+
+#first db
+spring.datasource.jdbc-url=jdbc:mysql://localhost:3306/seguros?useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true&sslMode=DISABLED
+spring.datasource.username = root
+spring.datasource.password = root
+spring.datasource.driverClassName = com.mysql.jdbc.Driver
+
+#second db2 ...
+db2.datasource.jdbc-url = jdbc:mysql://localhost:3306/seguros_consulta?useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true&sslMode=DISABLED
+db2.datasource.username = root
+db2.datasource.password = root
+db2.datasource.driverClassName = com.mysql.jdbc.Driver

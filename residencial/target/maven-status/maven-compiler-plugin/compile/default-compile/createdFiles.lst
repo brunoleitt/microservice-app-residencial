@@ -1,5 +1,0 @@
-com\seguro\cotacao\docs\SwaggerConfig.class
-com\seguro\cotacao\security\config\SecurityCredentialsConfig.class
-com\seguro\cotacao\endpoint\service\CotacaoServices.class
-com\seguro\cotacao\ResidencialApplication.class
-com\seguro\cotacao\endpoint\controller\CotacaoController.class
