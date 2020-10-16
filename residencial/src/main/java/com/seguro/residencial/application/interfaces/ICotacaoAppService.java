@@ -13,4 +13,6 @@ public interface ICotacaoAppService {
 
     CompletableFuture<String> criacaoCotacao(CriarCotacaoViewModel criarCotacaoViewModel);
 
+
+
 }

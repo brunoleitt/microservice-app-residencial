@@ -11,14 +11,14 @@ import org.springframework.context.annotation.Configuration;
  * @projeto Seguro Residencial Simplificado
  * @autor Bruno Leite
  */
-@Configuration
+//@Configuration
 public class AxonConfig {
 
-    @Bean
-    EventSourcingRepository<CotacaoAggregate> cotacaoAggregateEventSourcingRepository(EventStore eventStore){
-        EventSourcingRepository<CotacaoAggregate> repository =
-                EventSourcingRepository.builder(CotacaoAggregate.class).eventStore(eventStore).build();
-        return repository;
-    }
+//    @Bean
+//    EventSourcingRepository<CotacaoAggregate> cotacaoAggregateEventSourcingRepository(EventStore eventStore){
+//        EventSourcingRepository<CotacaoAggregate> repository =
+//                EventSourcingRepository.builder(CotacaoAggregate.class).eventStore(eventStore).build();
+//        return repository;
+//    }
 
 }

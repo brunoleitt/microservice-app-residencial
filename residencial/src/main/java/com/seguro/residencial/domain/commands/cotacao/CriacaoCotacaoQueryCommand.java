@@ -1,4 +1,4 @@
-package com.seguro.residencial.domain.commands;
+package com.seguro.residencial.domain.commands.cotacao;
 
 import com.seguro.residencial.coreapi.model.basecommand.BaseCommand;
 
@@ -7,11 +7,11 @@ import com.seguro.residencial.coreapi.model.basecommand.BaseCommand;
  * @projeto Seguro Residencial Simplificado
  * @autor Bruno Leite
  */
-public class CriacaoCotacaoCommand extends BaseCommand<String> {
+public class CriacaoCotacaoQueryCommand extends BaseCommand<String> {
 
     public final String titulo;
 
-    public CriacaoCotacaoCommand(String id, String titulo) {
+    public CriacaoCotacaoQueryCommand(String id, String titulo) {
         super(id);
         this.titulo = titulo;
     }

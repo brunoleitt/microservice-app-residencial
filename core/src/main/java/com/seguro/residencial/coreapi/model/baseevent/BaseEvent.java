@@ -1,5 +1,7 @@
 package com.seguro.residencial.coreapi.model.baseevent;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 /**
@@ -7,6 +9,8 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
  * @projeto Seguro Residencial Simplificado
  * @autor Bruno Leite
  */
+@Getter
+@Setter
 public class BaseEvent<T> {
 
     @TargetAggregateIdentifier

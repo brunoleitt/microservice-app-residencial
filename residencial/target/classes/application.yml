@@ -28,6 +28,10 @@ spring:
     username: root
     password: root
 
+axon:
+  serializer:
+    general: jackson
+
 #  datasource_consulta:
 #    url: jdbc:mysql://localhost:3306/seguros_consulta?useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true&sslMode=DISABLED
 #    username: root

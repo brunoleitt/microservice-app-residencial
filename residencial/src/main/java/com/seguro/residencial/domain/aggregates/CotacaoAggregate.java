@@ -1,6 +1,6 @@
 package com.seguro.residencial.domain.aggregates;
 
-import com.seguro.residencial.domain.commands.CriacaoCotacaoCommand;
+import com.seguro.residencial.domain.commands.cotacao.CriacaoCotacaoCommand;
 import com.seguro.residencial.domain.events.CriacaoCotacaoEvent;
 import lombok.Getter;
 import lombok.Setter;

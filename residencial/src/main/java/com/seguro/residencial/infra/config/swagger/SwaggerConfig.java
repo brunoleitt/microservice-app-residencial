@@ -13,6 +13,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig extends BaseSwaggerConfig {
     public SwaggerConfig() {
-        super("com.seguro.residencial.cotacao.endpoint.controller");
+        super("com.seguro.residencial.web.api.controller");
     }
 }
