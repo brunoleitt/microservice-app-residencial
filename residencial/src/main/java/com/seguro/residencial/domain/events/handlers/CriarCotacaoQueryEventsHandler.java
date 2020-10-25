@@ -2,7 +2,7 @@ package com.seguro.residencial.domain.events.handlers;
 
 import com.seguro.residencial.domain.events.CriacaoCotacaoEvent;
 import com.seguro.residencial.domain.interfaces.repository.cotacao.ICotacaoQueryRepository;
-import com.seguro.residencial.domain.models.root.cotacao.CotacaoQuery;
+import com.seguro.residencial.domain.models.root.cotacoes.CotacaoQuery;
 import com.seguro.residencial.domain.querys.cotacao.FindCotacaoQuery;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.eventhandling.EventHandler;

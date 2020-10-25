@@ -1,6 +1,6 @@
 package com.seguro.residencial.domain.interfaces.repository.cotacao;
 
-import com.seguro.residencial.domain.models.root.cotacao.Cotacao;
+import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
  * @autor Bruno Leite
  */
 @Repository
-public interface ICotacaoRepository extends PagingAndSortingRepository<Cotacao, String> {
+public interface ICotacaoRepository extends PagingAndSortingRepository<CotacaoRoot, String> {
 }

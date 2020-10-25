@@ -15,13 +15,20 @@ spring:
   application:
     name: residencial
   jpa:
-    show-sql: false
+    show-sql: true
     hibernate:
-      ddl-auto: update
     properties:
+      javax:
+        persistence:
+          schema-generation:
+            create-source: metadata
+            scripts:
+              action: create
+              create-target: create.sql
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
-#  jmx:
+    generate-ddl: true
+  #  jmx:
 #    enabled: false
   datasource:
     url : jdbc:mysql://localhost:3306/seguros?useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true&sslMode=DISABLED

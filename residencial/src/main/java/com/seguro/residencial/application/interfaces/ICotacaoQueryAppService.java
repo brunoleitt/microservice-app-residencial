@@ -1,6 +1,6 @@
 package com.seguro.residencial.application.interfaces;
 
-import com.seguro.residencial.domain.models.root.cotacao.Cotacao;
+import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -12,7 +12,7 @@ import java.util.concurrent.CompletableFuture;
  */
 public interface ICotacaoQueryAppService {
 
-    CompletableFuture<Cotacao> findById(String idCotacao);
+    CompletableFuture<CotacaoRoot> findById(String idCotacao);
 
     List<Object> listEventsForAccount(String accountId);
 

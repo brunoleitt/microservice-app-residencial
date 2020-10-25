@@ -1,6 +1,6 @@
 package com.seguro.residencial.domain.interfaces.repository.cotacao;
 
-import com.seguro.residencial.domain.models.root.cotacao.CotacaoQuery;
+import com.seguro.residencial.domain.models.root.cotacoes.CotacaoQuery;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**

@@ -1,7 +1,7 @@
 package com.seguro.residencial.web.api.controller;
 
 import com.seguro.residencial.application.interfaces.ICotacaoQueryAppService;
-import com.seguro.residencial.domain.models.root.cotacao.Cotacao;
+import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +31,7 @@ public class CotacaoQueryController {
     }
 
     @GetMapping("/{idCotacao}")
-    public CompletableFuture<Cotacao> criarCotacao(@PathVariable("idCotacao") String idCotacao){
+    public CompletableFuture<CotacaoRoot> criarCotacao(@PathVariable("idCotacao") String idCotacao){
         return this.iCotacaoQueryAppService.findById(idCotacao);
     }
 

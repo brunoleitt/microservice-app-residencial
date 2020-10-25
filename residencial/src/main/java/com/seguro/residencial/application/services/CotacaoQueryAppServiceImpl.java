@@ -1,7 +1,7 @@
 package com.seguro.residencial.application.services;
 
 import com.seguro.residencial.application.interfaces.ICotacaoQueryAppService;
-import com.seguro.residencial.domain.models.root.cotacao.Cotacao;
+import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import com.seguro.residencial.domain.querys.cotacao.FindCotacaoQuery;
 import org.axonframework.eventsourcing.eventstore.EventStore;
 import org.axonframework.messaging.Message;
@@ -32,10 +32,10 @@ public class CotacaoQueryAppServiceImpl implements ICotacaoQueryAppService {
     }
 
     @Override
-    public CompletableFuture<Cotacao> findById(String idCotacao) {
+    public CompletableFuture<CotacaoRoot> findById(String idCotacao) {
         return this.queryGateway.query(
                 new FindCotacaoQuery(idCotacao),
-                ResponseTypes.instanceOf(Cotacao.class)
+                ResponseTypes.instanceOf(CotacaoRoot.class)
         );
     }
 

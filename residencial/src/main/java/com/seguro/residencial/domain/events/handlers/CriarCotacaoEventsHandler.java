@@ -2,7 +2,7 @@ package com.seguro.residencial.domain.events.handlers;
 
 import com.seguro.residencial.domain.events.CriacaoCotacaoEvent;
 import com.seguro.residencial.domain.interfaces.repository.cotacao.ICotacaoRepository;
-import com.seguro.residencial.domain.models.root.cotacao.Cotacao;
+import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import com.seguro.residencial.domain.querys.cotacao.FindCotacaoQuery;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.eventhandling.EventHandler;
@@ -31,24 +31,21 @@ public class CriarCotacaoEventsHandler {
         persistCotacao(buildQueryCotacao(criacaoCotacaoEvent));
     }
 
-
-
-
-    private Cotacao buildQueryCotacao(CriacaoCotacaoEvent criacaoCotacaoEvent){
-        Cotacao cotacao = new Cotacao();
-        cotacao.setId(criacaoCotacaoEvent.getId());
-        cotacao.setTitulo(criacaoCotacaoEvent.getTitulo());
+    private CotacaoRoot buildQueryCotacao(CriacaoCotacaoEvent criacaoCotacaoEvent){
+        CotacaoRoot cotacao = new CotacaoRoot();
+        //cotacao.setIdCotacao(criacaoCotacaoEvent.getId());
+        //cotacao.(criacaoCotacaoEvent.getTitulo());
         return cotacao;
     }
 
 
-    private void persistCotacao(Cotacao cotacao){
+    private void persistCotacao(CotacaoRoot cotacao){
         cotacaoRepository.save(cotacao);
     }
 
 
     @QueryHandler
-    public Cotacao handle(FindCotacaoQuery query) {
+    public CotacaoRoot handle(FindCotacaoQuery query) {
         log.debug("Handling FindBankAccountQuery query: {}", query);
         return this.cotacaoRepository.findById(query.getId()).orElse(null);
     }

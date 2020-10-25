@@ -1,15 +1,9 @@
-package com.seguro.residencial.domain.models.root.cotacao;
+package com.seguro.residencial.domain.models.root.cotacoes;
 
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -22,10 +16,9 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @ToString
-@Table(name = "cotacao")
+@Table(name = "cotacaoQuery")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Cotacao {
-
+public class CotacaoQuery {
 
     @Id
     @EqualsAndHashCode.Include
@@ -36,6 +29,6 @@ public class Cotacao {
     @Column(nullable = false)
     private String titulo;
 
-    public Cotacao() {
+    public CotacaoQuery() {
     }
 }
