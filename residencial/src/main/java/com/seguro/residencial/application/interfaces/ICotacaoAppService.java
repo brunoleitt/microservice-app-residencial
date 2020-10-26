@@ -1,6 +1,6 @@
 package com.seguro.residencial.application.interfaces;
 
-import com.seguro.residencial.application.viewmodels.CriarCotacaoViewModel;
+import com.seguro.residencial.application.models.input.CriarCotacaoInput;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -11,7 +11,7 @@ import java.util.concurrent.CompletableFuture;
  */
 public interface ICotacaoAppService {
 
-    CompletableFuture<String> criacaoCotacao(CriarCotacaoViewModel criarCotacaoViewModel);
+    CompletableFuture<String> criacaoCotacao(CriarCotacaoInput criarCotacaoInput);
 
 
 

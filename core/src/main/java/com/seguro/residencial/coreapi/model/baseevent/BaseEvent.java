@@ -11,12 +11,12 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
  */
 @Getter
 @Setter
-public class BaseEvent<T> {
+public class BaseEvent {
 
     @TargetAggregateIdentifier
-    public final T id;
+    public final Long id;
 
-    public BaseEvent(T id) {
+    public BaseEvent(Long id) {
         this.id = id;
     }
 }

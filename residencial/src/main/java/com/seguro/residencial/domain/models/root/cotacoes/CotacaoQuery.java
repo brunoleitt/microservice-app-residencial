@@ -22,7 +22,7 @@ public class CotacaoQuery {
 
     @Id
     @EqualsAndHashCode.Include
-    private String id;
+    private Long id;
 
 
     @NotNull(message = "The field 'title' is mandatory")

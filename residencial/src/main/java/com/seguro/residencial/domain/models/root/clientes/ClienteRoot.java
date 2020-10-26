@@ -13,7 +13,7 @@ import java.time.OffsetDateTime;
 @Data
 @Entity
 @Table(name = "cliente")
-public class    ClienteRoot {
+public class ClienteRoot {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,6 +48,7 @@ public class    ClienteRoot {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idCotacao"
+            , nullable = false
             , foreignKey = @ForeignKey(name = "fk_cotacaoCliente"))
     private CotacaoRoot cotacao;
 

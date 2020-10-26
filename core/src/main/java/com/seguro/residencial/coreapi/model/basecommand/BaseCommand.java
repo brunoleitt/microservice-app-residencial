@@ -7,12 +7,12 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
  * @projeto Seguro Residencial Simplificado
  * @autor Bruno Leite
  */
-public class BaseCommand<T> {
+public class BaseCommand {
 
     @TargetAggregateIdentifier
-    public final T id;
+    public final Long id;
 
-    public BaseCommand(T id) {
+    public BaseCommand(Long id) {
         this.id = id;
     }
 }

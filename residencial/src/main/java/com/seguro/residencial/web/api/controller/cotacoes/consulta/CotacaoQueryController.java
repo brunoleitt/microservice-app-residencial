@@ -1,4 +1,4 @@
-package com.seguro.residencial.web.api.controller;
+package com.seguro.residencial.web.api.controller.cotacoes.consulta;
 
 import com.seguro.residencial.application.interfaces.ICotacaoQueryAppService;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 /**
  * @criado 16/09/2020 - 00:33
@@ -30,13 +31,13 @@ public class CotacaoQueryController {
         this.iCotacaoQueryAppService = iCotacaoQueryAppService;
     }
 
-    @GetMapping("/{idCotacao}")
-    public CompletableFuture<CotacaoRoot> criarCotacao(@PathVariable("idCotacao") String idCotacao){
-        return this.iCotacaoQueryAppService.findById(idCotacao);
+    @GetMapping()
+    public CompletableFuture<CotacaoRoot> criarCotacao() throws ExecutionException, InterruptedException {
+        return this.iCotacaoQueryAppService.listarTodos();
     }
-
-    @GetMapping("/{idCotacao}/events")
-    public List<Object> listEventsForAccount(@PathVariable(value = "idCotacao") String idCotacao) {
-        return this.iCotacaoQueryAppService.listEventsForAccount(idCotacao);
-    }
+//
+//    @GetMapping("/{idCotacao}/events")
+//    public List<Object> listEventsForAccount(@PathVariable(value = "idCotacao") String idCotacao) {
+//        return this.iCotacaoQueryAppService.listEventsForAccount(idCotacao);
+//    }
 }
