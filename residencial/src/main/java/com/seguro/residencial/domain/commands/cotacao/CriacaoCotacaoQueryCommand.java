@@ -1,6 +1,6 @@
 package com.seguro.residencial.domain.commands.cotacao;
 
-import com.seguro.residencial.coreapi.model.basecommand.BaseCommand;
+import com.seguro.residencial.coreapi.model.basecommand.CotacaoCommand;
 
 /**
  * @criado 12/10/2020 - 14:19
@@ -11,12 +11,9 @@ import com.seguro.residencial.coreapi.model.basecommand.BaseCommand;
  *
  *
  */
-public class CriacaoCotacaoQueryCommand extends BaseCommand {
+public class CriacaoCotacaoQueryCommand extends CotacaoCommand {
 
-    public final String titulo;
-
-    public CriacaoCotacaoQueryCommand(Long id, String titulo) {
-        super(id);
-        this.titulo = titulo;
+    public CriacaoCotacaoQueryCommand(Long id, String codigoCotacao) {
+        super(id, codigoCotacao);
     }
 }

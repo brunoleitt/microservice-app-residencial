@@ -21,7 +21,7 @@ public class ItemRoot {
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idCotacao"
+    @JoinColumn(name = "id_cotacao", referencedColumnName="id"
             , foreignKey = @ForeignKey(name = "fk_cotacaoItem"))
     private CotacaoRoot cotacao;
 

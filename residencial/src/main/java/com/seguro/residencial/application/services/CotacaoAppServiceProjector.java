@@ -2,14 +2,17 @@ package com.seguro.residencial.application.services;
 
 import com.seguro.residencial.application.interfaces.ICotacaoAppService;
 import com.seguro.residencial.application.models.input.CriarCotacaoInput;
+import com.seguro.residencial.application.models.view.CotacaoCriadaViewModel;
 import com.seguro.residencial.domain.commands.cotacao.CriarCotacaoCommand;
+import com.seguro.residencial.domain.interfaces.repository.cotacao.ICotacaoRepository;
+import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.stereotype.Service;
 
-import java.time.OffsetDateTime;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
 
 /**
  * @criado 12/10/2020 - 15:39
@@ -21,23 +24,34 @@ public class CotacaoAppServiceProjector implements ICotacaoAppService {
 
     private final CommandGateway commandGateway;
 
-    public CotacaoAppServiceProjector(CommandGateway _CommandGateway) {
-        this.commandGateway = _CommandGateway;
+
+    public CotacaoAppServiceProjector(CommandGateway commandGateway) {
+        this.commandGateway = commandGateway;
     }
 
     @Override
-    public CompletableFuture<String> criacaoCotacao(CriarCotacaoInput input) {
+    public CotacaoCriadaViewModel criacaoCotacao(CriarCotacaoInput input) {
         Random random = new Random();
 
-        return commandGateway.send(new CriarCotacaoCommand(random.nextLong(),
-                OffsetDateTime.now(),
-                OffsetDateTime.now(),
-                OffsetDateTime.now(),
+        var registrarCotacaoCommand = new CriarCotacaoCommand(random.nextLong(),
+                UUID.randomUUID().toString(),
+                LocalDate.now(),
+                input.getDataVigenciaInicial(),
+                input.getDataVigenciaFinal(),
                 input.getIdTipoCalculo(),
                 input.getIdTipoVigencia(),
                 null,
                 null,
-                null));
-    }
+                null);
 
+        commandGateway.send(registrarCotacaoCommand);
+
+        //TODO Criacao para realizar o MAP de Command -> ViewModel
+        var cotacaoCriadaViewModel = new CotacaoCriadaViewModel();
+
+        cotacaoCriadaViewModel.setCodigoCotacao(registrarCotacaoCommand.getCodigoCotacao());
+
+
+        return cotacaoCriadaViewModel;
+    }
 }

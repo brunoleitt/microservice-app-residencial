@@ -7,6 +7,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @criado 12/10/2020 - 15:52
@@ -14,6 +15,6 @@ import java.util.List;
  * @autor Bruno Leite
  */
 @Repository
-public interface ICotacaoRepository extends JpaRepository<CotacaoRoot, String> {
+public interface ICotacaoRepository extends JpaRepository<CotacaoRoot, Long> {
 
 }

@@ -1,16 +1,19 @@
 package com.seguro.residencial.domain.models.root.cotacoes;
 
 
-import com.seguro.residencial.domain.models.root.clientes.ClienteEndereco;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.seguro.residencial.domain.models.root.clientes.ClienteRoot;
 import com.seguro.residencial.domain.models.root.itens.ItemRoot;
 import com.seguro.residencial.domain.models.root.questionarios.QuestionarioRoot;
-import lombok.*;
-import org.apache.tomcat.jni.Address;
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.Date;
+import java.util.UUID;
 
 /**
  * @criado 16/09/2020 - 00:35
@@ -28,23 +31,33 @@ public class CotacaoRoot {
     @Column(name = "id")
     private Long id;
 
+    @Column(updatable = false, nullable = false, unique=true)
+    private String codigoCotacao;
+
+    @Column(length = 30)
+    private String statusCotacao;
+
+    private LocalDate dataCotacao;
+
+    private LocalDate  dataVigenciaInicial;
+
+    private LocalDate  dataVigenciaFinal;
+
     @CreationTimestamp
-    private OffsetDateTime dataCotacao;
-
-    private OffsetDateTime dataVigenciaInicial;
-
-    private OffsetDateTime dataVigenciaFinal;
+    private OffsetDateTime dataAtualizacao;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idTipoCalculo"
             , nullable = false
             , foreignKey = @ForeignKey(name = "fk_tipo_calculo_cotacao"))
+    @JsonIgnore
     private TipoCalculo tipoCalculo;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idTipoVigencia"
             , nullable = false
             , foreignKey = @ForeignKey(name = "fk_tipo_vigencia_cotacao"))
+    @JsonIgnore
     private TipoVigencia tipoVigencia;
 
     @OneToOne(mappedBy = "cotacao")
@@ -56,4 +69,26 @@ public class CotacaoRoot {
     @OneToOne(mappedBy = "cotacao")
     private ClienteRoot cliente;
 
+
+    public CotacaoRoot(String codigoCotacao, String statusCotacao,
+                       LocalDate dataCotacao, LocalDate dataVigenciaInicial,
+                       LocalDate dataVigenciaFinal,
+                       TipoCalculo tipoCalculo, TipoVigencia tipoVigencia,
+                       ItemRoot item, QuestionarioRoot questionario,
+                       ClienteRoot cliente) {
+
+        this.codigoCotacao = codigoCotacao;
+        this.statusCotacao = statusCotacao;
+        this.dataCotacao = dataCotacao;
+        this.dataVigenciaInicial = dataVigenciaInicial;
+        this.dataVigenciaFinal = dataVigenciaFinal;
+        this.tipoCalculo = tipoCalculo;
+        this.tipoVigencia = tipoVigencia;
+        this.item = item;
+        this.questionario = questionario;
+        this.cliente = cliente;
+    }
+
+    public CotacaoRoot() {
+    }
 }

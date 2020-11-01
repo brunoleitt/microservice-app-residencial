@@ -1,5 +1,6 @@
 package com.seguro.residencial.security.token.creator;
 
+
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.DirectEncrypter;
 import com.nimbusds.jose.crypto.RSASSASigner;

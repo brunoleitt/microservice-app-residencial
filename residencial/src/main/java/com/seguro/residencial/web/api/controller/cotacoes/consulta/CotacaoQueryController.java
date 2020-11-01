@@ -1,17 +1,15 @@
 package com.seguro.residencial.web.api.controller.cotacoes.consulta;
 
 import com.seguro.residencial.application.interfaces.ICotacaoQueryAppService;
+import com.seguro.residencial.domain.exception.NegocioException;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 
 /**
  * @criado 16/09/2020 - 00:33
@@ -32,12 +30,13 @@ public class CotacaoQueryController {
     }
 
     @GetMapping()
-    public CompletableFuture<CotacaoRoot> criarCotacao() throws ExecutionException, InterruptedException {
-        return this.iCotacaoQueryAppService.listarTodos();
+    public List<CotacaoRoot> listarCotacoes() {
+        List<CotacaoRoot> cotacaoRoots = this.iCotacaoQueryAppService.listarCotacoes();
+
+        if (!cotacaoRoots.isEmpty())
+            throw new NegocioException(String.format("Não existe cotações cadastradas",
+                    "Dados de cotacao"));
+
+        return cotacaoRoots;
     }
-//
-//    @GetMapping("/{idCotacao}/events")
-//    public List<Object> listEventsForAccount(@PathVariable(value = "idCotacao") String idCotacao) {
-//        return this.iCotacaoQueryAppService.listEventsForAccount(idCotacao);
-//    }
 }

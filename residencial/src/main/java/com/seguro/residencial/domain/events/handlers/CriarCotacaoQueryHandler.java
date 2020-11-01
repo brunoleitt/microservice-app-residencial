@@ -1,12 +1,6 @@
 package com.seguro.residencial.domain.events.handlers;
 
-import com.seguro.residencial.domain.events.CriacaoCotacaoEvent;
-import com.seguro.residencial.domain.interfaces.repository.cotacao.ICotacaoQueryRepository;
-import com.seguro.residencial.domain.models.root.cotacoes.CotacaoQuery;
 import lombok.extern.slf4j.Slf4j;
-import org.axonframework.eventhandling.EventHandler;
-import org.axonframework.queryhandling.QueryHandler;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,7 +10,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Slf4j
-public class CriarCotacaoQueryEventsHandler {
+public class CriarCotacaoQueryHandler {
 
 //    @Autowired
 //    private ICotacaoQueryRepository iCotacaoQueryRepository;

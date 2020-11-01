@@ -1,16 +1,13 @@
 package com.seguro.residencial.domain.events;
 
-import com.seguro.residencial.coreapi.model.baseevent.BaseEvent;
+import com.seguro.residencial.coreapi.model.baseevent.CotacaoEvent;
 import com.seguro.residencial.domain.models.root.clientes.ClienteRoot;
-import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
-import com.seguro.residencial.domain.models.root.cotacoes.TipoVigencia;
 import com.seguro.residencial.domain.models.root.itens.ItemRoot;
 import com.seguro.residencial.domain.models.root.questionarios.QuestionarioRoot;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
-import java.time.OffsetDateTime;
+import java.time.LocalDate;
 
 /**
  * @criado 12/10/2020 - 14:28
@@ -24,20 +21,21 @@ import java.time.OffsetDateTime;
  */
 @Getter
 @Setter
-public class CriacaoCotacaoEvent extends BaseEvent {
+public class CriadaCotacaoEvent extends CotacaoEvent {
 
-
-    public CriacaoCotacaoEvent(Long id,
-                               OffsetDateTime dataCotacao,
-                               OffsetDateTime dataVigenciaInicial,
-                               OffsetDateTime dataVigenciaFinal,
-                               Integer idTipoCalculo,
-                               Integer idTipoVigencia,
-                               ItemRoot item,
-                               QuestionarioRoot questionario,
-                               ClienteRoot cliente) {
+    public CriadaCotacaoEvent(Long id,
+                              String codigoCotacao,
+                              LocalDate dataCotacao,
+                              LocalDate dataVigenciaInicial,
+                              LocalDate dataVigenciaFinal,
+                              Long idTipoCalculo,
+                              Long idTipoVigencia,
+                              ItemRoot item,
+                              QuestionarioRoot questionario,
+                              ClienteRoot cliente) {
         super(id);
         this.dataCotacao = dataCotacao;
+        this.codigoCotacao = codigoCotacao;
         this.dataVigenciaInicial = dataVigenciaInicial;
         this.dataVigenciaFinal = dataVigenciaFinal;
         this.idTipoCalculo = idTipoCalculo;
@@ -47,15 +45,17 @@ public class CriacaoCotacaoEvent extends BaseEvent {
         this.cliente = cliente;
     }
 
-    private OffsetDateTime dataCotacao;
+    private String codigoCotacao;
 
-    private OffsetDateTime dataVigenciaInicial;
+    private LocalDate dataCotacao;
 
-    private OffsetDateTime dataVigenciaFinal;
+    private LocalDate dataVigenciaInicial;
 
-    private Integer idTipoCalculo;
+    private LocalDate dataVigenciaFinal;
 
-    private Integer idTipoVigencia;
+    private Long idTipoCalculo;
+
+    private Long idTipoVigencia;
 
     private ItemRoot item;
 

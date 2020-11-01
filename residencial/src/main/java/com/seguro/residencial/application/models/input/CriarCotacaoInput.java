@@ -3,6 +3,7 @@ package com.seguro.residencial.application.models.input;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 
 /**
@@ -15,8 +16,13 @@ import java.time.OffsetDateTime;
 @Setter
 public class CriarCotacaoInput {
 
-    private Integer idTipoCalculo;
+    private Long idTipoCalculo;
 
-    private Integer idTipoVigencia;
+    private Long idTipoVigencia;
+
+    private LocalDate dataVigenciaInicial;
+
+    private LocalDate dataVigenciaFinal;
+
 
 }

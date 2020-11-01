@@ -1,13 +1,14 @@
 package com.seguro.residencial.domain.commands.cotacao;
 
-import com.seguro.residencial.coreapi.model.basecommand.BaseCommand;
+import com.seguro.residencial.coreapi.model.basecommand.CotacaoCommand;
+import com.seguro.residencial.domain.commands.validacao.CriarCotacaoCommandValidation;
 import com.seguro.residencial.domain.models.root.clientes.ClienteRoot;
 import com.seguro.residencial.domain.models.root.itens.ItemRoot;
 import com.seguro.residencial.domain.models.root.questionarios.QuestionarioRoot;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.OffsetDateTime;
+import java.time.LocalDate;
 
 /**
  * @criado 12/10/2020 - 14:19
@@ -17,18 +18,19 @@ import java.time.OffsetDateTime;
  */
 @Getter
 @Setter
-public class CriarCotacaoCommand extends BaseCommand {
+public class CriarCotacaoCommand extends CotacaoCommand {
 
     public CriarCotacaoCommand(Long id,
-                               OffsetDateTime dataCotacao,
-                               OffsetDateTime dataVigenciaInicial,
-                               OffsetDateTime dataVigenciaFinal,
-                               Integer idTipoCalculo,
-                               Integer idTipoVigencia,
+                               String codigoCotacao,
+                               LocalDate dataCotacao,
+                               LocalDate  dataVigenciaInicial,
+                               LocalDate  dataVigenciaFinal,
+                               Long idTipoCalculo,
+                               Long idTipoVigencia,
                                ItemRoot item,
                                QuestionarioRoot questionario,
                                ClienteRoot cliente) {
-        super(id);
+        super(id,codigoCotacao);
         this.dataCotacao = dataCotacao;
         this.dataVigenciaInicial = dataVigenciaInicial;
         this.dataVigenciaFinal = dataVigenciaFinal;
@@ -37,17 +39,24 @@ public class CriarCotacaoCommand extends BaseCommand {
         this.item = item;
         this.questionario = questionario;
         this.cliente = cliente;
+
+        this.IsValid();
+
     }
 
-        private OffsetDateTime dataCotacao;
+        void IsValid() {
+            new CriarCotacaoCommandValidation(this).IsValid();
+        }
 
-        private OffsetDateTime dataVigenciaInicial;
+        private LocalDate  dataCotacao;
 
-        private OffsetDateTime dataVigenciaFinal;
+        private LocalDate  dataVigenciaInicial;
 
-        private Integer idTipoCalculo;
+        private LocalDate  dataVigenciaFinal;
 
-        private Integer idTipoVigencia;
+        private Long idTipoCalculo;
+
+        private Long idTipoVigencia;
 
         private ItemRoot item;
 

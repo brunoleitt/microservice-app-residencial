@@ -1,7 +1,7 @@
 package com.seguro.residencial.domain.aggregates;
 
 import com.seguro.residencial.domain.commands.cotacao.CriarCotacaoCommand;
-import com.seguro.residencial.domain.events.CriacaoCotacaoEvent;
+import com.seguro.residencial.domain.events.CriadaCotacaoEvent;
 import com.seguro.residencial.domain.models.root.clientes.ClienteRoot;
 import com.seguro.residencial.domain.models.root.itens.ItemRoot;
 import com.seguro.residencial.domain.models.root.questionarios.QuestionarioRoot;
@@ -14,6 +14,7 @@ import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
 
 import java.time.OffsetDateTime;
+import java.util.UUID;
 
 /**
  * @criado 12/10/2020 - 14:16
@@ -27,11 +28,12 @@ public class CotacaoAggregate {
 
     @AggregateIdentifier
     private Long id;
+    private String codigoCotacao;
     private OffsetDateTime dataCotacao;
     private OffsetDateTime dataVigenciaInicial;
     private OffsetDateTime dataVigenciaFinal;
-    private Integer idTipoCalculo;
-    private Integer idTipoVigencia;
+    private Long idTipoCalculo;
+    private Long idTipoVigencia;
     private ItemRoot item;
     private QuestionarioRoot questionario;
     private ClienteRoot cliente;
@@ -39,7 +41,9 @@ public class CotacaoAggregate {
 
     @CommandHandler
     public CotacaoAggregate(CriarCotacaoCommand createCotacaoCommand){
-          AggregateLifecycle.apply(new CriacaoCotacaoEvent(createCotacaoCommand.id,
+
+          AggregateLifecycle.apply(new CriadaCotacaoEvent(createCotacaoCommand.id,
+                                                           createCotacaoCommand.codigoCotacao,
                                                            createCotacaoCommand.getDataCotacao(),
                                                            createCotacaoCommand.getDataVigenciaInicial(),
                                                            createCotacaoCommand.getDataVigenciaFinal(),
@@ -50,9 +54,10 @@ public class CotacaoAggregate {
 
     /*Realizar a validação de negocio para criacao de cotacao, antes de realizar a chamada de eventos */
     @EventSourcingHandler
-    protected void criarCotacaoEvent(CriacaoCotacaoEvent event){
+    protected void criarCotacaoEvent(CriadaCotacaoEvent event){
 
         this.id = event.getId();
+        this.codigoCotacao = event.getCodigoCotacao();
         this.dataCotacao = OffsetDateTime.now();
         this.dataVigenciaInicial = OffsetDateTime.now(); // event.getDataVigenciaInicial();
         this.dataVigenciaFinal = OffsetDateTime.now();   //event.getDataVigenciaFinal();
@@ -63,6 +68,6 @@ public class CotacaoAggregate {
         this.cliente = event.getCliente();
     }
 
-    protected CotacaoAggregate() {
+    public CotacaoAggregate() {
     }
 }

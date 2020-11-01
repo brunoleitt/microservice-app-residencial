@@ -4,7 +4,6 @@ import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -13,9 +12,5 @@ import java.util.concurrent.ExecutionException;
  * @autor Bruno Leite
  */
 public interface ICotacaoQueryAppService {
-
-    List<TipoCalculo> listarTipoCalculo();
-
-    CompletableFuture<CotacaoRoot> listarTodos() throws ExecutionException, InterruptedException;
-
+    List<CotacaoRoot> listarCotacoes();
 }
