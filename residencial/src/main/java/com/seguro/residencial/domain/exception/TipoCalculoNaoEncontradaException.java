@@ -12,7 +12,7 @@ public class TipoCalculoNaoEncontradaException extends NegocioException {
     }
 
     public TipoCalculoNaoEncontradaException(Long idTipoCalculo) {
-        this(String.format("Não existe um cadastro Tipo Calculo com código de Id %d", idTipoCalculo));
+        this(String.format("Codigo tipo de calculo não encontrado para id: %d", idTipoCalculo));
     }
 
 }
