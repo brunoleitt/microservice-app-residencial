@@ -2,6 +2,7 @@ package com.seguro.residencial.domain.models.root.clientes;
 
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import lombok.Data;
+
 import javax.persistence.*;
 import java.time.OffsetDateTime;
 

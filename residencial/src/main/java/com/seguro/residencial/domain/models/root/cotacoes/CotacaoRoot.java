@@ -7,13 +7,9 @@ import com.seguro.residencial.domain.models.root.itens.ItemRoot;
 import com.seguro.residencial.domain.models.root.questionarios.QuestionarioRoot;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
-import java.util.Date;
-import java.util.UUID;
 
 /**
  * @criado 16/09/2020 - 00:35

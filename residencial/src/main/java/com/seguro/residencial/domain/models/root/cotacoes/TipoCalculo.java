@@ -1,7 +1,6 @@
 package com.seguro.residencial.domain.models.root.cotacoes;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 

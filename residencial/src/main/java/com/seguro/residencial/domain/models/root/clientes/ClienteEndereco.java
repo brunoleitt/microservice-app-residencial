@@ -1,6 +1,7 @@
 package com.seguro.residencial.domain.models.root.clientes;
 
 import lombok.Data;
+
 import javax.persistence.*;
 
 /**

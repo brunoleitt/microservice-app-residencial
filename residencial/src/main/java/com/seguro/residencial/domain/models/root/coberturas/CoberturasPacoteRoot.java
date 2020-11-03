@@ -2,6 +2,7 @@ package com.seguro.residencial.domain.models.root.coberturas;
 
 import com.seguro.residencial.domain.models.root.itens.TipoRisco;
 import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Set;

@@ -1,6 +1,7 @@
 package com.seguro.residencial.domain.models.root.coberturas;
 
 import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 

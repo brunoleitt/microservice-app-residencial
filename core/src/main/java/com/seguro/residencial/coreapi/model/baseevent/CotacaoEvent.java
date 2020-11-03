@@ -17,7 +17,10 @@ public class CotacaoEvent {
     @TargetAggregateIdentifier
     public final Long id;
 
-    public CotacaoEvent(Long id) {
+    private String codigoCotacao;
+
+    public CotacaoEvent(Long id, String codigoCotacao) {
         this.id = id;
+        this.codigoCotacao = codigoCotacao;
     }
 }

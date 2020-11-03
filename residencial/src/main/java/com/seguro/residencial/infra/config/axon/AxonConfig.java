@@ -1,11 +1,5 @@
 package com.seguro.residencial.infra.config.axon;
 
-import com.seguro.residencial.domain.aggregates.CotacaoAggregate;
-import org.axonframework.eventsourcing.EventSourcingRepository;
-import org.axonframework.eventsourcing.eventstore.EventStore;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
 /**
  * @criado 12/10/2020 - 14:24
  * @projeto Seguro Residencial Simplificado

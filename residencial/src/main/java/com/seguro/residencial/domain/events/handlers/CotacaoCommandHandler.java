@@ -4,9 +4,6 @@ import com.seguro.residencial.domain.events.CriadaCotacaoEvent;
 import com.seguro.residencial.domain.interfaces.repository.cotacao.ICotacaoRepository;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoStatus;
-import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
-import com.seguro.residencial.domain.models.root.cotacoes.TipoVigencia;
-import lombok.extern.slf4j.Slf4j;
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.stereotype.Component;
 
@@ -16,41 +13,26 @@ import org.springframework.stereotype.Component;
  * @autor Bruno Leite
  */
 @Component
-@Slf4j
 public class CotacaoCommandHandler {
 
 
     private final ICotacaoRepository cotacaoRepository;
 
-    public CotacaoCommandHandler(ICotacaoRepository cotacaoRepository) {
-        this.cotacaoRepository = cotacaoRepository;
+    public CotacaoCommandHandler(ICotacaoRepository repository) {
+        this.cotacaoRepository = repository;
     }
 
     @EventHandler
-    public void on(CriadaCotacaoEvent event){
-        log.debug("Handling a Bank Account creation command {}", event.getId());
-
-        persistCotacao(buildQueryCotacao(event));
-    }
-
-    private CotacaoRoot buildQueryCotacao(CriadaCotacaoEvent event){
-
-        TipoCalculo tipoCalculo = new TipoCalculo();
-        tipoCalculo.setId(event.getIdTipoCalculo());
-        TipoVigencia tipoVigencia = new TipoVigencia();
-        tipoVigencia.setId(event.getIdTipoVigencia());
+    public void on(CriadaCotacaoEvent event) {
 
         var cotacao = new CotacaoRoot(event.getCodigoCotacao(), CotacaoStatus.CRIADA.toString(),
                 event.getDataCotacao(), event.getDataVigenciaInicial(),
-                event.getDataVigenciaFinal(),tipoCalculo,
-                tipoVigencia,null,null,null);
+                event.getDataVigenciaFinal(), event.getTipoCalculo(),
+                event.getTipoVigencia(), null, null, null);
 
-        return cotacao;
-    }
+        //TODO Realizar o envio da mensagem para base de impressao;
 
-
-    private void persistCotacao(CotacaoRoot cotacao){
         cotacaoRepository.save(cotacao);
     }
-
 }
+

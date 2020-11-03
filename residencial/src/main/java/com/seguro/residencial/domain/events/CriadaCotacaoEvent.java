@@ -2,6 +2,8 @@ package com.seguro.residencial.domain.events;
 
 import com.seguro.residencial.coreapi.model.baseevent.CotacaoEvent;
 import com.seguro.residencial.domain.models.root.clientes.ClienteRoot;
+import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
+import com.seguro.residencial.domain.models.root.cotacoes.TipoVigencia;
 import com.seguro.residencial.domain.models.root.itens.ItemRoot;
 import com.seguro.residencial.domain.models.root.questionarios.QuestionarioRoot;
 import lombok.Getter;
@@ -28,39 +30,29 @@ public class CriadaCotacaoEvent extends CotacaoEvent {
                               LocalDate dataCotacao,
                               LocalDate dataVigenciaInicial,
                               LocalDate dataVigenciaFinal,
-                              Long idTipoCalculo,
-                              Long idTipoVigencia,
+                              TipoCalculo tipoCalculo,
+                              TipoVigencia tipoVigencia,
                               ItemRoot item,
                               QuestionarioRoot questionario,
                               ClienteRoot cliente) {
-        super(id);
+        super(id,codigoCotacao);
         this.dataCotacao = dataCotacao;
-        this.codigoCotacao = codigoCotacao;
         this.dataVigenciaInicial = dataVigenciaInicial;
         this.dataVigenciaFinal = dataVigenciaFinal;
-        this.idTipoCalculo = idTipoCalculo;
-        this.idTipoVigencia = idTipoVigencia;
+        this.tipoCalculo = tipoCalculo;
+        this.tipoVigencia = tipoVigencia;
         this.item = item;
         this.questionario = questionario;
         this.cliente = cliente;
     }
 
-    private String codigoCotacao;
-
     private LocalDate dataCotacao;
-
     private LocalDate dataVigenciaInicial;
-
     private LocalDate dataVigenciaFinal;
-
-    private Long idTipoCalculo;
-
-    private Long idTipoVigencia;
-
+    private TipoCalculo tipoCalculo;
+    private TipoVigencia tipoVigencia;
     private ItemRoot item;
-
     private QuestionarioRoot questionario;
-
     private ClienteRoot cliente;
 
 }
