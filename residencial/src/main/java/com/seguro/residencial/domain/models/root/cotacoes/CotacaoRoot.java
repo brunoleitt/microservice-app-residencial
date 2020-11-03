@@ -56,13 +56,13 @@ public class CotacaoRoot {
     @JsonIgnore
     private TipoVigencia tipoVigencia;
 
-    @OneToOne(mappedBy = "cotacao")
+    @OneToOne(mappedBy = "cotacao",fetch = FetchType.LAZY)
     private ItemRoot item;
 
-    @OneToOne(mappedBy = "cotacao")
+    @OneToOne(mappedBy = "cotacao",fetch = FetchType.LAZY)
     private QuestionarioRoot questionario;
 
-    @OneToOne(mappedBy = "cotacao")
+    @OneToOne(mappedBy = "cotacao",fetch = FetchType.LAZY)
     private ClienteRoot cliente;
 
 

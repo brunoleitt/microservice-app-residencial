@@ -16,7 +16,10 @@ import java.util.Optional;
 public interface ICotacaoQueryRepository extends ICustomJpaRepository<CotacaoRoot, Long> {
 
     @Query("select c from CotacaoRoot c left join fetch c.tipoCalculo " +
-                              "left join fetch c.tipoVigencia" +
+                              "left join fetch c.tipoVigencia " +
+                              "left join fetch c.cliente " +
+                              "left join fetch c.item " +
+                              "left join fetch c.questionario" +
                               " where c.codigoCotacao = :codigoCotocao")
     Optional<CotacaoRoot> consultarCotacao(String codigoCotocao);
 }
