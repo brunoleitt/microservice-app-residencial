@@ -2,11 +2,8 @@ package com.seguro.residencial.domain.aggregates;
 
 import com.seguro.residencial.domain.commands.cotacao.CriarCotacaoCommand;
 import com.seguro.residencial.domain.events.CriadaCotacaoEvent;
-import com.seguro.residencial.domain.models.root.clientes.ClienteRoot;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoVigencia;
-import com.seguro.residencial.domain.models.root.itens.ItemRoot;
-import com.seguro.residencial.domain.models.root.questionarios.QuestionarioRoot;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,6 +12,7 @@ import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
+
 import java.time.LocalDate;
 
 /**
@@ -36,9 +34,6 @@ public class CotacaoAggregate {
     private LocalDate dataVigenciaFinal;
     private TipoCalculo tipoCalculo;
     private TipoVigencia tipoVigencia;
-    private ItemRoot item;
-    private QuestionarioRoot questionario;
-    private ClienteRoot cliente;
 
     @CommandHandler
     public CotacaoAggregate(CriarCotacaoCommand createCotacaoCommand){
@@ -48,9 +43,7 @@ public class CotacaoAggregate {
                                                            createCotacaoCommand.getDataVigenciaInicial(),
                                                            createCotacaoCommand.getDataVigenciaFinal(),
                                                            createCotacaoCommand.getTipoCalculo(),
-                                                           createCotacaoCommand.getTipoVigencia(),
-                                                           createCotacaoCommand.getItem(),createCotacaoCommand.getQuestionario(),
-                                                           createCotacaoCommand.getCliente()));
+                                                           createCotacaoCommand.getTipoVigencia()));
     }
 
     @EventSourcingHandler
@@ -62,8 +55,5 @@ public class CotacaoAggregate {
         this.dataVigenciaFinal = event.getDataVigenciaFinal();
         this.tipoCalculo = event.getTipoCalculo();
         this.tipoVigencia = event.getTipoVigencia();
-        this.item = event.getItem();
-        this.questionario = event.getQuestionario();
-        this.cliente = event.getCliente();
     }
 }

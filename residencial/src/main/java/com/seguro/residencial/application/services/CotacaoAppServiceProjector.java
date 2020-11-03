@@ -1,7 +1,7 @@
 package com.seguro.residencial.application.services;
 
 import com.seguro.residencial.application.interfaces.ICotacaoAppService;
-import com.seguro.residencial.application.models.input.CriarCotacaoInput;
+import com.seguro.residencial.application.models.input.cotacao.CriarCotacaoInput;
 import com.seguro.residencial.application.models.view.CotacaoCriadaViewModel;
 import com.seguro.residencial.domain.commands.cotacao.CriarCotacaoCommand;
 import com.seguro.residencial.domain.exception.TipoCalculoNaoEncontradaException;
@@ -12,6 +12,7 @@ import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.Random;
+import java.util.UUID;
 
 /**
  * @criado 12/10/2020 - 15:39
@@ -48,21 +49,14 @@ public class CotacaoAppServiceProjector implements ICotacaoAppService {
                         input.getIdTipoCalculo()));
 
         var command = new CriarCotacaoCommand(randow.nextLong(),
-                input.getCodigoCotacao(),
+                UUID.randomUUID().toString(),
                 LocalDate.now(),
                 input.getDataVigenciaInicial(),
                 input.getDataVigenciaInicial(),
                 tipoCalculo,
-                tipoVigencia,
-                null,
-                null,
-                null);
+                tipoVigencia);
 
-
-
-        if(true){
             commandGateway.send(command);
-        }
 
         return new CotacaoCriadaViewModel(command.getCodigoCotacao());
     }

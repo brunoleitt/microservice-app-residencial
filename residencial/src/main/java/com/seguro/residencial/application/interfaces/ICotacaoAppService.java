@@ -1,6 +1,6 @@
 package com.seguro.residencial.application.interfaces;
 
-import com.seguro.residencial.application.models.input.CriarCotacaoInput;
+import com.seguro.residencial.application.models.input.cotacao.CriarCotacaoInput;
 import com.seguro.residencial.application.models.view.CotacaoCriadaViewModel;
 
 /**

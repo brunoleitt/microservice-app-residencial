@@ -2,11 +2,8 @@ package com.seguro.residencial.domain.commands.cotacao;
 
 import com.seguro.residencial.coreapi.model.basecommand.CotacaoCommand;
 import com.seguro.residencial.domain.commands.validacao.CriarCotacaoCommandValidation;
-import com.seguro.residencial.domain.models.root.clientes.ClienteRoot;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoVigencia;
-import com.seguro.residencial.domain.models.root.itens.ItemRoot;
-import com.seguro.residencial.domain.models.root.questionarios.QuestionarioRoot;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,32 +26,21 @@ public class CriarCotacaoCommand extends CotacaoCommand {
                                LocalDate dataVigenciaInicial,
                                LocalDate dataVigenciaFinal,
                                TipoCalculo tipoCalculo,
-                               TipoVigencia tipoVigencia,
-                               ItemRoot item,
-                               QuestionarioRoot questionario,
-                               ClienteRoot cliente) {
+                               TipoVigencia tipoVigencia) {
         super(id,codigoCotacao);
         this.dataCotacao = dataCotacao;
         this.dataVigenciaInicial = dataVigenciaInicial;
         this.tipoCalculo = tipoCalculo;
         this.tipoVigencia = tipoVigencia;
-        this.item = item;
-        this.questionario = questionario;
-        this.cliente = cliente;
         this.dataVigenciaFinal = calcularVigenciaFinal(tipoVigencia.getId());
 
         IsValid();
     }
-
         private LocalDate  dataCotacao;
         private LocalDate  dataVigenciaInicial;
         private LocalDate  dataVigenciaFinal;
         private TipoCalculo tipoCalculo;
         private TipoVigencia tipoVigencia;
-        private ItemRoot item;
-        private QuestionarioRoot questionario;
-        private ClienteRoot cliente;
-
 
     void IsValid() {
         new CriarCotacaoCommandValidation(this).IsValid();

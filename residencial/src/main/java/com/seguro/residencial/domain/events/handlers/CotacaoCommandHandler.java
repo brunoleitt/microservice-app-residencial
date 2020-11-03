@@ -28,7 +28,7 @@ public class CotacaoCommandHandler {
         var cotacao = new CotacaoRoot(event.getCodigoCotacao(), CotacaoStatus.CRIADA.toString(),
                 event.getDataCotacao(), event.getDataVigenciaInicial(),
                 event.getDataVigenciaFinal(), event.getTipoCalculo(),
-                event.getTipoVigencia(), null, null, null);
+                event.getTipoVigencia());
 
         //TODO Realizar o envio da mensagem para base de impressao;
 

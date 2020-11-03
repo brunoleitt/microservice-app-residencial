@@ -31,19 +31,13 @@ public class CriadaCotacaoEvent extends CotacaoEvent {
                               LocalDate dataVigenciaInicial,
                               LocalDate dataVigenciaFinal,
                               TipoCalculo tipoCalculo,
-                              TipoVigencia tipoVigencia,
-                              ItemRoot item,
-                              QuestionarioRoot questionario,
-                              ClienteRoot cliente) {
+                              TipoVigencia tipoVigencia) {
         super(id,codigoCotacao);
         this.dataCotacao = dataCotacao;
         this.dataVigenciaInicial = dataVigenciaInicial;
         this.dataVigenciaFinal = dataVigenciaFinal;
         this.tipoCalculo = tipoCalculo;
         this.tipoVigencia = tipoVigencia;
-        this.item = item;
-        this.questionario = questionario;
-        this.cliente = cliente;
     }
 
     private LocalDate dataCotacao;
@@ -51,8 +45,5 @@ public class CriadaCotacaoEvent extends CotacaoEvent {
     private LocalDate dataVigenciaFinal;
     private TipoCalculo tipoCalculo;
     private TipoVigencia tipoVigencia;
-    private ItemRoot item;
-    private QuestionarioRoot questionario;
-    private ClienteRoot cliente;
 
 }

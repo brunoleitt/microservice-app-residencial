@@ -69,9 +69,7 @@ public class CotacaoRoot {
     public CotacaoRoot(String codigoCotacao, String statusCotacao,
                        LocalDate dataCotacao, LocalDate dataVigenciaInicial,
                        LocalDate dataVigenciaFinal,
-                       TipoCalculo tipoCalculo, TipoVigencia tipoVigencia,
-                       ItemRoot item, QuestionarioRoot questionario,
-                       ClienteRoot cliente) {
+                       TipoCalculo tipoCalculo, TipoVigencia tipoVigencia) {
 
         this.codigoCotacao = codigoCotacao;
         this.statusCotacao = statusCotacao;
@@ -80,9 +78,6 @@ public class CotacaoRoot {
         this.dataVigenciaFinal = dataVigenciaFinal;
         this.tipoCalculo = tipoCalculo;
         this.tipoVigencia = tipoVigencia;
-        this.item = item;
-        this.questionario = questionario;
-        this.cliente = cliente;
     }
 
     public CotacaoRoot() {

@@ -1,7 +1,10 @@
-package com.seguro.residencial.application.models.input;
+package com.seguro.residencial.application.models.input.cotacao;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -15,14 +18,15 @@ import java.util.UUID;
 @Setter
 public class CriarCotacaoInput {
 
+    @ApiModelProperty(example = "1", required = true)
+    @NotNull
     private Long idTipoCalculo;
 
+    @ApiModelProperty(example = "1", required = true)
+    @NotNull
     private Long idTipoVigencia;
 
+    @ApiModelProperty(required = true)
+    @NotNull
     private LocalDate dataVigenciaInicial;
-
-    public String codigoCotacao = UUID.randomUUID().toString();
-
-    private LocalDate dataCotacao = LocalDate.now();
-
 }
