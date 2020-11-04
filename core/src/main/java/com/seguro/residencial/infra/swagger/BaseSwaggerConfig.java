@@ -21,14 +21,15 @@ public class BaseSwaggerConfig {
         this.basePackage = basePackage;
     }
 
-    @Bean
-    public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .select()
-                .apis(RequestHandlerSelectors.basePackage(basePackage))
-                .build()
-                .apiInfo(metaData());
-    }
+//    @Bean
+//    public Docket api() {
+//        return new Docket(DocumentationType.SWAGGER_2)
+//                .ignoredParameterTypes()
+//                .select()
+//                .apis(RequestHandlerSelectors.basePackage(basePackage))
+//                .build()
+//                .apiInfo(metaData());
+//    }
 
     private ApiInfo metaData() {
         return new ApiInfoBuilder()

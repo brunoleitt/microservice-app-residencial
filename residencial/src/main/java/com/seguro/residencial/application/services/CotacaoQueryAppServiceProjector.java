@@ -29,7 +29,7 @@ public class CotacaoQueryAppServiceProjector implements ICotacaoQueryAppService 
 
     @Override
     public List<CotacaoRoot> listarCotacoes() {
-        return iCotacaoQueryRepository.findAll();
+        return iCotacaoQueryRepository.buscarTodos();
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.seguro.residencial.web.api.controller.cotacoes.consulta;
 import com.seguro.residencial.application.interfaces.ICotacaoQueryAppService;
 import com.seguro.residencial.application.models.view.CotacaoModel;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
+import com.seguro.residencial.web.api.controlleropenapi.cotacao.CotacaoQueryControllerOpenApi;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +23,7 @@ import java.util.List;
 @RequestMapping("v1/residencial/consulta")
 @Slf4j
 @Api(value = "Endpoints para consultas de cotações residencial")
-public class CotacaoQueryController {
+public class CotacaoQueryController implements CotacaoQueryControllerOpenApi {
 
     private final ICotacaoQueryAppService iCotacaoQueryAppService;
 
@@ -31,11 +32,13 @@ public class CotacaoQueryController {
     }
 
     @GetMapping()
+    @Override
     public List<CotacaoRoot> listarCotacoes() {
         return iCotacaoQueryAppService.listarCotacoes();
     }
 
     @GetMapping("/{codigoCotacao}")
+    @Override
     public CotacaoModel consultarCotacao(@PathVariable String codigoCotacao) {
         return iCotacaoQueryAppService.consultarCotacao(codigoCotacao);
     }

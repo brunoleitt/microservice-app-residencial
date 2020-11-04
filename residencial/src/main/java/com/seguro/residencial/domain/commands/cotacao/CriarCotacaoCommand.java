@@ -1,7 +1,7 @@
 package com.seguro.residencial.domain.commands.cotacao;
 
 import com.seguro.residencial.coreapi.model.basecommand.CotacaoCommand;
-import com.seguro.residencial.domain.commands.validacao.CriarCotacaoCommandValidation;
+import com.seguro.residencial.domain.commands.validacoes.cotacao.CriarCotacaoCommandValidation;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoVigencia;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.seguro.residencial.domain.commands.validacao;
+package com.seguro.residencial.domain.commands.validacoes.cotacao;
 
 import com.seguro.residencial.domain.commands.cotacao.CriarCotacaoCommand;
 import com.seguro.residencial.domain.exception.NegocioException;
@@ -23,13 +23,12 @@ public class CriarCotacaoCommandValidation  {
     }
 
     public final void IsValid() {
-
-        //TODO Validar vigencia Inicial da cotação
         validaDataInicioVigencia();
     }
 
     private void validaDataInicioVigencia(){
-        if (this.criarCotacaoCommand.getDataVigenciaInicial().compareTo(LocalDate.now()) < 0)
+        int qtdDiasDiferencaDataAtual = 0;
+        if (this.criarCotacaoCommand.getDataVigenciaInicial().compareTo(LocalDate.now()) < qtdDiasDiferencaDataAtual)
             throw new NegocioException("Data de inicio vigencia da cotação não pode ser inferior a data atual");
     }
 }

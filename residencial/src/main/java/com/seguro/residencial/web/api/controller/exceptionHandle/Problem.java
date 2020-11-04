@@ -22,7 +22,7 @@ public class Problem {
 	@ApiModelProperty(example = "2019-12-01T18:09:02.70844Z", position = 5)
 	private OffsetDateTime timestamp;
 	
-	@ApiModelProperty(example = "https://algafood.com.br/dados-invalidos", position = 10)
+	@ApiModelProperty(example = "https://brunoleiteseguros.com.br/dados-invalidos", position = 10)
 	private String type;
 	
 	@ApiModelProperty(example = "Dados inválidos", position = 15)
@@ -45,10 +45,10 @@ public class Problem {
 	@Builder
 	public static class Object {
 		
-		@ApiModelProperty(example = "preco")
+		@ApiModelProperty(example = "Nome")
 		private String name;
 		
-		@ApiModelProperty(example = "O preço é obrigatório")
+		@ApiModelProperty(example = "O campo é obrigatorio")
 		private String userMessage;
 		
 	}
