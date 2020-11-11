@@ -11,9 +11,9 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class CotacaoCriadaViewModel {
+public class CotacaoRegistradaViewModel {
 
-    public CotacaoCriadaViewModel(String codigoCotacao) {
+    public CotacaoRegistradaViewModel(String codigoCotacao) {
         this.codigoCotacao = codigoCotacao;
     }
 

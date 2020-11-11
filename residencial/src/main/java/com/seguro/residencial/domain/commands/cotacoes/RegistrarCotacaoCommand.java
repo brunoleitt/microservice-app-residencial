@@ -1,4 +1,4 @@
-package com.seguro.residencial.domain.commands.cotacao;
+package com.seguro.residencial.domain.commands.cotacoes;
 
 import com.seguro.residencial.coreapi.model.basecommand.CotacaoCommand;
 import com.seguro.residencial.domain.commands.validacoes.cotacao.CriarCotacaoCommandValidation;
@@ -13,21 +13,18 @@ import java.time.LocalDate;
  * @criado 12/10/2020 - 14:19
  * @projeto Seguro Residencial Simplificado
  * @autor Bruno Leite
- *
  */
-
+//TODO Remover o Setter e adiconar o AllArgsConstructor
 @Getter
-@Setter
-public class CriarCotacaoCommand extends CotacaoCommand {
+public class RegistrarCotacaoCommand extends CotacaoCommand {
 
-    public CriarCotacaoCommand(Long id,
-                               String codigoCotacao,
-                               LocalDate dataCotacao,
-                               LocalDate dataVigenciaInicial,
-                               LocalDate dataVigenciaFinal,
-                               TipoCalculo tipoCalculo,
-                               TipoVigencia tipoVigencia) {
-        super(id,codigoCotacao);
+    public RegistrarCotacaoCommand(Long id,
+                                   String codigoCotacao,
+                                   LocalDate dataCotacao,
+                                   LocalDate dataVigenciaInicial,
+                                   TipoCalculo tipoCalculo,
+                                   TipoVigencia tipoVigencia) {
+        super(id, codigoCotacao);
         this.dataCotacao = dataCotacao;
         this.dataVigenciaInicial = dataVigenciaInicial;
         this.tipoCalculo = tipoCalculo;
@@ -36,18 +33,19 @@ public class CriarCotacaoCommand extends CotacaoCommand {
 
         IsValid();
     }
-        private LocalDate  dataCotacao;
-        private LocalDate  dataVigenciaInicial;
-        private LocalDate  dataVigenciaFinal;
-        private TipoCalculo tipoCalculo;
-        private TipoVigencia tipoVigencia;
+
+    private LocalDate dataCotacao;
+    private LocalDate dataVigenciaInicial;
+    private LocalDate dataVigenciaFinal;
+    private TipoCalculo tipoCalculo;
+    private TipoVigencia tipoVigencia;
 
     void IsValid() {
         new CriarCotacaoCommandValidation(this).IsValid();
     }
 
 
-    LocalDate calcularVigenciaFinal(Long idTipoVigencia){
+    LocalDate calcularVigenciaFinal(Long idTipoVigencia) {
         if (tipoVigencia.getId().equals(idTipoVigencia))
             return this.dataVigenciaInicial.plusYears(1);
         else

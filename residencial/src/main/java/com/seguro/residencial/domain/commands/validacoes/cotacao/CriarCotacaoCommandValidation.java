@@ -1,6 +1,6 @@
 package com.seguro.residencial.domain.commands.validacoes.cotacao;
 
-import com.seguro.residencial.domain.commands.cotacao.CriarCotacaoCommand;
+import com.seguro.residencial.domain.commands.cotacoes.RegistrarCotacaoCommand;
 import com.seguro.residencial.domain.exception.NegocioException;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,9 +16,9 @@ import java.time.LocalDate;
 @Setter
 public class CriarCotacaoCommandValidation  {
 
-    public CriarCotacaoCommand criarCotacaoCommand;
+    public RegistrarCotacaoCommand criarCotacaoCommand;
 
-    public CriarCotacaoCommandValidation(CriarCotacaoCommand cotacaoCommand) {
+    public CriarCotacaoCommandValidation(RegistrarCotacaoCommand cotacaoCommand) {
         this.criarCotacaoCommand = cotacaoCommand;
     }
 

@@ -1,18 +1,15 @@
 package com.seguro.residencial.domain.aggregates;
 
-import com.seguro.residencial.domain.commands.cotacao.CriarCotacaoCommand;
+import com.seguro.residencial.domain.commands.cotacoes.RegistrarCotacaoCommand;
 import com.seguro.residencial.domain.events.CriadaCotacaoEvent;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoVigencia;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
-
 import java.time.LocalDate;
 
 /**
@@ -20,10 +17,8 @@ import java.time.LocalDate;
  * @projeto Seguro Residencial Simplificado
  * @autor Bruno Leite
  */
-@Aggregate
-@NoArgsConstructor
 @Getter
-@Setter
+@Aggregate
 public class CotacaoAggregate {
 
     @AggregateIdentifier
@@ -36,18 +31,19 @@ public class CotacaoAggregate {
     private TipoVigencia tipoVigencia;
 
     @CommandHandler
-    public CotacaoAggregate(CriarCotacaoCommand createCotacaoCommand){
-          AggregateLifecycle.apply(new CriadaCotacaoEvent(createCotacaoCommand.id,
-                                                           createCotacaoCommand.getCodigoCotacao(),
-                                                           createCotacaoCommand.getDataCotacao(),
-                                                           createCotacaoCommand.getDataVigenciaInicial(),
-                                                           createCotacaoCommand.getDataVigenciaFinal(),
-                                                           createCotacaoCommand.getTipoCalculo(),
-                                                           createCotacaoCommand.getTipoVigencia()));
+    public CotacaoAggregate(RegistrarCotacaoCommand createCotacaoCommand) {
+        AggregateLifecycle.apply(new CriadaCotacaoEvent(createCotacaoCommand.getId(),
+                createCotacaoCommand.getCodigoCotacao(),
+                createCotacaoCommand.getDataCotacao(),
+                createCotacaoCommand.getDataVigenciaInicial(),
+                createCotacaoCommand.getDataVigenciaFinal(),
+                createCotacaoCommand.getTipoCalculo(),
+                createCotacaoCommand.getTipoVigencia()));
     }
 
+
     @EventSourcingHandler
-    protected void criadaCotacaoEvent(CriadaCotacaoEvent event){
+    public void on(CriadaCotacaoEvent event) {
         this.id = event.getId();
         this.codigoCotacao = event.getCodigoCotacao();
         this.dataCotacao = LocalDate.now();
@@ -55,5 +51,8 @@ public class CotacaoAggregate {
         this.dataVigenciaFinal = event.getDataVigenciaFinal();
         this.tipoCalculo = event.getTipoCalculo();
         this.tipoVigencia = event.getTipoVigencia();
+    }
+
+    protected CotacaoAggregate() {
     }
 }

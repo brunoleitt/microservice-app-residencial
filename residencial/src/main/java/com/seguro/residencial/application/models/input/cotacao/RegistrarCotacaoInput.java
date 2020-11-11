@@ -16,7 +16,7 @@ import java.util.UUID;
  */
 @Getter
 @Setter
-public class CriarCotacaoInput {
+public class RegistrarCotacaoInput {
 
     @ApiModelProperty(example = "1", required = true)
     @NotNull

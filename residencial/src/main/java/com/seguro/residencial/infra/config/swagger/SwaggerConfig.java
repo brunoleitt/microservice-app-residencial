@@ -1,8 +1,5 @@
 package com.seguro.residencial.infra.config.swagger;
 
-import com.seguro.residencial.application.models.input.cotacao.CriarCotacaoInput;
-import com.seguro.residencial.application.models.view.CotacaoCriadaViewModel;
-import com.seguro.residencial.application.models.view.CotacaoModel;
 import com.seguro.residencial.domain.models.root.clientes.ClienteEndereco;
 import com.seguro.residencial.domain.models.root.clientes.ClienteRoot;
 import com.seguro.residencial.domain.models.root.clientes.Profissao;
@@ -12,12 +9,9 @@ import com.seguro.residencial.domain.models.root.cotacoes.TipoVigencia;
 import com.seguro.residencial.domain.models.root.itens.ItemEndereco;
 import com.seguro.residencial.domain.models.root.itens.ItemRoot;
 import com.seguro.residencial.domain.models.root.questionarios.QuestionarioRoot;
-import com.seguro.residencial.infra.swagger.BaseSwaggerConfig;
 import com.seguro.residencial.web.api.controller.exceptionHandle.Problem;
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.ModelAndView;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;

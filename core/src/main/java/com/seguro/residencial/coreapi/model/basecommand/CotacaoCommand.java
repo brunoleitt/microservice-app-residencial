@@ -1,7 +1,8 @@
 package com.seguro.residencial.coreapi.model.basecommand;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.ToString;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 
@@ -11,16 +12,12 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
  * @autor Bruno Leite
  */
 @Getter
-@Setter
+@ToString
+@AllArgsConstructor
 public class CotacaoCommand {
 
     @TargetAggregateIdentifier
-    public Long id;
-
+    private Long id;
     private String codigoCotacao;
 
-    public CotacaoCommand(Long id, String codigoCotacao) {
-        this.id = id;
-        this.codigoCotacao = codigoCotacao;
-    }
 }

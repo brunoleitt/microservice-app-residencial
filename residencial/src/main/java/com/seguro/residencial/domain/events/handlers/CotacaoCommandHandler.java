@@ -4,6 +4,7 @@ import com.seguro.residencial.domain.events.CriadaCotacaoEvent;
 import com.seguro.residencial.domain.interfaces.repository.cotacao.ICotacaoRepository;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoStatus;
+import lombok.AllArgsConstructor;
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.stereotype.Component;
 
@@ -13,14 +14,10 @@ import org.springframework.stereotype.Component;
  * @autor Bruno Leite
  */
 @Component
+@AllArgsConstructor
 public class CotacaoCommandHandler {
 
-
     private final ICotacaoRepository cotacaoRepository;
-
-    public CotacaoCommandHandler(ICotacaoRepository repository) {
-        this.cotacaoRepository = repository;
-    }
 
     @EventHandler
     public void on(CriadaCotacaoEvent event) {
@@ -34,5 +31,6 @@ public class CotacaoCommandHandler {
 
         cotacaoRepository.save(cotacao);
     }
+
 }
 

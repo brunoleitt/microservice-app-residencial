@@ -25,6 +25,6 @@ public class ItemRoot {
             , foreignKey = @ForeignKey(name = "fk_cotacaoItem"))
     private CotacaoRoot cotacao;
 
-    @OneToOne(mappedBy = "item",fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "item",fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private ItemEndereco enderecoItem;
 }

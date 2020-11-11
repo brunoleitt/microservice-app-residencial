@@ -1,13 +1,10 @@
 package com.seguro.residencial.domain.events;
 
 import com.seguro.residencial.coreapi.model.baseevent.CotacaoEvent;
-import com.seguro.residencial.domain.models.root.clientes.ClienteRoot;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoVigencia;
-import com.seguro.residencial.domain.models.root.itens.ItemRoot;
-import com.seguro.residencial.domain.models.root.questionarios.QuestionarioRoot;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDate;
 
@@ -15,14 +12,9 @@ import java.time.LocalDate;
  * @criado 12/10/2020 - 14:28
  * @projeto Seguro Residencial Simplificado
  * @autor Bruno Leite
- *
- *
- * Contem todas as informações para criação da cotação
- *  - Propedidades com dados validar para realizar o mapeamento com entidade de modelo.
- *  - Propeidades com os dados necessario para cricao de uma nova contação
  */
 @Getter
-@Setter
+@ToString
 public class CriadaCotacaoEvent extends CotacaoEvent {
 
     public CriadaCotacaoEvent(Long id,

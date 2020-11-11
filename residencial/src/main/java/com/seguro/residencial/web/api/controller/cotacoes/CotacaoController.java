@@ -2,8 +2,8 @@ package com.seguro.residencial.web.api.controller.cotacoes;
 
 
 import com.seguro.residencial.application.interfaces.ICotacaoAppService;
-import com.seguro.residencial.application.models.input.cotacao.CriarCotacaoInput;
-import com.seguro.residencial.application.models.view.CotacaoCriadaViewModel;
+import com.seguro.residencial.application.models.input.cotacao.RegistrarCotacaoInput;
+import com.seguro.residencial.application.models.view.CotacaoRegistradaViewModel;
 import com.seguro.residencial.web.api.controlleropenapi.cotacao.CotacaoControllerOpenApi;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -29,7 +29,7 @@ public class CotacaoController implements CotacaoControllerOpenApi {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CotacaoCriadaViewModel criarCotacao(@RequestBody @Valid CriarCotacaoInput criarCotacaoInput){
+    public CotacaoRegistradaViewModel criarCotacao(@RequestBody @Valid RegistrarCotacaoInput criarCotacaoInput){
          return iCotacaoAppService.criacaoCotacao(criarCotacaoInput);
     }
 }

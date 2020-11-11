@@ -1,6 +1,9 @@
 package com.seguro.residencial.domain.models.root.itens;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -10,7 +13,9 @@ import javax.persistence.*;
  * @autor Bruno Leite
  */
 @Entity
-@Data
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "item_endereco")
 public class ItemEndereco {
 
@@ -25,7 +30,7 @@ public class ItemEndereco {
     private ItemRoot item;
 
     @Column(nullable = false, length = 30)
-    private String Logradouro;
+    private String logradouro;
 
     @Column(nullable = false, length = 10)
     private String numero;
@@ -34,11 +39,11 @@ public class ItemEndereco {
     private String complemento;
 
     @Column(nullable = false, length = 20)
-    private String Cidade;
+    private String cidade;
 
     @Column(nullable = false, length = 2)
-    private String UF;
+    private String uf;
 
     @Column(nullable = false, length = 5)
-    private String CEP;
+    private String cep;
 }

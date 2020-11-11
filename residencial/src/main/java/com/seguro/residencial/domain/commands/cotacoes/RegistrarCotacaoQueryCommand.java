@@ -1,4 +1,4 @@
-package com.seguro.residencial.domain.commands.cotacao;
+package com.seguro.residencial.domain.commands.cotacoes;
 
 import com.seguro.residencial.coreapi.model.basecommand.CotacaoCommand;
 
@@ -11,9 +11,9 @@ import com.seguro.residencial.coreapi.model.basecommand.CotacaoCommand;
  *
  *
  */
-public class CriacaoCotacaoQueryCommand extends CotacaoCommand {
+public class RegistrarCotacaoQueryCommand extends CotacaoCommand {
 
-    public CriacaoCotacaoQueryCommand(Long id, String codigoCotacao) {
+    public RegistrarCotacaoQueryCommand(Long id, String codigoCotacao) {
         super(id, codigoCotacao);
     }
 }

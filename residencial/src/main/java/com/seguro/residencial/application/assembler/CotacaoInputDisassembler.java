@@ -1,7 +1,7 @@
 package com.seguro.residencial.application.assembler;
 
 
-import com.seguro.residencial.application.models.input.cotacao.CriarCotacaoInput;
+import com.seguro.residencial.application.models.input.cotacao.RegistrarCotacaoInput;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class CotacaoInputDisassembler {
     @Autowired
     private ModelMapper modelMapper;
 
-    public void copyToDomainObject(CriarCotacaoInput criarCotacaoInput, CotacaoRoot cotacaoRoot) {
+    public void copyToDomainObject(RegistrarCotacaoInput criarCotacaoInput, CotacaoRoot cotacaoRoot) {
         modelMapper.map(criarCotacaoInput, cotacaoRoot);
     }
 

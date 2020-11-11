@@ -1,8 +1,7 @@
 package com.seguro.residencial.coreapi.model.baseevent;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
-import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 
 /**
@@ -11,16 +10,8 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
  * @autor Bruno Leite
  */
 @Getter
-@Setter
+@AllArgsConstructor
 public class CotacaoEvent {
-
-    @TargetAggregateIdentifier
-    public final Long id;
-
+    private final Long id;
     private String codigoCotacao;
-
-    public CotacaoEvent(Long id, String codigoCotacao) {
-        this.id = id;
-        this.codigoCotacao = codigoCotacao;
-    }
 }
