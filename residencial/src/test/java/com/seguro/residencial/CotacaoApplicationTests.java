@@ -1,4 +1,4 @@
-package com.seguro.residencial.cotacao;
+package com.seguro.residencial;
 
 import org.springframework.boot.test.context.SpringBootTest;
 

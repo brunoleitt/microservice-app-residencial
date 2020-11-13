@@ -1,4 +1,4 @@
-package com.seguro.residencial.web.api.controlleropenapi.cotacao;
+package com.seguro.residencial.web.api.controlleropenapi.cotacoes;
 
 import com.seguro.residencial.application.models.view.CotacaoModel;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;

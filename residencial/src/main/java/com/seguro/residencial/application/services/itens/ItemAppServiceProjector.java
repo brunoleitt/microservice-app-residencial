@@ -3,7 +3,6 @@ package com.seguro.residencial.application.services.itens;
 import com.seguro.residencial.application.interfaces.IItemAppService;
 import com.seguro.residencial.application.models.input.item.RegistrarItemInput;
 import com.seguro.residencial.domain.commands.itens.RegistrarItemCommand;
-import com.seguro.residencial.domain.commands.itens.RegistrarItemEnderecoCommmand;
 import com.seguro.residencial.domain.exception.CotacaoNaoEncontradaException;
 import com.seguro.residencial.domain.interfaces.repository.cotacao.ICotacaoQueryRepository;
 import lombok.AllArgsConstructor;
@@ -37,7 +36,6 @@ public class ItemAppServiceProjector implements IItemAppService {
                 item.getCidade(),item.getUf(),item.getCep());
 
         commandGateway.sendAndWait(commandItem);
-
     }
 
 }

@@ -15,15 +15,15 @@ import java.time.LocalDate;
  */
 @Getter
 @ToString
-public class CriadaCotacaoEvent extends CotacaoEvent {
+public class RegistradaCotacaoEvent extends CotacaoEvent {
 
-    public CriadaCotacaoEvent(Long id,
-                              String codigoCotacao,
-                              LocalDate dataCotacao,
-                              LocalDate dataVigenciaInicial,
-                              LocalDate dataVigenciaFinal,
-                              TipoCalculo tipoCalculo,
-                              TipoVigencia tipoVigencia) {
+    public RegistradaCotacaoEvent(Long id,
+                                  String codigoCotacao,
+                                  LocalDate dataCotacao,
+                                  LocalDate dataVigenciaInicial,
+                                  LocalDate dataVigenciaFinal,
+                                  TipoCalculo tipoCalculo,
+                                  TipoVigencia tipoVigencia) {
         super(id,codigoCotacao);
         this.dataCotacao = dataCotacao;
         this.dataVigenciaInicial = dataVigenciaInicial;

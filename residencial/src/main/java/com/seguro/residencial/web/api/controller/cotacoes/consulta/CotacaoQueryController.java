@@ -3,7 +3,7 @@ package com.seguro.residencial.web.api.controller.cotacoes.consulta;
 import com.seguro.residencial.application.interfaces.ICotacaoQueryAppService;
 import com.seguro.residencial.application.models.view.CotacaoModel;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
-import com.seguro.residencial.web.api.controlleropenapi.cotacao.CotacaoQueryControllerOpenApi;
+import com.seguro.residencial.web.api.controlleropenapi.cotacoes.CotacaoQueryControllerOpenApi;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,7 +1,7 @@
 package com.seguro.residencial.domain.aggregates;
 
 import com.seguro.residencial.domain.commands.cotacoes.RegistrarCotacaoCommand;
-import com.seguro.residencial.domain.events.CriadaCotacaoEvent;
+import com.seguro.residencial.domain.events.RegistradaCotacaoEvent;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoVigencia;
 import lombok.Getter;
@@ -32,7 +32,7 @@ public class CotacaoAggregate {
 
     @CommandHandler
     public CotacaoAggregate(RegistrarCotacaoCommand createCotacaoCommand) {
-        AggregateLifecycle.apply(new CriadaCotacaoEvent(createCotacaoCommand.getId(),
+        AggregateLifecycle.apply(new RegistradaCotacaoEvent(createCotacaoCommand.getId(),
                 createCotacaoCommand.getCodigoCotacao(),
                 createCotacaoCommand.getDataCotacao(),
                 createCotacaoCommand.getDataVigenciaInicial(),
@@ -43,7 +43,7 @@ public class CotacaoAggregate {
 
 
     @EventSourcingHandler
-    public void on(CriadaCotacaoEvent event) {
+    public void on(RegistradaCotacaoEvent event) {
         this.id = event.getId();
         this.codigoCotacao = event.getCodigoCotacao();
         this.dataCotacao = LocalDate.now();

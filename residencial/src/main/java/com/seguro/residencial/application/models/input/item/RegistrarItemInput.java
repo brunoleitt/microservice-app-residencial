@@ -1,8 +1,13 @@
 package com.seguro.residencial.application.models.input.item;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.time.LocalDate;
 
 /**
  * @criado 26/10/2020 - 17:39
@@ -11,13 +16,38 @@ import lombok.Setter;
  */
 
 @Getter
+@Setter
 @AllArgsConstructor
 public class RegistrarItemInput {
+
+
+    @ApiModelProperty(example = "61e0cdcc-f2f7-4d7d-a314-d44b03ffdf8f", required = true)
+    @NotNull
     private String codigoCotacao;
+
+    @ApiModelProperty(example = "Avenida Salim Farah Maluf", required = true)
+    @NotNull
     private String logradouro;
+
+    @ApiModelProperty(example = "999", required = true)
+    @NotNull
     private String numero;
+
+    @ApiModelProperty(example = "Apto 33", required = true)
+    @NotNull
     private String complemento;
+
+    @ApiModelProperty(example = "São Paulo", required = true)
+    @NotNull
     private String cidade;
+
+    @ApiModelProperty(example = "SP", required = true)
+    @NotNull
+    @Size(min=2, max=2)
     private String uf;
+
+    @ApiModelProperty(example = "05734140", required = true)
+    @NotNull
+    @Size(min=8, max=8)
     private String cep;
 }

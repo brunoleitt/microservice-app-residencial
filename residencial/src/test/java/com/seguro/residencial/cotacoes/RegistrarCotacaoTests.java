@@ -1,4 +1,4 @@
-package com.seguro.residencial.cotacao;
+package com.seguro.residencial.cotacoes;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -18,7 +18,7 @@ import static io.restassured.RestAssured.given;
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestPropertySource("/application-test.properties")
-public class CriarCotacaoTests {
+public class RegistrarCotacaoTests {
 
     private String jsonCriarCotacaoCorreto;
 
@@ -49,14 +49,16 @@ public class CriarCotacaoTests {
 
     @Test
     public void novaCotacaoVigenciaAnual_DeveRetornaStatus201() {
-        given()
+       String codCotacao =  given()
                 .body(jsonCriarCotacaoCorreto)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
                 .when()
                 .post()
                 .then()
-                .statusCode(HttpStatus.CREATED.value());
+                .statusCode(HttpStatus.CREATED.value()).extract().path("codigoCotacao");
+
+       System.out.println(codCotacao);
     }
 
     @Test

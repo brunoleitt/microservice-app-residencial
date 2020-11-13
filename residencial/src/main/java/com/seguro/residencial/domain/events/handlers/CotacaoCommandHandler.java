@@ -1,6 +1,6 @@
 package com.seguro.residencial.domain.events.handlers;
 
-import com.seguro.residencial.domain.events.CriadaCotacaoEvent;
+import com.seguro.residencial.domain.events.RegistradaCotacaoEvent;
 import com.seguro.residencial.domain.interfaces.repository.cotacao.ICotacaoRepository;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoStatus;
@@ -20,7 +20,7 @@ public class CotacaoCommandHandler {
     private final ICotacaoRepository cotacaoRepository;
 
     @EventHandler
-    public void on(CriadaCotacaoEvent event) {
+    public void on(RegistradaCotacaoEvent event) {
 
         var cotacao = new CotacaoRoot(event.getCodigoCotacao(), CotacaoStatus.CRIADA.toString(),
                 event.getDataCotacao(), event.getDataVigenciaInicial(),
