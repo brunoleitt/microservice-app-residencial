@@ -21,10 +21,6 @@ import java.time.LocalDate;
 public class RegistrarItemInput {
 
 
-    @ApiModelProperty(example = "61e0cdcc-f2f7-4d7d-a314-d44b03ffdf8f", required = true)
-    @NotNull
-    private String codigoCotacao;
-
     @ApiModelProperty(example = "Avenida Salim Farah Maluf", required = true)
     @NotNull
     private String logradouro;

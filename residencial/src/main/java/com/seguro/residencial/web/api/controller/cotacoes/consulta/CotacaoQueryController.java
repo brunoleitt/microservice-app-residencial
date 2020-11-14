@@ -20,7 +20,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("v1/residencial/consulta")
+@RequestMapping("v1/cotacao/consulta")
 @Slf4j
 @Api(value = "Endpoints para consultas de cotações residencial")
 public class CotacaoQueryController implements CotacaoQueryControllerOpenApi {

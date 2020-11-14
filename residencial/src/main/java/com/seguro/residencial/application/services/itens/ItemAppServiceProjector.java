@@ -25,10 +25,10 @@ public class ItemAppServiceProjector implements IItemAppService {
     private final ICotacaoQueryRepository iCotacaoQueryRepository;
 
     @Override
-    public void registrarItem(RegistrarItemInput item) {
+    public void registrarItem(String idCotacao, RegistrarItemInput item) {
 
-        var cotacaoRoot = iCotacaoQueryRepository.consultarCotacao(item.getCodigoCotacao())
-                .orElseThrow(() -> new CotacaoNaoEncontradaException(item.getCodigoCotacao()));
+        var cotacaoRoot = iCotacaoQueryRepository.consultarCotacao(idCotacao)
+                .orElseThrow(() -> new CotacaoNaoEncontradaException(idCotacao));
 
         var commandItem = new RegistrarItemCommand(new Random().nextLong(),
                 cotacaoRoot.getId(), item.getLogradouro(),

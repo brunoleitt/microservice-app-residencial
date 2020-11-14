@@ -1,6 +1,5 @@
 package com.seguro.residencial.web.api.controller.cotacoes;
 
-
 import com.seguro.residencial.application.interfaces.ICotacaoAppService;
 import com.seguro.residencial.application.models.input.cotacao.RegistrarCotacaoInput;
 import com.seguro.residencial.application.models.view.CotacaoRegistradaViewModel;
@@ -18,7 +17,7 @@ import javax.validation.Valid;
  */
 
 @RestController
-@RequestMapping(path = "v1/residencial/cotacao",  produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "v1/cotacao",  produces = MediaType.APPLICATION_JSON_VALUE)
 public class CotacaoController implements CotacaoControllerOpenApi {
 
     private final ICotacaoAppService iCotacaoAppService;

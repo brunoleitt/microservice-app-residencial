@@ -1,29 +1,16 @@
 package com.seguro.residencial.itens;
 
-import com.seguro.residencial.application.models.input.cotacao.RegistrarCotacaoInput;
-import com.seguro.residencial.application.models.input.item.RegistrarItemInput;
-import com.seguro.residencial.domain.aggregates.CotacaoAggregate;
-import com.seguro.residencial.domain.commands.cotacoes.RegistrarCotacaoCommand;
-import com.seguro.residencial.domain.events.RegistradaCotacaoEvent;
-import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
-import com.seguro.residencial.domain.models.root.cotacoes.TipoVigencia;
-import com.seguro.residencial.web.api.controller.cotacoes.CotacaoController;
-import com.seguro.residencial.web.api.controller.itens.ItemController;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import lombok.Getter;
-import org.axonframework.test.aggregate.AggregateTestFixture;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
-import java.time.LocalDate;
-import java.util.Random;
-import java.util.UUID;
+import org.springframework.http.HttpStatus;
+import util.ResourceUtils;
+import static io.restassured.RestAssured.given;
 
 /**
  * @criado 31/10/2020 - 22:25
@@ -35,73 +22,87 @@ import java.util.UUID;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class RegistrarItemEndereco {
 
-    private static final Long tipoVigenciaAnual = 1L;
-    private static final Long tipoCalculoCotacao = 1L;
+    private static final String jsonRegistrarCotacaoCorreto = ResourceUtils.getContentFromResource(
+            "/json/correto/cotacoes/registrar-cotacao.json");
 
-    private static final UUID codigoCotacao = UUID.randomUUID();
+    private static final String jsonRegistrarItemCorreto = ResourceUtils.getContentFromResource(
+            "/json/correto/itens/registrar-item.json");
 
-    private static final Long id = new Random().nextLong();
+    private static final String jsonRegistrarItemEnderecoSemCepErrado = ResourceUtils.getContentFromResource(
+            "/json/correto/itens/registrar-item-sem-campo-cep.json");
 
-    @InjectMocks
-    ItemController itmItemController;
-
-    @InjectMocks
-    CotacaoController cotacaoController;
-
-    private AggregateTestFixture<CotacaoAggregate> accountFixture;
+    private static final String jsonRegistrarItemEnderecoCepErrado = ResourceUtils.getContentFromResource(
+            "/json/correto/itens/registrar-item-cep-errado.json");
 
 
     @Before
     public void setUp() {
-
+        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+        RestAssured.port = 8082;
+        RestAssured.basePath = "/v1/cotacao";
     }
 
     @Test
     public void novoItem_DeveRetornaStatus201() {
 
-        var tipoCalculo = new TipoCalculo();
-        tipoCalculo.setId(tipoCalculoCotacao);
-
-        var tipoVigencia = new TipoVigencia();
-        tipoVigencia.setId(tipoCalculoCotacao);
-
-
-        MockHttpServletRequest request = new MockHttpServletRequest();
-        RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
-
-        var input = new RegistrarCotacaoInput();
-        input.setIdTipoCalculo(tipoCalculoCotacao);
-        input.setIdTipoVigencia(tipoVigenciaAnual);
-        input.setDataVigenciaInicial(LocalDate.now());
-
-        var cotacaoRegistrada = cotacaoController.criarCotacao(input);
-
-        var registrarItemEndereco = new RegistrarItemInput(
-                cotacaoRegistrada.getCodigoCotacao(),
-                        "Teste Logradouro",
-                        "999",
-                        "Teste Complemento",
-                        "Teste Cidade",
-                        "TT",
-                        "00000000");
+        String codCotacao =  given()
+                .body(jsonRegistrarCotacaoCorreto)
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .post()
+                .then()
+                .statusCode(HttpStatus.CREATED.value()).extract().path("codigoCotacao");
 
 
-        itmItemController.registrarItem(registrarItemEndereco);
+        given()
+                .body(jsonRegistrarItemCorreto)
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .post("/{idCotacao}/item",codCotacao)
+                .then()
+                .statusCode(HttpStatus.CREATED.value());
     }
 
     @Test
-    public void novaCotacaoVigenciaInicialInferiorDataAtual_retornaStatus400() {
+    public void novoItemEnderecoSemCampoCep_DeveRetornaStatus400() {
 
+        String codCotacao =  given()
+                .body(jsonRegistrarCotacaoCorreto)
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .post()
+                .then()
+                .statusCode(HttpStatus.CREATED.value()).extract().path("codigoCotacao");
+
+
+        given()
+                .body(jsonRegistrarItemEnderecoSemCepErrado)
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .post("/{idCotacao}/item",codCotacao)
+                .then()
+                .statusCode(HttpStatus.BAD_REQUEST.value());
     }
-
 
     @Test
-    public void novaCotacaoTipoCalculoInexistente_retornaStatus400() {
+    public void novoItemEnderecoCepErrado_DeveRetornaStatus400() {
 
+        String codCotacao =  given()
+                .body(jsonRegistrarCotacaoCorreto)
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .post()
+                .then()
+                .statusCode(HttpStatus.CREATED.value()).extract().path("codigoCotacao");
+
+
+        given()
+                .body(jsonRegistrarItemEnderecoSemCepErrado)
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .post("/{idCotacao}/item",codCotacao)
+                .then()
+                .statusCode(HttpStatus.BAD_REQUEST.value());
     }
 
-    @Test
-    public void novaCotacaoTipoVigenciaInexistente_retornaStatus400() {
-
-    }
 }

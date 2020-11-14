@@ -17,16 +17,16 @@ import javax.validation.Valid;
  */
 @RestController
 @AllArgsConstructor
-@RequestMapping(path = "v1/residencial/item",  produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "v1/cotacao/{idCotacao}/item",  produces = MediaType.APPLICATION_JSON_VALUE)
 public class ItemController implements ItemControllerOpenApi {
 
     private final IItemAppService itemAppService;
 
-    @PostMapping
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     @Override
-    public void registrarItem(@RequestBody @Valid RegistrarItemInput input){
-        itemAppService.registrarItem(input);
+    public void registrarItem(@PathVariable String idCotacao, @RequestBody @Valid RegistrarItemInput input){
+        itemAppService.registrarItem(idCotacao,input);
     }
 
 }

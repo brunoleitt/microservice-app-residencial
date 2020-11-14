@@ -8,5 +8,5 @@ import com.seguro.residencial.application.models.input.item.RegistrarItemInput;
  * @autor Bruno Leite
  */
 public interface IItemAppService  {
-    void registrarItem(RegistrarItemInput item);
+    void registrarItem(String idCotacao, RegistrarItemInput item);
 }

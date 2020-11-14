@@ -13,6 +13,6 @@ public interface ItemControllerOpenApi {
 
 	@ApiOperation("Criar um novo item")
 	@ApiParam(name = "corpo", value = "Representação dos dados para criar um novo item da cotação", required = true)
-	void registrarItem(RegistrarItemInput input);
+	void registrarItem(String idCotacao,RegistrarItemInput input);
 
 }

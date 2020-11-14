@@ -32,10 +32,10 @@ public class RegistrarCotacaoTests {
     public void setUp() {
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
         RestAssured.port = 8082;
-        RestAssured.basePath = "/v1/residencial/cotacao";
+        RestAssured.basePath = "/v1/cotacao";
 
         jsonCriarCotacaoCorreto = ResourceUtils.getContentFromResource(
-                "/json/correto/criar-cotacao.json");
+                "/json/correto/cotacoes/registrar-cotacao.json");
 
         jsonCriarCotacaoDataInicioVigenciaInferiorDataAtual = ResourceUtils.getContentFromResource(
                 "/json/incorreto/criar-cotacao-data-inicio-vigencia-errada.json");
@@ -49,16 +49,13 @@ public class RegistrarCotacaoTests {
 
     @Test
     public void novaCotacaoVigenciaAnual_DeveRetornaStatus201() {
-       String codCotacao =  given()
+        given()
                 .body(jsonCriarCotacaoCorreto)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
-                .when()
                 .post()
                 .then()
-                .statusCode(HttpStatus.CREATED.value()).extract().path("codigoCotacao");
-
-       System.out.println(codCotacao);
+                .statusCode(HttpStatus.CREATED.value());
     }
 
     @Test
@@ -67,7 +64,6 @@ public class RegistrarCotacaoTests {
                 .body(jsonCriarCotacaoDataInicioVigenciaInferiorDataAtual)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
-                .when()
                 .post()
                 .then()
                 .statusCode(HttpStatus.BAD_REQUEST.value());
@@ -80,7 +76,6 @@ public class RegistrarCotacaoTests {
                 .body(jsonCriarCotacaoTipoCalculoInexisten)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
-                .when()
                 .post()
                 .then()
                 .statusCode(HttpStatus.BAD_REQUEST.value());
@@ -92,7 +87,6 @@ public class RegistrarCotacaoTests {
                 .body(jsonCriarCotacaoTipoVigenciaInexisten)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
-                .when()
                 .post()
                 .then()
                 .statusCode(HttpStatus.BAD_REQUEST.value());
