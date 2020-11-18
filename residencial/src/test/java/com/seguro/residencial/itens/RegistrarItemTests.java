@@ -20,7 +20,7 @@ import static io.restassured.RestAssured.given;
 @ExtendWith(MockitoExtension.class)
 @Getter
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class RegistrarItemEndereco {
+public class RegistrarItemTests {
 
     private static final String jsonRegistrarCotacaoCorreto = ResourceUtils.getContentFromResource(
             "/json/correto/cotacoes/registrar-cotacao.json");
@@ -33,6 +33,9 @@ public class RegistrarItemEndereco {
 
     private static final String jsonRegistrarItemEnderecoCepErrado = ResourceUtils.getContentFromResource(
             "/json/correto/itens/registrar-item-cep-errado.json");
+
+    private static final String jsonRegistrarItemCoberturaInexistente = ResourceUtils.getContentFromResource(
+            "/json/correto/itens/registrar-item-cobertura-inexistente.json");
 
 
     @Before
@@ -65,7 +68,6 @@ public class RegistrarItemEndereco {
 
     @Test
     public void novoItemEnderecoSemCampoCep_DeveRetornaStatus400() {
-
         String codCotacao =  given()
                 .body(jsonRegistrarCotacaoCorreto)
                 .contentType(ContentType.JSON)
@@ -86,7 +88,6 @@ public class RegistrarItemEndereco {
 
     @Test
     public void novoItemEnderecoCepErrado_DeveRetornaStatus400() {
-
         String codCotacao =  given()
                 .body(jsonRegistrarCotacaoCorreto)
                 .contentType(ContentType.JSON)
@@ -98,6 +99,26 @@ public class RegistrarItemEndereco {
 
         given()
                 .body(jsonRegistrarItemEnderecoSemCepErrado)
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .post("/{idCotacao}/item",codCotacao)
+                .then()
+                .statusCode(HttpStatus.BAD_REQUEST.value());
+    }
+
+    @Test
+    public void novoItemPacoteCoberturaNaoExiste_DeveRetornaStatus400() {
+        String codCotacao =  given()
+                .body(jsonRegistrarCotacaoCorreto)
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .post()
+                .then()
+                .statusCode(HttpStatus.CREATED.value()).extract().path("codigoCotacao");
+
+
+        given()
+                .body(jsonRegistrarItemCoberturaInexistente)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
                 .post("/{idCotacao}/item",codCotacao)

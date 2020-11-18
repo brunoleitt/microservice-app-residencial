@@ -20,6 +20,13 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class RegistrarItemInput {
 
+    @ApiModelProperty(example = "1", required = true)
+    @NotNull
+    private Long idTipoRisco;
+
+    @ApiModelProperty(example = "2", required = true)
+    @NotNull
+    private Long idPacoteCobertura;
 
     @ApiModelProperty(example = "Avenida Salim Farah Maluf", required = true)
     @NotNull

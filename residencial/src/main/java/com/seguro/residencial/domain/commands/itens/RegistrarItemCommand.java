@@ -2,6 +2,8 @@ package com.seguro.residencial.domain.commands.itens;
 
 import com.seguro.residencial.coreapi.model.basecommand.ItemCommand;
 import com.seguro.residencial.domain.commands.validacoes.item.RegistrarItemCommandValidation;
+import com.seguro.residencial.domain.models.root.coberturas.CoberturasPacoteRoot;
+import com.seguro.residencial.domain.models.root.itens.TipoRisco;
 import lombok.Getter;
 
 /**
@@ -12,12 +14,16 @@ import lombok.Getter;
 @Getter
 public class RegistrarItemCommand extends ItemCommand {
 
-    public RegistrarItemCommand(Long idItem, Long idCotacao, String logradouro,
+    public RegistrarItemCommand(Long idItem, TipoRisco tipoRisco,
+                                CoberturasPacoteRoot coberturasPacoteRoot,
+                                Long idCotacao, String logradouro,
                                 String numero, String complemento,
                                 String cidade, String uf,
                                 String cep) {
         super(idItem);
         this.idCotacao = idCotacao;
+        this.tipoRisco = tipoRisco;
+        this.coberturasPacoteRoot = coberturasPacoteRoot;
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;
@@ -27,6 +33,8 @@ public class RegistrarItemCommand extends ItemCommand {
     }
 
     private Long idCotacao;
+    private TipoRisco tipoRisco;
+    private CoberturasPacoteRoot coberturasPacoteRoot;
     private String logradouro;
     private String numero;
     private String complemento;

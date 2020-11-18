@@ -5,6 +5,7 @@ import com.seguro.residencial.domain.events.RegistradaCotacaoEvent;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoVigencia;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -19,6 +20,7 @@ import java.time.LocalDate;
  */
 @Getter
 @Aggregate
+@NoArgsConstructor
 public class CotacaoAggregate {
 
     @AggregateIdentifier
@@ -51,8 +53,5 @@ public class CotacaoAggregate {
         this.dataVigenciaFinal = event.getDataVigenciaFinal();
         this.tipoCalculo = event.getTipoCalculo();
         this.tipoVigencia = event.getTipoVigencia();
-    }
-
-    protected CotacaoAggregate() {
     }
 }

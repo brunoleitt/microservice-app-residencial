@@ -18,7 +18,7 @@ import javax.persistence.Table;
 public class TipoRisco {
 
     @Id
-    private Long idTipoRisco;
+    private Long id;
 
     @Column(nullable = false)
     private String descricao;

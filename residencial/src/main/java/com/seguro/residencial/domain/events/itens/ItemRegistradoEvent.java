@@ -1,5 +1,7 @@
 package com.seguro.residencial.domain.events.itens;
 
+import com.seguro.residencial.domain.models.root.coberturas.CoberturasPacoteRoot;
+import com.seguro.residencial.domain.models.root.itens.TipoRisco;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -14,6 +16,8 @@ public class ItemRegistradoEvent {
 
     private final Long id;
     private final Long idCotacao;
+    private TipoRisco tipoRisco;
+    private CoberturasPacoteRoot coberturasPacoteRoot;
     private String logradouro;
     private String numero;
     private String complemento;

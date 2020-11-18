@@ -1,8 +1,8 @@
 package com.seguro.residencial.domain.models.root.itens;
 
+import com.seguro.residencial.domain.models.root.coberturas.CoberturasPacoteRoot;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import lombok.Data;
-
 import javax.persistence.*;
 
 /**
@@ -25,6 +25,17 @@ public class ItemRoot {
             , foreignKey = @ForeignKey(name = "fk_cotacaoItem"))
     private CotacaoRoot cotacao;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_pacote_cobertura", referencedColumnName="id"
+            , foreignKey = @ForeignKey(name = "fk_pacoteCobertura"))
+    private CoberturasPacoteRoot cobertura;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_tipo_risco", referencedColumnName="id"
+            , foreignKey = @ForeignKey(name = "fk_tipoRisco"))
+    private TipoRisco tipoRisco;
+
     @OneToOne(mappedBy = "item",fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private ItemEndereco enderecoItem;
+
 }

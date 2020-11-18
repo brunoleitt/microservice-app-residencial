@@ -1,4 +1,4 @@
-package com.seguro.residencial.application.services;
+package com.seguro.residencial.application.services.cotacoes;
 
 import com.seguro.residencial.application.assembler.CotacaoModelAssembler;
 import com.seguro.residencial.application.interfaces.ICotacaoQueryAppService;

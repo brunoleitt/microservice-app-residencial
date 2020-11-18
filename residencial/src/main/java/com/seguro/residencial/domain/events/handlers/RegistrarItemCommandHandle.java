@@ -38,6 +38,9 @@ public class RegistrarItemCommandHandle {
         var item = new ItemRoot();
         item.setCotacao(cotacao);
 
+        item.setCobertura(event.getCoberturasPacoteRoot());
+        item.setTipoRisco(event.getTipoRisco());
+
         item.setEnderecoItem(new ItemEndereco(new Random().nextLong(), item,
                 event.getLogradouro(),
                 event.getNumero(),

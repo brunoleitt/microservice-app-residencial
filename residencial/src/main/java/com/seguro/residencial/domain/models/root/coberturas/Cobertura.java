@@ -1,8 +1,12 @@
 package com.seguro.residencial.domain.models.root.coberturas;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import javax.websocket.server.ServerEndpoint;
 
 /**
  * @criado 23/10/2020 - 16:40
@@ -10,7 +14,9 @@ import javax.persistence.*;
  * @autor Bruno Leite
  */
 @Entity
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "cobertura")
 public class Cobertura {
 
@@ -19,11 +25,8 @@ public class Cobertura {
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_pacote_cobertura"
-            , insertable = false
-            , updatable = false
-            , foreignKey = @ForeignKey(name = "fk_cobertura_pacote_cobertura"))
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_pacote_cobertura",foreignKey = @ForeignKey(name = "fk_cobertura_pacote_cobertura"))
     private CoberturasPacoteRoot pacoteCoberturasRoot;
 
     @Column(nullable = false, length = 100)
