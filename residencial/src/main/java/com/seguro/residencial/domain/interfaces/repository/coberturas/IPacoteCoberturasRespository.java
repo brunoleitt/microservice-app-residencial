@@ -16,5 +16,10 @@ public interface IPacoteCoberturasRespository extends ICustomJpaRepository<Cober
 
     @Query("select p from CoberturasPacoteRoot p inner join p.coberturas c " +
             "where p.tipoRisco.id = :idTipoRisco and p.id = :idPacoteCobertura")
-    Optional<CoberturasPacoteRoot> findCoberturaById(Long idPacoteCobertura, Long idTipoRisco);
+    Optional<CoberturasPacoteRoot> consultarPacoteCoberturas(Long idPacoteCobertura, Long idTipoRisco);
+
+    @Query("select p from CoberturasPacoteRoot p inner join p.coberturaServicos s " +
+            "where p.tipoRisco.id = :idTipoRisco and p.id = :idPacoteCobertura")
+    Optional<CoberturasPacoteRoot> consultarPacoteServicosCobertura(Long idPacoteCobertura, Long idTipoRisco);
+
 }

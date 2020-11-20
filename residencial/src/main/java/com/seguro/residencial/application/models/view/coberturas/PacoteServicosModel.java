@@ -9,7 +9,7 @@ import lombok.Setter;
 import java.util.List;
 
 /**
- * @criado 17/11/2020 - 03:07
+ * @criado 20/11/2020 - 17:40
  * @projeto Seguro Residencial Simplificado
  * @autor Bruno Leite
  */
@@ -17,11 +17,10 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PacoteCoberturaDTO {
+public class PacoteServicosModel {
     private Long id;
     private String descricao;
-    private Double premioBaseCotacao;
-    private Double premioLiquidoCotacao;
     private TipoRisco tipoRisco;
-    private List<CoberturasModel> coberturas;
+    private List<ServicosModel> coberturaServicos;
+
 }

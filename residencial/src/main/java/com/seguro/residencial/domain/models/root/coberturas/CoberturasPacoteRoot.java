@@ -49,4 +49,7 @@ public class CoberturasPacoteRoot {
 
     @OneToMany(mappedBy = "pacoteCoberturasRoot",fetch = FetchType.LAZY)
     private List<Cobertura> coberturas;
+
+    @OneToMany(mappedBy = "pacoteCoberturasRoot",fetch = FetchType.LAZY)
+    private List<CoberturaServicos> coberturaServicos;
 }

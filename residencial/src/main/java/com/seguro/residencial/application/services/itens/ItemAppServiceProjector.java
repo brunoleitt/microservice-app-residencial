@@ -41,7 +41,7 @@ public class ItemAppServiceProjector implements IItemAppService {
         var tipoRisco = iTipoRisco.findById(item.getIdTipoRisco())
                 .orElseThrow(() -> new TipoRiscoNaoEncontradaException(item.getIdTipoRisco()));
 
-        var pacoteCobertura = iPacoteCoberturas.findCoberturaById(item.getIdPacoteCobertura(),item.getIdTipoRisco())
+        var pacoteCobertura = iPacoteCoberturas.consultarPacoteCoberturas(item.getIdPacoteCobertura(),item.getIdTipoRisco())
                 .orElseThrow(()-> new PacoteCoberturaNaoEncontradaException(item.getIdPacoteCobertura()));
 
         var commandItem = new RegistrarItemCommand(new Random().nextLong(),

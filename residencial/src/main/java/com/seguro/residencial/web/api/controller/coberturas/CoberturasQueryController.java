@@ -1,8 +1,10 @@
 package com.seguro.residencial.web.api.controller.coberturas;
 
 import com.seguro.residencial.application.assembler.ObjectMapperUtils;
-import com.seguro.residencial.application.models.view.coberturas.PacoteCoberturaDTO;
+import com.seguro.residencial.application.models.view.coberturas.PacoteCoberturaModel;
+import com.seguro.residencial.application.models.view.coberturas.PacoteServicosModel;
 import com.seguro.residencial.domain.exception.coberturas.PacoteCoberturaTipoRiscoNaoEncontradaException;
+import com.seguro.residencial.domain.exception.coberturas.ServicosCoberturaTipoRiscoNaoEncontradaException;
 import com.seguro.residencial.domain.interfaces.repository.coberturas.IPacoteCoberturasRespository;
 import com.seguro.residencial.web.api.controlleropenapi.coberturas.CoberturasControllerOpenApi;
 import io.swagger.annotations.Api;
@@ -30,15 +32,27 @@ public class CoberturasQueryController implements CoberturasControllerOpenApi {
     private final IPacoteCoberturasRespository iPacoteCoberturas;
 
     @Override()
-    @GetMapping("/tiporisco/{idTipoRisco}/coberturas/{idTipoCobertura}")
-    public ResponseEntity<PacoteCoberturaDTO> consultarCoberturasTipoRisco(
+    @GetMapping("/tiporisco/{idTipoRisco}/coberturas/{idTipoCobertura}/pacote-cobertura")
+    public ResponseEntity<PacoteCoberturaModel> consultarPacoteCoberturas(
             @PathVariable Long idTipoRisco,
             @PathVariable Long idTipoCobertura) {
 
-        var coberturasTipoRisco = iPacoteCoberturas.findCoberturaById(idTipoCobertura,idTipoRisco)
+        var coberturasTipoRisco = iPacoteCoberturas.consultarPacoteCoberturas(idTipoCobertura,idTipoRisco)
                 .orElseThrow(()-> new PacoteCoberturaTipoRiscoNaoEncontradaException(idTipoCobertura,idTipoRisco));
 
         return ResponseEntity.status(HttpStatus.OK)
-                .body(ObjectMapperUtils.map(coberturasTipoRisco,PacoteCoberturaDTO.class));
+                .body(ObjectMapperUtils.map(coberturasTipoRisco, PacoteCoberturaModel.class));
+    }
+
+    @Override
+    @GetMapping("/tiporisco/{idTipoRisco}/coberturas/{idTipoCobertura}/pacote-servicos")
+    public ResponseEntity<PacoteServicosModel> consultarPacoteServicosCobertura(@PathVariable Long idTipoRisco,
+                                                                                @PathVariable Long idTipoCobertura) {
+
+        var pacoteServicos = iPacoteCoberturas.consultarPacoteServicosCobertura(idTipoCobertura,idTipoRisco)
+                .orElseThrow(()-> new ServicosCoberturaTipoRiscoNaoEncontradaException(idTipoCobertura,idTipoRisco));
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(ObjectMapperUtils.map(pacoteServicos, PacoteServicosModel.class));
     }
 }
