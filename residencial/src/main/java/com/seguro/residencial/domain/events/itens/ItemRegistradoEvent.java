@@ -17,7 +17,7 @@ public class ItemRegistradoEvent {
     private final Long id;
     private final Long idCotacao;
     private TipoRisco tipoRisco;
-    private CoberturasPacoteRoot coberturasPacoteRoot;
+    private Long idPacoteCobertura;
     private String logradouro;
     private String numero;
     private String complemento;

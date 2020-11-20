@@ -3,6 +3,7 @@ package com.seguro.residencial.domain.events.handlers;
 import com.seguro.residencial.domain.events.itens.ItemRegistradoEvent;
 import com.seguro.residencial.domain.interfaces.repository.item.IItemEnderecoRepository;
 import com.seguro.residencial.domain.interfaces.repository.item.IItemRepository;
+import com.seguro.residencial.domain.models.root.coberturas.CoberturasPacoteRoot;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import com.seguro.residencial.domain.models.root.itens.ItemEndereco;
 import com.seguro.residencial.domain.models.root.itens.ItemRoot;
@@ -38,7 +39,10 @@ public class RegistrarItemCommandHandle {
         var item = new ItemRoot();
         item.setCotacao(cotacao);
 
-        item.setCobertura(event.getCoberturasPacoteRoot());
+        var pacoteCobertura = new CoberturasPacoteRoot();
+        pacoteCobertura.setId(event.getIdPacoteCobertura());
+
+        item.setCobertura(pacoteCobertura);
         item.setTipoRisco(event.getTipoRisco());
 
         item.setEnderecoItem(new ItemEndereco(new Random().nextLong(), item,

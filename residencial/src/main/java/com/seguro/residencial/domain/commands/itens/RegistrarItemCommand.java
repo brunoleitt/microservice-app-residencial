@@ -15,7 +15,7 @@ import lombok.Getter;
 public class RegistrarItemCommand extends ItemCommand {
 
     public RegistrarItemCommand(Long idItem, TipoRisco tipoRisco,
-                                CoberturasPacoteRoot coberturasPacoteRoot,
+                                Long idPacoteCobertura,
                                 Long idCotacao, String logradouro,
                                 String numero, String complemento,
                                 String cidade, String uf,
@@ -23,7 +23,7 @@ public class RegistrarItemCommand extends ItemCommand {
         super(idItem);
         this.idCotacao = idCotacao;
         this.tipoRisco = tipoRisco;
-        this.coberturasPacoteRoot = coberturasPacoteRoot;
+        this.idPacoteCobertura = idPacoteCobertura;
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;
@@ -34,7 +34,7 @@ public class RegistrarItemCommand extends ItemCommand {
 
     private Long idCotacao;
     private TipoRisco tipoRisco;
-    private CoberturasPacoteRoot coberturasPacoteRoot;
+    private Long idPacoteCobertura;
     private String logradouro;
     private String numero;
     private String complemento;

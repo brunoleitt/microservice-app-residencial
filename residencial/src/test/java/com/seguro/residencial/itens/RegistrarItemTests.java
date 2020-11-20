@@ -38,6 +38,7 @@ public class RegistrarItemTests {
             "/json/correto/itens/registrar-item-cobertura-inexistente.json");
 
 
+
     @Before
     public void setUp() {
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();

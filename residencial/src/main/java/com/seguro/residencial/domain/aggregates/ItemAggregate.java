@@ -39,7 +39,7 @@ public class ItemAggregate {
     @CommandHandler
     public ItemAggregate(RegistrarItemCommand command) {
         AggregateLifecycle.apply(new ItemRegistradoEvent(command.getIdItem(), command.getIdCotacao(),
-                command.getTipoRisco(),command.getCoberturasPacoteRoot(),
+                command.getTipoRisco(),command.getIdPacoteCobertura(),
                 command.getLogradouro(), command.getNumero(),
                 command.getComplemento(), command.getCidade(),
                 command.getUf(), command.getCep()));
@@ -51,7 +51,7 @@ public class ItemAggregate {
         this.idCotacao = event.getIdCotacao();
         this.logradouro = event.getLogradouro();
         this.idTipoRisco = event.getTipoRisco().getId();
-        this.idPacoteCobertura = event.getCoberturasPacoteRoot().getId();
+        this.idPacoteCobertura = event.getIdPacoteCobertura();
         this.numero = event.getNumero();
         this.complemento = event.getComplemento();
         this.cidade = event.getCidade();

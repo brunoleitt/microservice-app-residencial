@@ -30,7 +30,7 @@ public class ItemAppServiceProjector implements IItemAppService {
 
     private final ITipoRisco iTipoRisco;
 
-    private final IPacoteCoberturasRespository iPacoteCoberturas;
+    //TODO private final IPacoteCoberturasRespository iPacoteCoberturas;
 
     @Override
     public void registrarItem(String idCotacao, RegistrarItemInput item) {
@@ -41,16 +41,13 @@ public class ItemAppServiceProjector implements IItemAppService {
         var tipoRisco = iTipoRisco.findById(item.getIdTipoRisco())
                 .orElseThrow(() -> new TipoRiscoNaoEncontradaException(item.getIdTipoRisco()));
 
-        var pacoteCobertura = iPacoteCoberturas.consultarPacoteCoberturas(item.getIdPacoteCobertura(),item.getIdTipoRisco())
-                .orElseThrow(()-> new PacoteCoberturaNaoEncontradaException(item.getIdPacoteCobertura()));
-
         var commandItem = new RegistrarItemCommand(new Random().nextLong(),
-                tipoRisco,pacoteCobertura,
+                tipoRisco,item.getIdPacoteCobertura(),
                 cotacaoRoot.getId(), item.getLogradouro(),
                 item.getNumero(),item.getComplemento(),
                 item.getCidade(),item.getUf(),item.getCep());
 
-        commandGateway.sendAndWait(commandItem);
+        commandGateway.send(commandItem);
     }
 
 }
