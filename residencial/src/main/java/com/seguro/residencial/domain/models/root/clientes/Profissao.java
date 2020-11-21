@@ -16,11 +16,7 @@ public class Profissao {
     @Id
     private Long id;
 
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false, length = 30)
     private String descricao;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idCliente"
-            , foreignKey = @ForeignKey(name = "fk_clienteProfissao"))
-    private ClienteRoot cliente;
 }

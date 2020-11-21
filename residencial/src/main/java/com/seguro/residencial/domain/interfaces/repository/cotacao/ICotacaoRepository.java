@@ -7,6 +7,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalLong;
 
 /**
  * @criado 12/10/2020 - 15:52
@@ -15,5 +17,8 @@ import java.util.List;
  */
 @Repository
 public interface ICotacaoRepository extends JpaRepository<CotacaoRoot, Long> {
+
+    @Query("select c.id from CotacaoRoot c where c.codigoCotacao = :codigoCotacao")
+    Optional<Long> consultarIdCotacao(String codigoCotacao);
 
 }

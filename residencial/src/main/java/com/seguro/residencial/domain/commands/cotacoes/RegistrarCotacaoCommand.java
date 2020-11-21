@@ -5,7 +5,6 @@ import com.seguro.residencial.domain.commands.validacoes.cotacao.CriarCotacaoCom
 import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoVigencia;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDate;
 
@@ -14,9 +13,11 @@ import java.time.LocalDate;
  * @projeto Seguro Residencial Simplificado
  * @autor Bruno Leite
  */
-//TODO Remover o Setter e adiconar o AllArgsConstructor
 @Getter
 public class RegistrarCotacaoCommand extends CotacaoCommand {
+
+    private final int anual = 1;
+    private final int bianual = 2;
 
     public RegistrarCotacaoCommand(Long id,
                                    String codigoCotacao,
@@ -31,7 +32,7 @@ public class RegistrarCotacaoCommand extends CotacaoCommand {
         this.tipoVigencia = tipoVigencia;
         this.dataVigenciaFinal = calcularVigenciaFinal(tipoVigencia.getId());
 
-        IsValid();
+        isValid();
     }
 
     private LocalDate dataCotacao;
@@ -40,16 +41,16 @@ public class RegistrarCotacaoCommand extends CotacaoCommand {
     private TipoCalculo tipoCalculo;
     private TipoVigencia tipoVigencia;
 
-    void IsValid() {
+    void isValid() {
         new CriarCotacaoCommandValidation(this).IsValid();
     }
 
 
-    LocalDate calcularVigenciaFinal(Long idTipoVigencia) {
-        if (tipoVigencia.getId().equals(idTipoVigencia))
-            return this.dataVigenciaInicial.plusYears(1);
+    LocalDate calcularVigenciaFinal(Long idTipoVigenciaAnualBianual) {
+        if (tipoVigencia.getId().equals(idTipoVigenciaAnualBianual))
+            return this.dataVigenciaInicial.plusYears(anual);
         else
-            return this.dataVigenciaInicial.plusYears(2);
+            return this.dataVigenciaInicial.plusYears(bianual);
     }
 
 }

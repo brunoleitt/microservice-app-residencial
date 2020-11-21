@@ -1,7 +1,7 @@
 package com.seguro.residencial.domain.aggregates;
 
 import com.seguro.residencial.domain.commands.cotacoes.RegistrarCotacaoCommand;
-import com.seguro.residencial.domain.events.RegistradaCotacaoEvent;
+import com.seguro.residencial.domain.events.cotacoes.RegistradaCotacaoEvent;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoVigencia;
 import lombok.Getter;

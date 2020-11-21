@@ -2,23 +2,22 @@ package com.seguro.residencial.domain.models.root.clientes;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
- * @criado 24/10/2020 - 21:06
+ * @criado 21/11/2020 - 14:35
  * @projeto Seguro Residencial Simplificado
  * @autor Bruno Leite
  */
 @Data
 @Entity
-@Table(name = "pais_residencia")
-public class PaisResidencia {
+@Table(name = "sexo")
+public class Sexo {
+
     @Id
     private Long id;
 
     @Column(nullable = false, length = 10)
     private String descricao;
+
 }

@@ -17,7 +17,6 @@ import static io.restassured.RestAssured.given;
  * @projeto Seguro Residencial Simplificado
  * @autor Bruno Leite
  */
-@ExtendWith(MockitoExtension.class)
 @Getter
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class RegistrarItemTests {

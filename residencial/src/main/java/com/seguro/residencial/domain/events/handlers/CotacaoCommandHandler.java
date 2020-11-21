@@ -1,6 +1,6 @@
 package com.seguro.residencial.domain.events.handlers;
 
-import com.seguro.residencial.domain.events.RegistradaCotacaoEvent;
+import com.seguro.residencial.domain.events.cotacoes.RegistradaCotacaoEvent;
 import com.seguro.residencial.domain.interfaces.repository.cotacao.ICotacaoRepository;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoStatus;

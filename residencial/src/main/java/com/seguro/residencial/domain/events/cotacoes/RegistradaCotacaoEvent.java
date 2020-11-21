@@ -1,4 +1,4 @@
-package com.seguro.residencial.domain.events;
+package com.seguro.residencial.domain.events.cotacoes;
 
 import com.seguro.residencial.coreapi.model.baseevent.CotacaoEvent;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
