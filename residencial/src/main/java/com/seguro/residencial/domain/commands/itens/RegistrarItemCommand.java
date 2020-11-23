@@ -14,13 +14,13 @@ import lombok.Getter;
 @Getter
 public class RegistrarItemCommand extends ItemCommand {
 
-    public RegistrarItemCommand(Long idItem, TipoRisco tipoRisco,
+    public RegistrarItemCommand(String id, TipoRisco tipoRisco,
                                 Long idPacoteCobertura,
-                                Long idCotacao, String logradouro,
+                                String idCotacao, String logradouro,
                                 String numero, String complemento,
                                 String cidade, String uf,
                                 String cep) {
-        super(idItem);
+        super(id);
         this.idCotacao = idCotacao;
         this.tipoRisco = tipoRisco;
         this.idPacoteCobertura = idPacoteCobertura;
@@ -32,7 +32,7 @@ public class RegistrarItemCommand extends ItemCommand {
         this.cep = cep;
     }
 
-    private Long idCotacao;
+    private String idCotacao;
     private TipoRisco tipoRisco;
     private Long idPacoteCobertura;
     private String logradouro;

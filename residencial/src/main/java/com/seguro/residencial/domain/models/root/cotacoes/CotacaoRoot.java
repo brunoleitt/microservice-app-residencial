@@ -2,11 +2,12 @@ package com.seguro.residencial.domain.models.root.cotacoes;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.seguro.residencial.domain.models.root.clientes.ClienteRoot;
+import com.seguro.residencial.domain.models.root.segurados.SeguradoRoot;
 import com.seguro.residencial.domain.models.root.itens.ItemRoot;
 import com.seguro.residencial.domain.models.root.questionarios.QuestionarioRoot;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
@@ -23,15 +24,8 @@ import java.time.OffsetDateTime;
 public class CotacaoRoot {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-
     @Column(updatable = false, nullable = false, unique=true)
     private String codigoCotacao;
-
-    @Column(length = 30)
-    private String statusCotacao;
 
     private LocalDate dataCotacao;
 
@@ -56,6 +50,13 @@ public class CotacaoRoot {
     @JsonIgnore
     private TipoVigencia tipoVigencia;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idStatusCotacao"
+            , nullable = false
+            , foreignKey = @ForeignKey(name = "fk_status_cotacao"))
+    @JsonIgnore
+    private StatusCotacao status;
+
     @OneToOne(mappedBy = "cotacao",fetch = FetchType.LAZY)
     private ItemRoot item;
 
@@ -63,16 +64,16 @@ public class CotacaoRoot {
     private QuestionarioRoot questionario;
 
     @OneToOne(mappedBy = "cotacao",fetch = FetchType.LAZY)
-    private ClienteRoot cliente;
+    private SeguradoRoot segurado;
 
 
-    public CotacaoRoot(String codigoCotacao, String statusCotacao,
+    public CotacaoRoot(String codigoCotacao, StatusCotacao status,
                        LocalDate dataCotacao, LocalDate dataVigenciaInicial,
                        LocalDate dataVigenciaFinal,
                        TipoCalculo tipoCalculo, TipoVigencia tipoVigencia) {
 
         this.codigoCotacao = codigoCotacao;
-        this.statusCotacao = statusCotacao;
+        this.status = status;
         this.dataCotacao = dataCotacao;
         this.dataVigenciaInicial = dataVigenciaInicial;
         this.dataVigenciaFinal = dataVigenciaFinal;

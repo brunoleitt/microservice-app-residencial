@@ -26,6 +26,7 @@ public class RegistrarCotacaoInput {
     @NotNull
     private Long idTipoVigencia;
 
+
     @ApiModelProperty(example = "2020-11-04", required = true)
     @NotNull
     private LocalDate dataVigenciaInicial;

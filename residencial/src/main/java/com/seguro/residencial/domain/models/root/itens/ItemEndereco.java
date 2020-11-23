@@ -20,9 +20,8 @@ import javax.persistence.*;
 public class ItemEndereco {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
+    @Column(name = "id", length = 50)
+    private String id;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idItem"
@@ -44,6 +43,6 @@ public class ItemEndereco {
     @Column(nullable = false, length = 2)
     private String uf;
 
-    @Column(nullable = false, length = 5)
+    @Column(nullable = false, length = 8)
     private String cep;
 }

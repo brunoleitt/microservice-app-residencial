@@ -14,8 +14,8 @@ import lombok.Getter;
 @AllArgsConstructor
 public class ItemRegistradoEvent {
 
-    private final Long id;
-    private final Long idCotacao;
+    private String id;
+    private String codigoCotacao;
     private TipoRisco tipoRisco;
     private Long idPacoteCobertura;
     private String logradouro;

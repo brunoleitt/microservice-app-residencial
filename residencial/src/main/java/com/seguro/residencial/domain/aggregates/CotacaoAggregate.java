@@ -1,7 +1,10 @@
 package com.seguro.residencial.domain.aggregates;
 
+import com.seguro.residencial.domain.commands.cotacoes.AtualizarStatusCotacaoCommand;
 import com.seguro.residencial.domain.commands.cotacoes.RegistrarCotacaoCommand;
+import com.seguro.residencial.domain.events.cotacoes.CotacaoStatusAtualizadaEvent;
 import com.seguro.residencial.domain.events.cotacoes.RegistradaCotacaoEvent;
+import com.seguro.residencial.domain.models.root.cotacoes.StatusCotacao;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoVigencia;
 import lombok.Getter;
@@ -11,6 +14,7 @@ import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
+
 import java.time.LocalDate;
 
 /**
@@ -31,6 +35,7 @@ public class CotacaoAggregate {
     private LocalDate dataVigenciaFinal;
     private TipoCalculo tipoCalculo;
     private TipoVigencia tipoVigencia;
+    private StatusCotacao statusCotacao;
 
     @CommandHandler
     public CotacaoAggregate(RegistrarCotacaoCommand createCotacaoCommand) {
@@ -40,7 +45,14 @@ public class CotacaoAggregate {
                 createCotacaoCommand.getDataVigenciaInicial(),
                 createCotacaoCommand.getDataVigenciaFinal(),
                 createCotacaoCommand.getTipoCalculo(),
-                createCotacaoCommand.getTipoVigencia()));
+                createCotacaoCommand.getTipoVigencia(),
+                createCotacaoCommand.getStatus()));
+    }
+
+    @CommandHandler
+    public void on(AtualizarStatusCotacaoCommand command) {
+        AggregateLifecycle.apply(new CotacaoStatusAtualizadaEvent(command.getCodigoCotacao(),
+                command.getStatusAnterior(), command.getStatusNovo()));
     }
 
 
@@ -53,5 +65,6 @@ public class CotacaoAggregate {
         this.dataVigenciaFinal = event.getDataVigenciaFinal();
         this.tipoCalculo = event.getTipoCalculo();
         this.tipoVigencia = event.getTipoVigencia();
+        this.statusCotacao = event.getStatusCotacao();
     }
 }

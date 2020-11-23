@@ -1,23 +1,22 @@
-package com.seguro.residencial.domain.models.root.clientes;
+package com.seguro.residencial.domain.models.root.segurados;
 
 import lombok.Data;
 
 import javax.persistence.*;
 
 /**
- * @criado 21/11/2020 - 14:35
+ * @criado 24/10/2020 - 21:06
  * @projeto Seguro Residencial Simplificado
  * @autor Bruno Leite
  */
 @Data
 @Entity
-@Table(name = "sexo")
-public class Sexo {
-
+@Table(name = "profissao")
+public class Profissao {
     @Id
     private Long id;
 
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false, length = 30)
     private String descricao;
 
 }

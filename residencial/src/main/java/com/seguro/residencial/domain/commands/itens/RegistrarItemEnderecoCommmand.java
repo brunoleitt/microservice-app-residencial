@@ -11,26 +11,26 @@ import lombok.Getter;
 @Getter
 public class RegistrarItemEnderecoCommmand extends ItemCommand {
 
-    public RegistrarItemEnderecoCommmand(Long id, Long idItemEndereco,
+    public RegistrarItemEnderecoCommmand(String id, String idItemEndereco,
                                          String logradouro, String numero,
                                          String complemento, String cidade,
-                                         String UF, String CEP) {
+                                         String uf, String cep) {
         super(id);
         this.idItemEndereco = idItemEndereco;
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;
         this.cidade = cidade;
-        this.UF = UF;
-        this.CEP = CEP;
+        this.uf = uf;
+        this.cep = cep;
     }
 
-    private Long idItemEndereco;
+    private String idItemEndereco;
     private String logradouro;
     private String numero;
     private String complemento;
     private String cidade;
-    private String UF;
-    private String CEP;
+    private String uf;
+    private String cep;
 
 }

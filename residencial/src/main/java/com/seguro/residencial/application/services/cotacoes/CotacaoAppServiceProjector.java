@@ -1,13 +1,21 @@
 package com.seguro.residencial.application.services.cotacoes;
 
 import com.seguro.residencial.application.interfaces.ICotacaoAppService;
+import com.seguro.residencial.application.models.input.cotacao.AtualizarStatusInput;
 import com.seguro.residencial.application.models.input.cotacao.RegistrarCotacaoInput;
 import com.seguro.residencial.application.models.view.CotacaoRegistradaViewModel;
+import com.seguro.residencial.domain.commands.cotacoes.AtualizarStatusCotacaoCommand;
 import com.seguro.residencial.domain.commands.cotacoes.RegistrarCotacaoCommand;
+import com.seguro.residencial.domain.exception.CotacaoNaoEncontradaException;
+import com.seguro.residencial.domain.exception.NegocioException;
 import com.seguro.residencial.domain.exception.TipoCalculoNaoEncontradaException;
 import com.seguro.residencial.domain.exception.TipoVigenciaNaoEncontradaException;
+import com.seguro.residencial.domain.interfaces.repository.cotacao.ICotacaoRepository;
+import com.seguro.residencial.domain.interfaces.repository.cotacao.IStatusCotacao;
 import com.seguro.residencial.domain.interfaces.repository.cotacao.ITipoCalculoRepository;
 import com.seguro.residencial.domain.interfaces.repository.cotacao.ITipoVigenciaRepository;
+import com.seguro.residencial.domain.models.root.cotacoes.StatusCotacao;
+import jdk.jshell.Snippet;
 import lombok.AllArgsConstructor;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.stereotype.Service;
@@ -27,6 +35,10 @@ public class CotacaoAppServiceProjector implements ICotacaoAppService {
     private final CommandGateway commandGateway;
     private final ITipoCalculoRepository tipoCalculoRepository;
     private final ITipoVigenciaRepository tipoVigenciaRepository;
+    private final IStatusCotacao iStatusCotacao;
+    private final ICotacaoRepository iCotacaoRepository;
+
+    private final Long idStatusCotacaoCriada = 1L;
 
     @Override
     public CotacaoRegistradaViewModel criacaoCotacao(RegistrarCotacaoInput input) {
@@ -40,15 +52,33 @@ public class CotacaoAppServiceProjector implements ICotacaoAppService {
                 .orElseThrow(() -> new TipoCalculoNaoEncontradaException(
                         input.getIdTipoCalculo()));
 
+        var statusCotacao = (StatusCotacao) iStatusCotacao.findById(idStatusCotacaoCriada).get();
+
         var command = new RegistrarCotacaoCommand(randow.nextLong(),
                 UUID.randomUUID().toString(),
                 LocalDate.now(),
                 input.getDataVigenciaInicial(),
                 tipoCalculo,
-                tipoVigencia);
+                tipoVigencia,
+                statusCotacao);
 
             commandGateway.sendAndWait(command);
 
         return new CotacaoRegistradaViewModel(command.getCodigoCotacao());
+    }
+
+    @Override
+    public void atualizarStatusCotacao(String codigoCotaocao, AtualizarStatusInput atualizarStatusInput) {
+
+        var status = (StatusCotacao) iStatusCotacao.findById(atualizarStatusInput.getCodigoStatusCotacao())
+                .orElseThrow(()-> new NegocioException(String.format("Não foi possivel encontrar status da cotação com a descrição %d", atualizarStatusInput.getCodigoStatusCotacao())));
+
+        var cotacao = iCotacaoRepository.findByCodigoCotacao(codigoCotaocao)
+                .orElseThrow(()-> new CotacaoNaoEncontradaException(codigoCotaocao));
+
+        var command = new AtualizarStatusCotacaoCommand(codigoCotaocao,
+                cotacao.getStatus().getDescricao(),status.getDescricao());
+
+        commandGateway.sendAndWait(command);
     }
 }

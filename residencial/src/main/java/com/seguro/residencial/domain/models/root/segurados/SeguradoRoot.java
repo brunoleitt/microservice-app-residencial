@@ -1,4 +1,4 @@
-package com.seguro.residencial.domain.models.root.clientes;
+package com.seguro.residencial.domain.models.root.segurados;
 
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import lombok.AllArgsConstructor;
@@ -7,9 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
-
-//TODO Alterar o nome de todas as classes de Cliente para Segurado
 
 
 /**
@@ -21,13 +18,12 @@ import java.time.OffsetDateTime;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "cliente")
-public class ClienteRoot {
+@Table(name = "segurado")
+public class SeguradoRoot {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    @Column(name = "id", length = 50)
+    private String id;
 
     @Column(nullable = false, length = 30)
     private String nome;
@@ -52,19 +48,19 @@ public class ClienteRoot {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idProfissao"
             , nullable = false
-            , foreignKey = @ForeignKey(name = "fk_profissaoCliente"))
+            , foreignKey = @ForeignKey(name = "fk_profissaoSegurado"))
     private Profissao profissao;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idSexo"
             , nullable = false
-            , foreignKey = @ForeignKey(name = "fk_sexoCliente"))
+            , foreignKey = @ForeignKey(name = "fk_sexoSegurado"))
     private Sexo sexo;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idCotacao"
             , nullable = false
-            , foreignKey = @ForeignKey(name = "fk_cotacaoCliente"))
+            , foreignKey = @ForeignKey(name = "fk_cotacaoSegurado"))
     private CotacaoRoot cotacao;
 
 }

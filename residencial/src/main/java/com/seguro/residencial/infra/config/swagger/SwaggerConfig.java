@@ -1,7 +1,7 @@
 package com.seguro.residencial.infra.config.swagger;
 
-import com.seguro.residencial.domain.models.root.clientes.ClienteRoot;
-import com.seguro.residencial.domain.models.root.clientes.Profissao;
+import com.seguro.residencial.domain.models.root.segurados.SeguradoRoot;
+import com.seguro.residencial.domain.models.root.segurados.Profissao;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoVigencia;
@@ -32,7 +32,7 @@ public class SwaggerConfig  {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .ignoredParameterTypes(ClienteRoot.class,CotacaoRoot.class, ItemEndereco.class, ItemRoot.class,
+                .ignoredParameterTypes(SeguradoRoot.class,CotacaoRoot.class, ItemEndereco.class, ItemRoot.class,
                         Profissao.class, QuestionarioRoot.class,TipoCalculo.class,TipoVigencia.class, Problem.class,Problem.Object.class)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.seguro.residencial.web.api.controller"))

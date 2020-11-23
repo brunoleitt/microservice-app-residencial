@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Random;
+import java.util.UUID;
 
 /**
  * @criado 07/11/2020 - 16:58
@@ -23,7 +24,7 @@ import java.util.Random;
 @Slf4j
 @Component
 @AllArgsConstructor
-public class RegistrarItemCommandHandle {
+public class ItemCommandHandle {
 
     private final IItemRepository itemRepository;
 
@@ -31,13 +32,14 @@ public class RegistrarItemCommandHandle {
 
     @EventHandler
     @Transactional
-    public Long on(ItemRegistradoEvent event) {
+    public String on(ItemRegistradoEvent event) {
 
         var cotacao = new CotacaoRoot();
-        cotacao.setId(event.getIdCotacao());
+        cotacao.setCodigoCotacao(event.getCodigoCotacao());
 
         var item = new ItemRoot();
         item.setCotacao(cotacao);
+        item.setId(event.getId());
 
         var pacoteCobertura = new CoberturasPacoteRoot();
         pacoteCobertura.setId(event.getIdPacoteCobertura());
@@ -45,7 +47,7 @@ public class RegistrarItemCommandHandle {
         item.setCobertura(pacoteCobertura);
         item.setTipoRisco(event.getTipoRisco());
 
-        item.setEnderecoItem(new ItemEndereco(new Random().nextLong(), item,
+        item.setEnderecoItem(new ItemEndereco(UUID.randomUUID().toString(), item,
                 event.getLogradouro(),
                 event.getNumero(),
                 event.getComplemento(),

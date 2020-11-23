@@ -1,16 +1,14 @@
 package com.seguro.residencial.domain.events.handlers;
 
 import com.seguro.residencial.domain.events.clientes.ClienteRegistradoEvent;
-import com.seguro.residencial.domain.interfaces.repository.cliente.IClienteRepository;
-import com.seguro.residencial.domain.models.root.clientes.ClienteRoot;
-import com.seguro.residencial.domain.models.root.clientes.Profissao;
-import com.seguro.residencial.domain.models.root.clientes.Sexo;
+import com.seguro.residencial.domain.interfaces.repository.segurados.ISeguradoRepository;
+import com.seguro.residencial.domain.models.root.segurados.SeguradoRoot;
+import com.seguro.residencial.domain.models.root.segurados.Profissao;
+import com.seguro.residencial.domain.models.root.segurados.Sexo;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import lombok.AllArgsConstructor;
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.stereotype.Component;
-
-import java.util.Random;
 
 /**
  * @criado 21/11/2020 - 12:40
@@ -22,7 +20,7 @@ import java.util.Random;
 @AllArgsConstructor
 public class ClienteCommandHandle {
 
-    private final IClienteRepository clienteRepository;
+    private final ISeguradoRepository clienteRepository;
 
     @EventHandler
     public void on(ClienteRegistradoEvent event) {
@@ -34,9 +32,9 @@ public class ClienteCommandHandle {
         sexo.setId(event.getIdSexo());
 
         var cotacao = new CotacaoRoot();
-        cotacao.setId(event.getIdCotacao());
+        cotacao.setCodigoCotacao(event.getCodigoCotacao());
 
-        var cliente = new ClienteRoot(new Random().nextLong(),
+        var cliente = new SeguradoRoot(event.getId(),
                 event.getNome(), event.getSobreNome(),
                 event.getCpf(), event.getTelefone(),
                 event.getRg(), event.getEmail(),

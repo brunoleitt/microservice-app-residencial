@@ -2,15 +2,11 @@ package com.seguro.residencial.segurado;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import util.ResourceUtils;
-
-import java.util.HashMap;
-import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -44,7 +40,7 @@ public class RegistrarSeguradoTests {
     private static final String jsonRegistrarSeguradoEmailObrigatorio = ResourceUtils.getContentFromResource(
             "/json/correto/segurado/registrar-segurado-email-obrigatorio.json");
 
-    private static final String codigoCotacao = "49464a38-dbbb-4188-8b8b-37fad49425b3";
+    private static final String codigoCotacao = "538ffa68-619f-4243-8925-f89273b708d0";
 
     @Before
     public void setUp() {
@@ -59,7 +55,7 @@ public class RegistrarSeguradoTests {
                 .body(jsonRegistrarSeguradoCorreto)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
-                .post("/{idCotacao}/cliente",codigoCotacao)
+                .post("/{idCotacao}/segurado",codigoCotacao)
                 .then()
                 .statusCode(HttpStatus.CREATED.value());
     }
@@ -71,7 +67,7 @@ public class RegistrarSeguradoTests {
                 .body(jsonRegistrarSeguradoMenorIdade)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
-                .post("/{idCotacao}/cliente",codigoCotacao)
+                .post("/{idCotacao}/segurado",codigoCotacao)
                 .then()
                 .statusCode(HttpStatus.BAD_REQUEST.value())
                 .body("detail", equalTo("Segurado não poder ser menor de idade."));
@@ -84,7 +80,7 @@ public class RegistrarSeguradoTests {
                 .body(jsonRegistrarSeguradoCPFinvalido)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
-                .post("/{idCotacao}/cliente",codigoCotacao)
+                .post("/{idCotacao}/segurado",codigoCotacao)
                 .then()
                 .statusCode(HttpStatus.BAD_REQUEST.value())
                 .body("objects[0].userMessage", equalTo("cpf inválido"));
@@ -97,7 +93,7 @@ public class RegistrarSeguradoTests {
                 .body(jsonRegistrarSeguradoSexoInexistente)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
-                .post("/{idCotacao}/cliente",codigoCotacao)
+                .post("/{idCotacao}/segurado",codigoCotacao)
                 .then()
                 .statusCode(HttpStatus.BAD_REQUEST.value())
                 .body("detail", equalTo("Codigo tipo de sexo não encontrada para id: 99"));
@@ -111,7 +107,7 @@ public class RegistrarSeguradoTests {
                 .body(jsonRegistrarSeguradoProfissaoInexistente)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
-                .post("/{idCotacao}/cliente",codigoCotacao)
+                .post("/{idCotacao}/segurado",codigoCotacao)
                 .then()
                 .statusCode(HttpStatus.BAD_REQUEST.value())
                 .body("detail", equalTo("Codigo tipo de profissao não encontrada para id: 99"));
@@ -125,7 +121,7 @@ public class RegistrarSeguradoTests {
                 .body(jsonRegistrarSeguradoEmailInvalido)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
-                .post("/{idCotacao}/cliente",codigoCotacao)
+                .post("/{idCotacao}/segurado",codigoCotacao)
                 .then()
                 .statusCode(HttpStatus.BAD_REQUEST.value())
                 .body("objects[0].userMessage", equalTo("Campo E-mail deve ser um endereço de e-mail válido"));
@@ -139,7 +135,7 @@ public class RegistrarSeguradoTests {
                 .body(jsonRegistrarSeguradoEmailObrigatorio)
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
-                .post("/{idCotacao}/cliente",codigoCotacao)
+                .post("/{idCotacao}/segurado",codigoCotacao)
                 .then()
                 .statusCode(HttpStatus.BAD_REQUEST.value())
                 .body("objects[0].userMessage", equalTo("Campo E-mail é obrigatório"));

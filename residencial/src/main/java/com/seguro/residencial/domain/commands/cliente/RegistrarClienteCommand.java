@@ -18,7 +18,7 @@ import java.time.OffsetDateTime;
 public class RegistrarClienteCommand {
 
     @TargetAggregateIdentifier
-    private Long id;
+    private String id;
     private String nome;
     private String sobreNome;
     private String cpf;
@@ -26,7 +26,7 @@ public class RegistrarClienteCommand {
     private String rg;
     private String email;
     private LocalDate dataNascimento;
-    private Long idCotacao;
+    private String codigoCotacao;
     private Long idProfissao;
     private Long idSexo;
 

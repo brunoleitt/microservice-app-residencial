@@ -18,7 +18,9 @@ import java.util.OptionalLong;
 @Repository
 public interface ICotacaoRepository extends JpaRepository<CotacaoRoot, Long> {
 
-    @Query("select c.id from CotacaoRoot c where c.codigoCotacao = :codigoCotacao")
-    Optional<Long> consultarIdCotacao(String codigoCotacao);
+    @Query("select c.codigoCotacao from CotacaoRoot c where c.codigoCotacao = :codigoCotacao")
+    Optional<String> consultarCodigoCotacao(String codigoCotacao);
+
+    Optional<CotacaoRoot> findByCodigoCotacao(String codigoCotacao);
 
 }

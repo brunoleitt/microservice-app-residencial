@@ -1,5 +1,6 @@
 package com.seguro.residencial.application.interfaces;
 
+import com.seguro.residencial.application.models.input.cotacao.AtualizarStatusInput;
 import com.seguro.residencial.application.models.input.cotacao.RegistrarCotacaoInput;
 import com.seguro.residencial.application.models.view.CotacaoRegistradaViewModel;
 
@@ -10,4 +11,5 @@ import com.seguro.residencial.application.models.view.CotacaoRegistradaViewModel
  */
 public interface ICotacaoAppService {
     CotacaoRegistradaViewModel criacaoCotacao(RegistrarCotacaoInput criarCotacaoInput);
+    void atualizarStatusCotacao(String codigoCotaocao, AtualizarStatusInput atualizarStatusInput);
 }

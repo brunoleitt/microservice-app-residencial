@@ -2,8 +2,6 @@ package com.seguro.residencial.domain.aggregates;
 
 import com.seguro.residencial.domain.commands.itens.RegistrarItemCommand;
 import com.seguro.residencial.domain.events.itens.ItemRegistradoEvent;
-import com.seguro.residencial.domain.models.root.coberturas.CoberturasPacoteRoot;
-import com.seguro.residencial.domain.models.root.itens.TipoRisco;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.axonframework.commandhandling.CommandHandler;
@@ -24,8 +22,8 @@ public class ItemAggregate {
 
 
     @AggregateIdentifier
-    private Long id;
-    private Long idCotacao;
+    private String id;
+    private String codigoCotacao;
     private Long idTipoRisco;
     private Long idPacoteCobertura;
     private String logradouro;
@@ -38,7 +36,7 @@ public class ItemAggregate {
 
     @CommandHandler
     public ItemAggregate(RegistrarItemCommand command) {
-        AggregateLifecycle.apply(new ItemRegistradoEvent(command.getIdItem(), command.getIdCotacao(),
+        AggregateLifecycle.apply(new ItemRegistradoEvent(command.getId(), command.getIdCotacao(),
                 command.getTipoRisco(),command.getIdPacoteCobertura(),
                 command.getLogradouro(), command.getNumero(),
                 command.getComplemento(), command.getCidade(),
@@ -48,7 +46,7 @@ public class ItemAggregate {
     @EventSourcingHandler
     protected void on(ItemRegistradoEvent event) {
         this.id = event.getId();
-        this.idCotacao = event.getIdCotacao();
+        this.codigoCotacao = event.getCodigoCotacao();
         this.logradouro = event.getLogradouro();
         this.idTipoRisco = event.getTipoRisco().getId();
         this.idPacoteCobertura = event.getIdPacoteCobertura();

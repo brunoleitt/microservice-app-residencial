@@ -16,12 +16,11 @@ import javax.persistence.*;
 public class ItemRoot {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    @Column(name = "id", length = 50)
+    private String id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_cotacao", referencedColumnName="id"
+    @JoinColumn(name = "id_cotacao", referencedColumnName="codigoCotacao"
             , foreignKey = @ForeignKey(name = "fk_cotacaoItem"))
     private CotacaoRoot cotacao;
 

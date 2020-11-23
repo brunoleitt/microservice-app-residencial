@@ -1,4 +1,4 @@
-package com.seguro.residencial.application.models.input.cliente;
+package com.seguro.residencial.application.models.input.segurados;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -16,7 +16,7 @@ import java.time.LocalDate;
  */
 @Getter
 @Setter
-public class ClienteInput {
+public class SeguradoInput {
 
 
     @ApiModelProperty(example = "Bruno", required = true)

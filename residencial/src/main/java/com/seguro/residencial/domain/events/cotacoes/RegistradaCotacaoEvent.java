@@ -1,6 +1,7 @@
 package com.seguro.residencial.domain.events.cotacoes;
 
 import com.seguro.residencial.coreapi.model.baseevent.CotacaoEvent;
+import com.seguro.residencial.domain.models.root.cotacoes.StatusCotacao;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoVigencia;
 import lombok.Getter;
@@ -23,13 +24,15 @@ public class RegistradaCotacaoEvent extends CotacaoEvent {
                                   LocalDate dataVigenciaInicial,
                                   LocalDate dataVigenciaFinal,
                                   TipoCalculo tipoCalculo,
-                                  TipoVigencia tipoVigencia) {
+                                  TipoVigencia tipoVigencia,
+                                  StatusCotacao statusCotacao) {
         super(id,codigoCotacao);
         this.dataCotacao = dataCotacao;
         this.dataVigenciaInicial = dataVigenciaInicial;
         this.dataVigenciaFinal = dataVigenciaFinal;
         this.tipoCalculo = tipoCalculo;
         this.tipoVigencia = tipoVigencia;
+        this.statusCotacao = statusCotacao;
     }
 
     private LocalDate dataCotacao;
@@ -37,5 +40,6 @@ public class RegistradaCotacaoEvent extends CotacaoEvent {
     private LocalDate dataVigenciaFinal;
     private TipoCalculo tipoCalculo;
     private TipoVigencia tipoVigencia;
+    private StatusCotacao statusCotacao;
 
 }

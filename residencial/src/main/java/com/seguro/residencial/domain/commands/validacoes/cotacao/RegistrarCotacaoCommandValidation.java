@@ -14,11 +14,11 @@ import java.time.LocalDate;
  */
 @Getter
 @Setter
-public class CriarCotacaoCommandValidation  {
+public class RegistrarCotacaoCommandValidation {
 
     public RegistrarCotacaoCommand criarCotacaoCommand;
 
-    public CriarCotacaoCommandValidation(RegistrarCotacaoCommand cotacaoCommand) {
+    public RegistrarCotacaoCommandValidation(RegistrarCotacaoCommand cotacaoCommand) {
         this.criarCotacaoCommand = cotacaoCommand;
     }
 
@@ -31,4 +31,8 @@ public class CriarCotacaoCommandValidation  {
         if (this.criarCotacaoCommand.getDataVigenciaInicial().compareTo(LocalDate.now()) < qtdDiasDiferencaDataAtual)
             throw new NegocioException("Data de inicio vigencia da cotação não pode ser inferior a data atual");
     }
+
+
+
 }
+

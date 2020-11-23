@@ -16,6 +16,6 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 public class ItemCommand {
 
     @TargetAggregateIdentifier
-    public Long idItem;
+    public String id;
 
 }

@@ -1,7 +1,7 @@
-package com.seguro.residencial.domain.interfaces.repository.cliente;
+package com.seguro.residencial.domain.interfaces.repository.segurados;
 
 import com.seguro.residencial.domain.interfaces.repository.CustomJpaRepository;
-import com.seguro.residencial.domain.models.root.clientes.Profissao;
+import com.seguro.residencial.domain.models.root.segurados.Profissao;
 
 /**
  * @criado 21/11/2020 - 14:52

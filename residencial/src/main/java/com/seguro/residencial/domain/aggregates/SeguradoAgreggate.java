@@ -12,7 +12,6 @@ import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
 
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
 
 /**
  * @criado 21/11/2020 - 12:29
@@ -23,10 +22,10 @@ import java.time.OffsetDateTime;
 @Setter
 @Aggregate
 @NoArgsConstructor
-public class ClienteAgreggate {
+public class SeguradoAgreggate {
 
     @AggregateIdentifier
-    private Long id;
+    private String id;
     private String nome;
     private String sobreNome;
     private String cpf;
@@ -34,18 +33,18 @@ public class ClienteAgreggate {
     private String rg;
     private String email;
     private LocalDate dataNascimento;
-    private Long idCotacao;
+    private String codigoCotacao;
     private Long idProfissao;
     private Long idSexo;
 
 
     @CommandHandler
-    public ClienteAgreggate(RegistrarClienteCommand command) {
-        AggregateLifecycle.apply(new ClienteRegistradoEvent(command.getId(), command.getNome(),
+    public SeguradoAgreggate(RegistrarClienteCommand command) {
+        AggregateLifecycle.apply(new ClienteRegistradoEvent(command.getId(),command.getNome(),
                 command.getSobreNome(),command.getCpf(),
                 command.getTelefone(),command.getRg(),
                 command.getEmail(),command.getDataNascimento(),
-                command.getIdCotacao(),command.getIdProfissao(),
+                command.getCodigoCotacao(),command.getIdProfissao(),
                 command.getIdSexo()));
     }
 
@@ -59,7 +58,7 @@ public class ClienteAgreggate {
         this.setRg(event.getRg());
         this.setEmail(event.getEmail());
         this.setDataNascimento(event.getDataNascimento());
-        this.setIdCotacao(event.getIdCotacao());
+        this.setCodigoCotacao(event.getCodigoCotacao());
         this.setIdProfissao(event.getIdProfissao());
         this.setIdSexo(event.getIdSexo());
     }

@@ -1,7 +1,8 @@
 package com.seguro.residencial.domain.commands.cotacoes;
 
 import com.seguro.residencial.coreapi.model.basecommand.CotacaoCommand;
-import com.seguro.residencial.domain.commands.validacoes.cotacao.CriarCotacaoCommandValidation;
+import com.seguro.residencial.domain.commands.validacoes.cotacao.RegistrarCotacaoCommandValidation;
+import com.seguro.residencial.domain.models.root.cotacoes.StatusCotacao;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoVigencia;
 import lombok.Getter;
@@ -24,14 +25,15 @@ public class RegistrarCotacaoCommand extends CotacaoCommand {
                                    LocalDate dataCotacao,
                                    LocalDate dataVigenciaInicial,
                                    TipoCalculo tipoCalculo,
-                                   TipoVigencia tipoVigencia) {
+                                   TipoVigencia tipoVigencia,
+                                   StatusCotacao status) {
         super(id, codigoCotacao);
         this.dataCotacao = dataCotacao;
         this.dataVigenciaInicial = dataVigenciaInicial;
         this.tipoCalculo = tipoCalculo;
         this.tipoVigencia = tipoVigencia;
         this.dataVigenciaFinal = calcularVigenciaFinal(tipoVigencia.getId());
-
+        this.status = status;
         isValid();
     }
 
@@ -40,9 +42,10 @@ public class RegistrarCotacaoCommand extends CotacaoCommand {
     private LocalDate dataVigenciaFinal;
     private TipoCalculo tipoCalculo;
     private TipoVigencia tipoVigencia;
+    private StatusCotacao status;
 
     void isValid() {
-        new CriarCotacaoCommandValidation(this).IsValid();
+        new RegistrarCotacaoCommandValidation(this).IsValid();
     }
 
 

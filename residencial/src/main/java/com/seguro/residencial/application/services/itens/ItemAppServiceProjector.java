@@ -14,6 +14,7 @@ import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
+import java.util.UUID;
 
 /**
  * @criado 07/11/2020 - 17:45
@@ -41,9 +42,9 @@ public class ItemAppServiceProjector implements IItemAppService {
         var tipoRisco = iTipoRisco.findById(item.getIdTipoRisco())
                 .orElseThrow(() -> new TipoRiscoNaoEncontradaException(item.getIdTipoRisco()));
 
-        var commandItem = new RegistrarItemCommand(new Random().nextLong(),
+        var commandItem = new RegistrarItemCommand(UUID.randomUUID().toString(),
                 tipoRisco,item.getIdPacoteCobertura(),
-                cotacaoRoot.getId(), item.getLogradouro(),
+                cotacaoRoot.getCodigoCotacao(), item.getLogradouro(),
                 item.getNumero(),item.getComplemento(),
                 item.getCidade(),item.getUf(),item.getCep());
 

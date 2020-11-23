@@ -16,9 +16,8 @@ import javax.persistence.*;
 public class QuestionarioRoot {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    @Column(name = "id", length = 50)
+    private String id;
 
     private boolean possuiAntiFurto;
 
