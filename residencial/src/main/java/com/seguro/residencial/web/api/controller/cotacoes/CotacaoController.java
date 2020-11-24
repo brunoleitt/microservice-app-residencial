@@ -35,7 +35,7 @@ public class CotacaoController implements CotacaoControllerOpenApi {
     }
 
     @Override
-    @PutMapping("/{idCotacao}")
+    @PutMapping("/status/{idCotacao}")
     public void atualizarStatusCotacao(@PathVariable String idCotacao,
                           @RequestBody @Valid AtualizarStatusInput atualizarStatusInput) {
         iCotacaoAppService.atualizarStatusCotacao(idCotacao,atualizarStatusInput);

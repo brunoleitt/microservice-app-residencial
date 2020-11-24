@@ -1,6 +1,7 @@
 package com.seguro.residencial.domain.events.cotacoes;
 
-import com.seguro.residencial.coreapi.model.baseevent.CotacaoEvent;
+import com.seguro.residencial.domain.models.root.cotacoes.StatusCotacao;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
@@ -9,16 +10,10 @@ import lombok.Getter;
  * @autor Bruno Leite
  */
 @Getter
+@AllArgsConstructor
 public class CotacaoStatusAtualizadaEvent {
 
-    public CotacaoStatusAtualizadaEvent(String codigoCotacao,
-                                        String statusAnterior, String statusNovo) {
-        this.codigoCotacao = codigoCotacao;
-        this.statusAnterior = statusAnterior;
-        this.statusNovo = statusNovo;
-    }
-
     private String codigoCotacao;
-    private String statusAnterior;
-    private String statusNovo;
+    private StatusCotacao status;
+
 }

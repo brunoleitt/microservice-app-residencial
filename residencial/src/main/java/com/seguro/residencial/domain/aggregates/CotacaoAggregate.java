@@ -28,7 +28,6 @@ import java.time.LocalDate;
 public class CotacaoAggregate {
 
     @AggregateIdentifier
-    private Long id;
     private String codigoCotacao;
     private LocalDate dataCotacao;
     private LocalDate dataVigenciaInicial;
@@ -49,16 +48,8 @@ public class CotacaoAggregate {
                 createCotacaoCommand.getStatus()));
     }
 
-    @CommandHandler
-    public void on(AtualizarStatusCotacaoCommand command) {
-        AggregateLifecycle.apply(new CotacaoStatusAtualizadaEvent(command.getCodigoCotacao(),
-                command.getStatusAnterior(), command.getStatusNovo()));
-    }
-
-
     @EventSourcingHandler
     public void on(RegistradaCotacaoEvent event) {
-        this.id = event.getId();
         this.codigoCotacao = event.getCodigoCotacao();
         this.dataCotacao = LocalDate.now();
         this.dataVigenciaInicial = event.getDataVigenciaInicial();
@@ -67,4 +58,18 @@ public class CotacaoAggregate {
         this.tipoVigencia = event.getTipoVigencia();
         this.statusCotacao = event.getStatusCotacao();
     }
+
+    @CommandHandler
+    public void atualizarStatus(AtualizarStatusCotacaoCommand command) {
+        AggregateLifecycle.apply(new CotacaoStatusAtualizadaEvent(command.getCodigoCotacao(), command.getStatus()));
+    }
+
+    @EventSourcingHandler
+    public void on(CotacaoStatusAtualizadaEvent event) {
+        this.codigoCotacao = event.getCodigoCotacao();
+        this.statusCotacao = event.getStatus();
+        this.dataCotacao = LocalDate.now();
+    }
+
+
 }

@@ -15,7 +15,7 @@ public class AtualizarStatusCommandValidation {
     public AtualizarStatusCotacaoCommand atualizarStatusCotacaoCommand;
 
     private void validarStatusNovoAnteriorCotacao(){
-        if(atualizarStatusCotacaoCommand.getStatusAnterior().equals("PAGAMENTO_APROVADO"))
+        if(false)//TODO atualizarStatusCotacaoCommand.getStatusAnterior().equals("PAGAMENTO_APROVADO"))
             throw new NegocioException("Não é possivel realizar alteração de uma cotação efetivada");
     }
 

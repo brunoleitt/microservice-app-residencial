@@ -31,6 +31,12 @@ spring:
 axon:
   serializer:
     general: jackson
+  eventhandling:
+    processors:
+      name:
+        mode: tracking
+
+
 
 #  datasource_consulta:
 #    url: jdbc:mysql://localhost:3306/seguros_consulta?useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true&sslMode=DISABLED

@@ -7,14 +7,19 @@ import com.seguro.residencial.domain.interfaces.repository.cotacao.IStatusCotaca
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import com.seguro.residencial.domain.models.root.cotacoes.StatusCotacao;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 
 /**
  * @criado 12/10/2020 - 21:43
  * @projeto Seguro Residencial Simplificado
  * @autor Bruno Leite
  */
+@Slf4j
 @Component
 @AllArgsConstructor
 public class CotacaoCommandHandler {
@@ -39,15 +44,18 @@ public class CotacaoCommandHandler {
         var cotacao = (CotacaoRoot) cotacaoRepository.findByCodigoCotacao(event.getCodigoCotacao())
                 .get();
 
-        var statusCotacao = (StatusCotacao) iStatusCotacao.findByDescricao(event.getStatusNovo())
+        var statusCotacao = (StatusCotacao) iStatusCotacao.findByDescricao(event.getStatus().getDescricao())
                 .get();
 
         cotacao.setStatus(statusCotacao);
+        cotacao.setDataAtualizacao(OffsetDateTime.now());
 
-        if(event.getStatusNovo().equals("CALCULADA")){
+        if(event.getStatus().getDescricao().equals("CALCULADA")){
+            log.info("realizar envio de mensagem para servico de impressao");
             //TODO realizar envio de mensagem para servico de impressao
-        }else if(event.getStatusNovo().equals("PAGAMENTEPENDENTE")){
+        }else if(event.getStatus().getDescricao().equals("AGUARDANDO_PAGAMENTO")){
             //TODO realizar envio de mensagem para servico de pagamento
+            log.info("realizar envio de mensagem para servico de pagamento");
         }
 
         cotacaoRepository.save(cotacao);

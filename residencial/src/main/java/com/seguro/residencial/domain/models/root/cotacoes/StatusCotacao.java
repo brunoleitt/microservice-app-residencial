@@ -1,6 +1,8 @@
 package com.seguro.residencial.domain.models.root.cotacoes;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -11,6 +13,8 @@ import javax.persistence.*;
  */
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class StatusCotacao {
 
     @Id

@@ -73,11 +73,10 @@ public class CotacaoAppServiceProjector implements ICotacaoAppService {
         var status = (StatusCotacao) iStatusCotacao.findById(atualizarStatusInput.getCodigoStatusCotacao())
                 .orElseThrow(()-> new NegocioException(String.format("Não foi possivel encontrar status da cotação com a descrição %d", atualizarStatusInput.getCodigoStatusCotacao())));
 
-        var cotacao = iCotacaoRepository.findByCodigoCotacao(codigoCotaocao)
+        iCotacaoRepository.findByCodigoCotacao(codigoCotaocao)
                 .orElseThrow(()-> new CotacaoNaoEncontradaException(codigoCotaocao));
 
-        var command = new AtualizarStatusCotacaoCommand(codigoCotaocao,
-                cotacao.getStatus().getDescricao(),status.getDescricao());
+        var command = new AtualizarStatusCotacaoCommand(codigoCotaocao,status);
 
         commandGateway.sendAndWait(command);
     }

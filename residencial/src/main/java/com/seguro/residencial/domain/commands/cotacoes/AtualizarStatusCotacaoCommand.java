@@ -1,6 +1,7 @@
 package com.seguro.residencial.domain.commands.cotacoes;
 
 import com.seguro.residencial.domain.commands.validacoes.cotacao.AtualizarStatusCommandValidation;
+import com.seguro.residencial.domain.models.root.cotacoes.StatusCotacao;
 import lombok.Getter;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
@@ -13,10 +14,9 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 public class AtualizarStatusCotacaoCommand  {
 
     public AtualizarStatusCotacaoCommand(String codigoCotacao,
-                                         String statusAnterior, String statusNovo) {
+                                         StatusCotacao status) {
         this.codigoCotacao = codigoCotacao;
-        this.statusAnterior = statusAnterior;
-        this.statusNovo = statusNovo;
+        this.status = status;
     }
 
     void isValid() {
@@ -25,7 +25,7 @@ public class AtualizarStatusCotacaoCommand  {
 
     @TargetAggregateIdentifier
     private String codigoCotacao;
-    private String statusAnterior;
-    private String statusNovo;
+    private StatusCotacao status;
+
 
 }
