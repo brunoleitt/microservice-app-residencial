@@ -6,10 +6,6 @@ import com.seguro.residencial.application.models.view.CotacaoRegistradaViewModel
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import javax.validation.Valid;
 
 @Api(tags = "Cotacao")
 public interface CotacaoControllerOpenApi {

@@ -3,6 +3,7 @@ package com.seguro.residencial.domain.models.root.itens;
 import com.seguro.residencial.domain.models.root.coberturas.CoberturasPacoteRoot;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import lombok.Data;
+
 import javax.persistence.*;
 
 /**

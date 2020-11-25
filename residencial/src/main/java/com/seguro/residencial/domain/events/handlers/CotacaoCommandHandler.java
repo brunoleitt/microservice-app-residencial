@@ -1,17 +1,20 @@
 package com.seguro.residencial.domain.events.handlers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.seguro.residencial.application.assembler.kafka.ImpressaoCotacaoResource;
 import com.seguro.residencial.domain.events.cotacoes.CotacaoStatusAtualizadaEvent;
 import com.seguro.residencial.domain.events.cotacoes.RegistradaCotacaoEvent;
+import com.seguro.residencial.domain.exception.NegocioException;
 import com.seguro.residencial.domain.interfaces.repository.cotacao.ICotacaoRepository;
 import com.seguro.residencial.domain.interfaces.repository.cotacao.IStatusCotacao;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
-import com.seguro.residencial.domain.models.root.cotacoes.StatusCotacao;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.eventhandling.EventHandler;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
 import java.time.OffsetDateTime;
 
 /**
@@ -21,11 +24,16 @@ import java.time.OffsetDateTime;
  */
 @Slf4j
 @Component
-@AllArgsConstructor
+//@AllArgsConstructor
+@RequiredArgsConstructor
 public class CotacaoCommandHandler {
 
     private final ICotacaoRepository cotacaoRepository;
     private final IStatusCotacao iStatusCotacao;
+
+    private final KafkaTemplate<String, String> kafkaTemplate;
+
+    private final ObjectMapper objectMapper;
 
     @EventHandler
     public void on(RegistradaCotacaoEvent event) {
@@ -41,10 +49,10 @@ public class CotacaoCommandHandler {
     @EventHandler
     public void on(CotacaoStatusAtualizadaEvent event){
 
-        var cotacao = (CotacaoRoot) cotacaoRepository.findByCodigoCotacao(event.getCodigoCotacao())
+        var cotacao = cotacaoRepository.findByCodigoCotacao(event.getCodigoCotacao())
                 .get();
 
-        var statusCotacao = (StatusCotacao) iStatusCotacao.findByDescricao(event.getStatus().getDescricao())
+        var statusCotacao = iStatusCotacao.findByDescricao(event.getStatus().getDescricao())
                 .get();
 
         cotacao.setStatus(statusCotacao);
@@ -52,13 +60,25 @@ public class CotacaoCommandHandler {
 
         if(event.getStatus().getDescricao().equals("CALCULADA")){
             log.info("realizar envio de mensagem para servico de impressao");
-            //TODO realizar envio de mensagem para servico de impressao
+            enviarDadosCotacaoImpressao(cotacao);
         }else if(event.getStatus().getDescricao().equals("AGUARDANDO_PAGAMENTO")){
-            //TODO realizar envio de mensagem para servico de pagamento
             log.info("realizar envio de mensagem para servico de pagamento");
         }
 
         cotacaoRepository.save(cotacao);
+    }
+
+    private String converterParaJson(final CotacaoRoot cotacaoRoot) {
+        try {
+            return objectMapper.writeValueAsString(new ImpressaoCotacaoResource(cotacaoRoot));
+        } catch (JsonProcessingException e) {
+            throw new NegocioException(e.getMessage());
+        }
+    }
+
+    public void enviarDadosCotacaoImpressao(final CotacaoRoot cotacaoRoot) {
+        final String mensagem = converterParaJson(cotacaoRoot);
+        kafkaTemplate.send("cotacao-residencial", mensagem);
     }
 
 }

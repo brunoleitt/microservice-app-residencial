@@ -1,7 +1,9 @@
-C:\Projetos\microservice-app-seguros\core\src\main\java\com\seguro\core\docs\BaseSwaggerConfig.java
-C:\Projetos\microservice-app-seguros\core\src\main\java\com\seguro\core\model\ApplicationUser.java
-C:\Projetos\microservice-app-seguros\core\src\main\java\com\seguro\core\repository\CotacaoRepository.java
-C:\Projetos\microservice-app-seguros\core\src\main\java\com\seguro\core\property\JwtConfiguration.java
-C:\Projetos\microservice-app-seguros\core\src\main\java\com\seguro\core\repository\ApplicationUserRepository.java
-C:\Projetos\microservice-app-seguros\core\src\main\java\com\seguro\core\model\AbstractEntity.java
-C:\Projetos\microservice-app-seguros\core\src\main\java\com\seguro\core\model\Cotacao.java
+C:\Projetos\microservice-app-seguros\core\src\main\java\com\seguro\residencial\coreapi\model\basecommand\CotacaoCommand.java
+C:\Projetos\microservice-app-seguros\core\src\main\java\com\seguro\residencial\coreapi\model\baseevent\ItemEvent.java
+C:\Projetos\microservice-app-seguros\core\src\main\java\com\seguro\residencial\coreapi\model\baseevent\CotacaoEvent.java
+C:\Projetos\microservice-app-seguros\core\src\main\java\com\seguro\residencial\coreapi\model\ApplicationUser.java
+C:\Projetos\microservice-app-seguros\core\src\main\java\com\seguro\residencial\infra\auth\JwtConfiguration.java
+C:\Projetos\microservice-app-seguros\core\src\main\java\com\seguro\residencial\coreapi\model\basecommand\ItemCommand.java
+C:\Projetos\microservice-app-seguros\core\src\main\java\com\seguro\residencial\infra\swagger\BaseSwaggerConfig.java
+C:\Projetos\microservice-app-seguros\core\src\main\java\com\seguro\residencial\coreapi\model\AbstractEntity.java
+C:\Projetos\microservice-app-seguros\core\src\main\java\com\seguro\residencial\coreapi\repository\ApplicationUserRepository.java

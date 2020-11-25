@@ -27,6 +27,16 @@ spring:
     url : jdbc:mysql://localhost:3306/seguros?useTimezone=true&serverTimezone=America/Sao_Paulo&allowPublicKeyRetrieval=true&sslMode=DISABLED
     username: root
     password: root
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      retries: 10
+      bootstrap-servers: ${spring.kafka.bootstrap-servers}
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    jackson:
+      serialization:
+        WRITE_DATES_AS_TIMESTAMPS: false
 
 axon:
   serializer:
@@ -35,19 +45,6 @@ axon:
     processors:
       name:
         mode: tracking
-
-
-
-#  datasource_consulta:
-#    url: jdbc:mysql://localhost:3306/seguros_consulta?useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true&sslMode=DISABLED
-#    username: root
-#    password: root
-
-#  mysql_2:
-#    datasource:
-#        url: jdbc:mysql://localhost:3306/seguros_consulta?useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true&sslMode=DISABLED
-#        username: root
-#        password: root
 
 #TODO EnabledJWT
 #jwt:

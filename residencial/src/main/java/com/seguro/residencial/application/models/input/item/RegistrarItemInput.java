@@ -7,7 +7,6 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDate;
 
 /**
  * @criado 26/10/2020 - 17:39

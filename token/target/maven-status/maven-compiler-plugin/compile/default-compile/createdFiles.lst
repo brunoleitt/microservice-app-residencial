@@ -1,5 +1,0 @@
-com\seguro\security\config\SecurityTokenConfig.class
-com\seguro\security\token\creator\TokenCreator.class
-com\seguro\security\util\SecurityContextUtil.class
-com\seguro\security\filter\JwtTokenAuthorizationFilter.class
-com\seguro\security\token\converter\TokenConverter.class

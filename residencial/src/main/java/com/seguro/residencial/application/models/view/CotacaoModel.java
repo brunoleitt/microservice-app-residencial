@@ -1,16 +1,12 @@
 package com.seguro.residencial.application.models.view;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoVigencia;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
 
 /**
  * @criado 02/11/2020 - 23:56

@@ -1,0 +1,18 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: relatorio
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    listener:
+      concurrency: 1
+    consumer:
+      group-id: relatorio
+      bootstrapServers: ${spring.kafka.bootstrap-servers}
+      auto-offset-reset: earliest
+    jackson:
+      serialization:
+        WRITE_DATES_AS_TIMESTAMPS: false

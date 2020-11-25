@@ -1,12 +1,10 @@
 package com.seguro.residencial.domain.models.root.coberturas;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.websocket.server.ServerEndpoint;
 
 /**
  * @criado 23/10/2020 - 16:40

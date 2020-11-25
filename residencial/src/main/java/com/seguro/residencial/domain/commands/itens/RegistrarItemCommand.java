@@ -2,7 +2,6 @@ package com.seguro.residencial.domain.commands.itens;
 
 import com.seguro.residencial.coreapi.model.basecommand.ItemCommand;
 import com.seguro.residencial.domain.commands.validacoes.item.RegistrarItemCommandValidation;
-import com.seguro.residencial.domain.models.root.coberturas.CoberturasPacoteRoot;
 import com.seguro.residencial.domain.models.root.itens.TipoRisco;
 import lombok.Getter;
 

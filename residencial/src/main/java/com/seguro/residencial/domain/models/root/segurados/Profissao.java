@@ -2,7 +2,10 @@ package com.seguro.residencial.domain.models.root.segurados;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * @criado 24/10/2020 - 21:06

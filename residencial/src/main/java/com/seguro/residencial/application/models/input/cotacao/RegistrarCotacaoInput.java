@@ -6,7 +6,6 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.UUID;
 
 /**
  * @criado 12/10/2020 - 15:38

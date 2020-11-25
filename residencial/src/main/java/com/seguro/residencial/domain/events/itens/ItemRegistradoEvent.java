@@ -1,6 +1,5 @@
 package com.seguro.residencial.domain.events.itens;
 
-import com.seguro.residencial.domain.models.root.coberturas.CoberturasPacoteRoot;
 import com.seguro.residencial.domain.models.root.itens.TipoRisco;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

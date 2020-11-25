@@ -2,10 +2,10 @@ package com.seguro.residencial.domain.events.handlers;
 
 import com.seguro.residencial.domain.events.clientes.ClienteRegistradoEvent;
 import com.seguro.residencial.domain.interfaces.repository.segurados.ISeguradoRepository;
-import com.seguro.residencial.domain.models.root.segurados.SeguradoRoot;
-import com.seguro.residencial.domain.models.root.segurados.Profissao;
-import com.seguro.residencial.domain.models.root.segurados.Sexo;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
+import com.seguro.residencial.domain.models.root.segurados.Profissao;
+import com.seguro.residencial.domain.models.root.segurados.SeguradoRoot;
+import com.seguro.residencial.domain.models.root.segurados.Sexo;
 import lombok.AllArgsConstructor;
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.stereotype.Component;

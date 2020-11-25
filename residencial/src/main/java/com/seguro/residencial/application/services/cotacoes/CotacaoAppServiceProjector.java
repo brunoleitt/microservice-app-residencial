@@ -15,10 +15,10 @@ import com.seguro.residencial.domain.interfaces.repository.cotacao.IStatusCotaca
 import com.seguro.residencial.domain.interfaces.repository.cotacao.ITipoCalculoRepository;
 import com.seguro.residencial.domain.interfaces.repository.cotacao.ITipoVigenciaRepository;
 import com.seguro.residencial.domain.models.root.cotacoes.StatusCotacao;
-import jdk.jshell.Snippet;
 import lombok.AllArgsConstructor;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.stereotype.Service;
+
 import java.time.LocalDate;
 import java.util.Random;
 import java.util.UUID;

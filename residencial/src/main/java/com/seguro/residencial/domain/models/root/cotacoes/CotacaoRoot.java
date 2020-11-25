@@ -2,9 +2,9 @@ package com.seguro.residencial.domain.models.root.cotacoes;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.seguro.residencial.domain.models.root.segurados.SeguradoRoot;
 import com.seguro.residencial.domain.models.root.itens.ItemRoot;
 import com.seguro.residencial.domain.models.root.questionarios.QuestionarioRoot;
+import com.seguro.residencial.domain.models.root.segurados.SeguradoRoot;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 

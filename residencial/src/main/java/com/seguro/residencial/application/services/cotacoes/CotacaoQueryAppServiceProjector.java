@@ -8,6 +8,7 @@ import com.seguro.residencial.domain.interfaces.repository.cotacao.ICotacaoQuery
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 /**

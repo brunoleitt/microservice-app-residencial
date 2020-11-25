@@ -2,6 +2,7 @@ package com.seguro.residencial.application.interfaces;
 
 import com.seguro.residencial.application.models.view.CotacaoModel;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
+
 import java.util.List;
 
 /**

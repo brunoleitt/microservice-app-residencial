@@ -6,7 +6,6 @@ import lombok.Getter;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
 
 /**
  * @criado 21/11/2020 - 12:31

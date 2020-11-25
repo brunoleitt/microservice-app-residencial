@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
 
 /**
  * @criado 21/11/2020 - 12:42

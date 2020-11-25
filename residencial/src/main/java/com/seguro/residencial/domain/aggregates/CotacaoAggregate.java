@@ -64,12 +64,12 @@ public class CotacaoAggregate {
         AggregateLifecycle.apply(new CotacaoStatusAtualizadaEvent(command.getCodigoCotacao(), command.getStatus()));
     }
 
-    @EventSourcingHandler
-    public void on(CotacaoStatusAtualizadaEvent event) {
-        this.codigoCotacao = event.getCodigoCotacao();
-        this.statusCotacao = event.getStatus();
-        this.dataCotacao = LocalDate.now();
-    }
+//    @EventSourcingHandler
+//    public void on(CotacaoStatusAtualizadaEvent event) {
+//        this.codigoCotacao = event.getCodigoCotacao();
+//        this.statusCotacao = event.getStatus();
+//        this.dataCotacao = LocalDate.now();
+//    }
 
 
 }

@@ -4,6 +4,7 @@ import com.seguro.residencial.application.interfaces.ICustomJpaRepository;
 import com.seguro.residencial.domain.models.root.coberturas.CoberturasPacoteRoot;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
 import java.util.Optional;
 
 /**

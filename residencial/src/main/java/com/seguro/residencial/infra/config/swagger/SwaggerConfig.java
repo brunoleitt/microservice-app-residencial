@@ -1,13 +1,13 @@
 package com.seguro.residencial.infra.config.swagger;
 
-import com.seguro.residencial.domain.models.root.segurados.SeguradoRoot;
-import com.seguro.residencial.domain.models.root.segurados.Profissao;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoVigencia;
 import com.seguro.residencial.domain.models.root.itens.ItemEndereco;
 import com.seguro.residencial.domain.models.root.itens.ItemRoot;
 import com.seguro.residencial.domain.models.root.questionarios.QuestionarioRoot;
+import com.seguro.residencial.domain.models.root.segurados.Profissao;
+import com.seguro.residencial.domain.models.root.segurados.SeguradoRoot;
 import com.seguro.residencial.web.api.controller.exceptionHandle.Problem;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

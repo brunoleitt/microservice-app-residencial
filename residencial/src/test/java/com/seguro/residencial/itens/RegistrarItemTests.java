@@ -5,11 +5,10 @@ import io.restassured.http.ContentType;
 import lombok.Getter;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import util.ResourceUtils;
+
 import static io.restassured.RestAssured.given;
 
 /**

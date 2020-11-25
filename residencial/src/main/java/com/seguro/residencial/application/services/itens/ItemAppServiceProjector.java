@@ -4,16 +4,13 @@ import com.seguro.residencial.application.interfaces.IItemAppService;
 import com.seguro.residencial.application.models.input.item.RegistrarItemInput;
 import com.seguro.residencial.domain.commands.itens.RegistrarItemCommand;
 import com.seguro.residencial.domain.exception.CotacaoNaoEncontradaException;
-import com.seguro.residencial.domain.exception.coberturas.PacoteCoberturaNaoEncontradaException;
 import com.seguro.residencial.domain.exception.itens.TipoRiscoNaoEncontradaException;
-import com.seguro.residencial.domain.interfaces.repository.coberturas.IPacoteCoberturasRespository;
 import com.seguro.residencial.domain.interfaces.repository.cotacao.ICotacaoQueryRepository;
 import com.seguro.residencial.domain.interfaces.repository.item.ITipoRisco;
 import lombok.AllArgsConstructor;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.stereotype.Service;
 
-import java.util.Random;
 import java.util.UUID;
 
 /**
