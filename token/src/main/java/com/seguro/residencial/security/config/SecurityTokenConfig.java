@@ -1,16 +1,15 @@
 package com.seguro.residencial.security.config;
 
 import com.seguro.residencial.infra.auth.JwtConfiguration;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.cors.CorsConfiguration;
 
-
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
-    protected final JwtConfiguration jwtConfiguration;
+
+    //private final JwtConfiguration jwtConfiguration;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

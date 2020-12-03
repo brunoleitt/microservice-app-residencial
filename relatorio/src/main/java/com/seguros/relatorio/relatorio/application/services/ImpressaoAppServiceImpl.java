@@ -1,4 +1,4 @@
-package com.seguros.relatorio.relatorio;
+package com.seguros.relatorio.relatorio.application.services;
 
 import com.seguros.relatorio.relatorio.application.interfaces.IImpressaoAppService;
 import com.seguros.relatorio.relatorio.domain.model.coberturas.Coberturas;
@@ -9,33 +9,30 @@ import com.seguros.relatorio.relatorio.domain.model.itens.ItemEndereco;
 import com.seguros.relatorio.relatorio.domain.model.itens.ItemRoot;
 import com.seguros.relatorio.relatorio.domain.repository.ICotacaoRepository;
 import lombok.AllArgsConstructor;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-class RelatorioApplicationTests {
+/**
+ * @criado 02/12/2020 - 10:46
+ * @projeto Seguro Residencial Simplificado
+ * @autor Bruno Leite
+ */
+@AllArgsConstructor
+@Service
+public class ImpressaoAppServiceImpl implements IImpressaoAppService {
 
+    private final ICotacaoRepository cotacaoRepository;
 
-    @Autowired
-    private IImpressaoAppService impressaoAppService;
-
-    @Test
-    void contextLoads() {
+    @Override
+    public Cotacao consultaCotacao(String codigoCotacao) {
+        return cotacaoRepository.findById(codigoCotacao)
+                .orElseThrow(() -> new RuntimeException("Cotacao não encontrada"));
     }
 
-
-    @Test
-    public void cadastrarCotacaoImpressao(){
+    @Override
+    public Cotacao registrarImpressaoCotacao(Cotacao cotacao) {
 
         var servicos = new CoberturasServicos("Eletricista");
         var servico2 = new CoberturasServicos("Encanador");
@@ -50,7 +47,7 @@ class RelatorioApplicationTests {
         List<Coberturas> coberturas = new ArrayList<>();
         coberturas.add(cobertura_1);
         coberturas.add(cobertura_2);
-        
+
 
         var pacoteCobertura = new PacoteCoberturaRoot("Basica","1400","1800",coberturas,coberturasServicos);
 
@@ -60,12 +57,8 @@ class RelatorioApplicationTests {
         var item = new ItemRoot("APTO",enderecoItem,pacoteCobertura);
 
         var objCotacao = new Cotacao("8eb8cff8-1a38-45f5-a7db-333a8fe3acbb","2020-11-24",
-                                 "2021-11-10","2022-11-10","CALCULADA","COTACAO","ANUAL",item);
+                "2021-11-10","2022-11-10","CALCULADA","COTACAO","ANUAL",item);
 
-
-        var cotacao =  impressaoAppService.registrarImpressaoCotacao(objCotacao);
+        return cotacaoRepository.save(objCotacao);
     }
-
-
-
 }
