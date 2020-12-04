@@ -1,9 +1,9 @@
 package com.seguros.relatorio.relatorio.application.services;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.seguros.relatorio.relatorio.application.assembler.ObjectMapperUtils;
 import com.seguros.relatorio.relatorio.application.interfaces.IImpressaoAppService;
 import com.seguros.relatorio.relatorio.application.models.views.cotacoes.CotacaoViewModel;
+import com.seguros.relatorio.relatorio.domain.exception.CotacaoNaoEntradaException;
 import com.seguros.relatorio.relatorio.domain.model.coberturas.Coberturas;
 import com.seguros.relatorio.relatorio.domain.model.coberturas.CoberturasServicos;
 import com.seguros.relatorio.relatorio.domain.model.coberturas.PacoteCoberturaRoot;
@@ -33,7 +33,7 @@ public class ImpressaoAppServiceImpl implements IImpressaoAppService {
     @Override
     public CotacaoViewModel consultaCotacao(String codigoCotacao) {
         var cotacao = cotacaoRepository.findById(codigoCotacao)
-                .orElseThrow(() -> new RuntimeException("Cotacao não encontrada"));
+                .orElseThrow(() -> new CotacaoNaoEntradaException(codigoCotacao));
 
         return ObjectMapperUtils.map(cotacao,CotacaoViewModel.class);
     }

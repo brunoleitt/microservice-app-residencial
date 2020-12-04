@@ -1,4 +1,4 @@
-package com.seguro.residencial.web.api.controller.exceptionHandle;
+package com.seguros.relatorio.relatorio.web.api.exceptionHandle;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -13,7 +13,7 @@ import java.util.List;
 @JsonInclude(Include.NON_NULL)
 @Getter
 @Builder
-public class Problem {
+public class Problema {
 
 	@ApiModelProperty(example = "400", position = 1)
 	private Integer status;

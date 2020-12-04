@@ -1,4 +1,4 @@
-package com.seguros.relatorio.relatorio.web.api;
+package com.seguros.relatorio.relatorio.web.api.controller;
 
 import com.seguros.relatorio.relatorio.application.interfaces.IImpressaoAppService;
 import com.seguros.relatorio.relatorio.application.models.views.cotacoes.CotacaoViewModel;
