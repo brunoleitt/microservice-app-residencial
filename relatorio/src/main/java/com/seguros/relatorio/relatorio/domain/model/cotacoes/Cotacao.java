@@ -1,10 +1,12 @@
 package com.seguros.relatorio.relatorio.domain.model.cotacoes;
 
+import com.seguros.relatorio.relatorio.application.models.views.itens.ItemViewModel;
 import com.seguros.relatorio.relatorio.domain.model.itens.ItemRoot;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 import org.springframework.data.annotation.Id;
 
 /**

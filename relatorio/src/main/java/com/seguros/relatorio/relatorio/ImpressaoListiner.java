@@ -19,7 +19,7 @@ public class ImpressaoListiner {
 
     private final ObjectMapper objectMapper;
 
-    @KafkaListener(topics = "cotacao-residencial")
+    @KafkaListener(topics = "cotacao-residencial", groupId = "relatorio")
     public void lerMensagemCotacao(final String mensagem){
         log.info(mensagem);
     }

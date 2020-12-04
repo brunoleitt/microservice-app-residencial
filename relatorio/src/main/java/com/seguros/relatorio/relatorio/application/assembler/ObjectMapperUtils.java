@@ -1,8 +1,9 @@
-package com.seguro.residencial.application.assembler;
+package com.seguros.relatorio.relatorio.application.assembler;
 
 import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;

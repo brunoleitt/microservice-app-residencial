@@ -1,6 +1,9 @@
 package com.seguros.relatorio.relatorio.application.services;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.seguros.relatorio.relatorio.application.assembler.ObjectMapperUtils;
 import com.seguros.relatorio.relatorio.application.interfaces.IImpressaoAppService;
+import com.seguros.relatorio.relatorio.application.models.views.cotacoes.CotacaoViewModel;
 import com.seguros.relatorio.relatorio.domain.model.coberturas.Coberturas;
 import com.seguros.relatorio.relatorio.domain.model.coberturas.CoberturasServicos;
 import com.seguros.relatorio.relatorio.domain.model.coberturas.PacoteCoberturaRoot;
@@ -9,6 +12,7 @@ import com.seguros.relatorio.relatorio.domain.model.itens.ItemEndereco;
 import com.seguros.relatorio.relatorio.domain.model.itens.ItemRoot;
 import com.seguros.relatorio.relatorio.domain.repository.ICotacaoRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,15 +24,18 @@ import java.util.List;
  * @autor Bruno Leite
  */
 @AllArgsConstructor
+@Slf4j
 @Service
 public class ImpressaoAppServiceImpl implements IImpressaoAppService {
 
     private final ICotacaoRepository cotacaoRepository;
 
     @Override
-    public Cotacao consultaCotacao(String codigoCotacao) {
-        return cotacaoRepository.findById(codigoCotacao)
+    public CotacaoViewModel consultaCotacao(String codigoCotacao) {
+        var cotacao = cotacaoRepository.findById(codigoCotacao)
                 .orElseThrow(() -> new RuntimeException("Cotacao não encontrada"));
+
+        return ObjectMapperUtils.map(cotacao,CotacaoViewModel.class);
     }
 
     @Override

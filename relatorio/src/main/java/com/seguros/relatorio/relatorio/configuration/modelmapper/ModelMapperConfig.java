@@ -1,4 +1,4 @@
-package com.seguro.residencial.infra.config.modelmapper;
+package com.seguros.relatorio.relatorio.configuration.modelmapper;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

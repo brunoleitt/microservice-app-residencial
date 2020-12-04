@@ -46,7 +46,7 @@ public class CoberturasQueryController implements CoberturasControllerOpenApi {
 
     @Override
     @GetMapping("/tiporisco/{idTipoRisco}/coberturas/{idTipoCobertura}/pacote-servicos")
-    public ResponseEntity<PacoteServicosModel> consultarPacoteServicosCobertura(@PathVariable Long idTipoRisco,
+        public ResponseEntity<PacoteServicosModel> consultarPacoteServicosCobertura(@PathVariable Long idTipoRisco,
                                                                                 @PathVariable Long idTipoCobertura) {
 
         var pacoteServicos = iPacoteCoberturas.consultarPacoteServicosCobertura(idTipoCobertura,idTipoRisco)
