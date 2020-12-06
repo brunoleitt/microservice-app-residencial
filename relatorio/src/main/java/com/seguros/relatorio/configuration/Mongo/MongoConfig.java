@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
  * @autor Bruno Leite
  */
 @Configuration
-@EnableMongoRepositories(basePackages = "com.seguros.relatorio.relatorio.domain.repository")
+@EnableMongoRepositories(basePackages = "com.seguros.relatorio.domain.repository")
 public class MongoConfig extends AbstractMongoClientConfiguration  {
 
     @Override

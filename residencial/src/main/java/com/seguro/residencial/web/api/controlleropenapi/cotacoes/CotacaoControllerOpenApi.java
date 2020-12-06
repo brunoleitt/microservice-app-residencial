@@ -2,7 +2,7 @@ package com.seguro.residencial.web.api.controlleropenapi.cotacoes;
 
 import com.seguro.residencial.application.models.input.cotacao.AtualizarStatusInput;
 import com.seguro.residencial.application.models.input.cotacao.RegistrarCotacaoInput;
-import com.seguro.residencial.application.models.view.CotacaoRegistradaViewModel;
+import com.seguro.residencial.application.models.view.api.CotacaoRegistradaViewModel;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

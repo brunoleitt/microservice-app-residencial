@@ -1,4 +1,4 @@
-package com.seguro.residencial.application.models.view;
+package com.seguro.residencial.application.models.view.api;
 
 import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoVigencia;

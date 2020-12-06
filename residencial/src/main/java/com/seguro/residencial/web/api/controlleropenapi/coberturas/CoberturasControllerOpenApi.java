@@ -1,7 +1,7 @@
 package com.seguro.residencial.web.api.controlleropenapi.coberturas;
 
-import com.seguro.residencial.application.models.view.coberturas.PacoteCoberturaModel;
-import com.seguro.residencial.application.models.view.coberturas.PacoteServicosModel;
+import com.seguro.residencial.application.models.view.api.PacoteCoberturaModel;
+import com.seguro.residencial.application.models.view.api.PacoteServicosModel;
 import com.seguro.residencial.web.api.controller.exceptionHandle.Problem;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;

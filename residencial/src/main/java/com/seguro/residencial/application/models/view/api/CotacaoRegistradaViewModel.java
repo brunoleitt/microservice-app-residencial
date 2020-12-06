@@ -1,4 +1,4 @@
-package com.seguro.residencial.application.models.view;
+package com.seguro.residencial.application.models.view.api;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;

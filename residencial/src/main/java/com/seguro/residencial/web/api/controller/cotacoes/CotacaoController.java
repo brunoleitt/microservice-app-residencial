@@ -3,7 +3,7 @@ package com.seguro.residencial.web.api.controller.cotacoes;
 import com.seguro.residencial.application.interfaces.ICotacaoAppService;
 import com.seguro.residencial.application.models.input.cotacao.AtualizarStatusInput;
 import com.seguro.residencial.application.models.input.cotacao.RegistrarCotacaoInput;
-import com.seguro.residencial.application.models.view.CotacaoRegistradaViewModel;
+import com.seguro.residencial.application.models.view.api.CotacaoRegistradaViewModel;
 import com.seguro.residencial.web.api.controlleropenapi.cotacoes.CotacaoControllerOpenApi;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

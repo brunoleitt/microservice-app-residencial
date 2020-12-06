@@ -1,4 +1,4 @@
-package com.seguro.residencial.application.models.view.coberturas;
+package com.seguro.residencial.application.models.view.api;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

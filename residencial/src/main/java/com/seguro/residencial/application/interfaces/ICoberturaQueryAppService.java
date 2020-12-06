@@ -1,6 +1,6 @@
 package com.seguro.residencial.application.interfaces;
 
-import com.seguro.residencial.application.models.view.coberturas.CoberturasTipoRiscoModel;
+import com.seguro.residencial.application.models.view.api.CoberturasTipoRiscoModel;
 
 /**
  * @criado 16/11/2020 - 20:58

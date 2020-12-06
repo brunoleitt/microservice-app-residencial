@@ -3,8 +3,8 @@ package com.seguro.residencial.domain.models.root.segurados;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -17,6 +17,7 @@ import java.time.LocalDate;
 @Data
 @Entity
 @AllArgsConstructor
+@EqualsAndHashCode
 @NoArgsConstructor
 @Table(name = "segurado")
 public class SeguradoRoot {
@@ -45,19 +46,19 @@ public class SeguradoRoot {
 
     private LocalDate dataNascimento;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idProfissao"
             , nullable = false
             , foreignKey = @ForeignKey(name = "fk_profissaoSegurado"))
     private Profissao profissao;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idSexo"
             , nullable = false
             , foreignKey = @ForeignKey(name = "fk_sexoSegurado"))
     private Sexo sexo;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idCotacao"
             , nullable = false
             , foreignKey = @ForeignKey(name = "fk_cotacaoSegurado"))

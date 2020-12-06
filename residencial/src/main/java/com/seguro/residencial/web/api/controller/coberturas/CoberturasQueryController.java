@@ -1,8 +1,8 @@
 package com.seguro.residencial.web.api.controller.coberturas;
 
 import com.seguro.residencial.application.assembler.ObjectMapperUtils;
-import com.seguro.residencial.application.models.view.coberturas.PacoteCoberturaModel;
-import com.seguro.residencial.application.models.view.coberturas.PacoteServicosModel;
+import com.seguro.residencial.application.models.view.api.PacoteCoberturaModel;
+import com.seguro.residencial.application.models.view.api.PacoteServicosModel;
 import com.seguro.residencial.domain.exception.coberturas.PacoteCoberturaTipoRiscoNaoEncontradaException;
 import com.seguro.residencial.domain.exception.coberturas.ServicosCoberturaTipoRiscoNaoEncontradaException;
 import com.seguro.residencial.domain.interfaces.repository.coberturas.IPacoteCoberturasRespository;

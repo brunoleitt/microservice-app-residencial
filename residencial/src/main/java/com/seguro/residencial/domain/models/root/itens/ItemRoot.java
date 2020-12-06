@@ -1,8 +1,14 @@
 package com.seguro.residencial.domain.models.root.itens;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.seguro.residencial.domain.models.root.coberturas.CoberturasPacoteRoot;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -11,9 +17,11 @@ import javax.persistence.*;
  * @projeto Seguro Residencial Simplificado
  * @autor Bruno Leite
  */
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "item")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 public class ItemRoot {
 
     @Id
@@ -30,12 +38,11 @@ public class ItemRoot {
             , foreignKey = @ForeignKey(name = "fk_pacoteCobertura"))
     private CoberturasPacoteRoot cobertura;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_tipo_risco", referencedColumnName="id"
             , foreignKey = @ForeignKey(name = "fk_tipoRisco"))
     private TipoRisco tipoRisco;
 
-    @OneToOne(mappedBy = "item",fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private ItemEndereco enderecoItem;
-
 }

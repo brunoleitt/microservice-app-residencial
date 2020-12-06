@@ -1,6 +1,6 @@
 package com.seguro.residencial.application.assembler;
 
-import com.seguro.residencial.application.models.view.CotacaoModel;
+import com.seguro.residencial.application.models.view.api.CotacaoModel;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

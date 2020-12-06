@@ -2,7 +2,7 @@ package com.seguro.residencial.application.services.cotacoes;
 
 import com.seguro.residencial.application.assembler.CotacaoModelAssembler;
 import com.seguro.residencial.application.interfaces.ICotacaoQueryAppService;
-import com.seguro.residencial.application.models.view.CotacaoModel;
+import com.seguro.residencial.application.models.view.api.CotacaoModel;
 import com.seguro.residencial.domain.exception.CotacaoNaoEncontradaException;
 import com.seguro.residencial.domain.interfaces.repository.cotacao.ICotacaoQueryRepository;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;

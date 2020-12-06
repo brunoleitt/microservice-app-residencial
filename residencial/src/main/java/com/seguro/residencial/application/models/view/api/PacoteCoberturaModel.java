@@ -1,4 +1,4 @@
-package com.seguro.residencial.application.models.view.coberturas;
+package com.seguro.residencial.application.models.view.api;
 
 import com.seguro.residencial.domain.models.root.itens.TipoRisco;
 import lombok.AllArgsConstructor;

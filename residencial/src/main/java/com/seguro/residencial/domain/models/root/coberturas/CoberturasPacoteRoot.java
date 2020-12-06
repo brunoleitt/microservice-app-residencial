@@ -30,7 +30,7 @@ public class CoberturasPacoteRoot {
     @Column(nullable = false, length = 30)
     private String descricao;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idTipoRisco"
             , nullable = false
             , foreignKey = @ForeignKey(name = "fk_cobertura_pacote_tipo_risco"))

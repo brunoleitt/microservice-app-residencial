@@ -1,6 +1,6 @@
 package com.seguro.residencial.web.api.controlleropenapi.cotacoes;
 
-import com.seguro.residencial.application.models.view.CotacaoModel;
+import com.seguro.residencial.application.models.view.api.CotacaoModel;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import com.seguro.residencial.web.api.controller.exceptionHandle.Problem;
 import io.swagger.annotations.*;

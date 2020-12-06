@@ -1,5 +1,4 @@
 package com.seguros.relatorio.domain.model.cotacoes;
-
 import com.seguros.relatorio.domain.model.itens.ItemRoot;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,7 +15,7 @@ import org.springframework.data.annotation.Id;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cotacao {
+public class CotacaoOld {
 
     @Id
     private String codigoCotacao;
@@ -27,6 +26,4 @@ public class Cotacao {
     private String tipoCalculo;
     private String tipoVigencia;
     private ItemRoot item;
-
-
 }

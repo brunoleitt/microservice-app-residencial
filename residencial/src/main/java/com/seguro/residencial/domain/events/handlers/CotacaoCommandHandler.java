@@ -2,12 +2,13 @@ package com.seguro.residencial.domain.events.handlers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.seguro.residencial.application.assembler.kafka.ImpressaoCotacaoResource;
+import com.seguro.residencial.application.models.view.messages.relatorios.cotacoes.CotacaoResource;
 import com.seguro.residencial.domain.events.cotacoes.CotacaoStatusAtualizadaEvent;
 import com.seguro.residencial.domain.events.cotacoes.RegistradaCotacaoEvent;
+import com.seguro.residencial.domain.exception.CotacaoNaoEncontradaException;
 import com.seguro.residencial.domain.exception.NegocioException;
+import com.seguro.residencial.domain.interfaces.repository.cotacao.ICotacaoImpressaoRepository;
 import com.seguro.residencial.domain.interfaces.repository.cotacao.ICotacaoRepository;
-import com.seguro.residencial.domain.interfaces.repository.cotacao.IStatusCotacao;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,15 +25,16 @@ import java.time.OffsetDateTime;
  */
 @Slf4j
 @Component
-//@AllArgsConstructor
 @RequiredArgsConstructor
 public class CotacaoCommandHandler {
 
+    private static final String CALCULADA = "CALCULADA";
+    private static final String AGUARDANDO_PAGAMENTO = "AGUARDANDO_PAGAMENTO";
+    private static final String COTACAO_RESIDENCIAL = "cotacao-residencial";
+
     private final ICotacaoRepository cotacaoRepository;
-    private final IStatusCotacao iStatusCotacao;
-
+    private final ICotacaoImpressaoRepository iCotacaoImpressaoRepository;
     private final KafkaTemplate<String, String> kafkaTemplate;
-
     private final ObjectMapper objectMapper;
 
     @EventHandler
@@ -47,39 +49,42 @@ public class CotacaoCommandHandler {
     }
 
     @EventHandler
-    public void on(CotacaoStatusAtualizadaEvent event){
+    public void on(CotacaoStatusAtualizadaEvent event) {
 
         var cotacao = cotacaoRepository.findByCodigoCotacao(event.getCodigoCotacao())
-                .get();
+                .orElseThrow(() -> new CotacaoNaoEncontradaException(event.getCodigoCotacao()));
 
-        var statusCotacao = iStatusCotacao.findByDescricao(event.getStatus().getDescricao())
-                .get();
+        var objImpressao = iCotacaoImpressaoRepository.consultarCotacaoImpressao(event.getCodigoCotacao());
 
-        cotacao.setStatus(statusCotacao);
-        cotacao.setDataAtualizacao(OffsetDateTime.now());
+        atualzarObjCotacao(event, cotacao);
 
-        if(event.getStatus().getDescricao().equals("CALCULADA")){
+        if (event.getStatus().getDescricao().equals(CALCULADA)) {
             log.info("realizar envio de mensagem para servico de impressao");
-            enviarDadosCotacaoImpressao(cotacao);
-        }else if(event.getStatus().getDescricao().equals("AGUARDANDO_PAGAMENTO")){
+            enviarDadosCotacaoImpressao(objImpressao);
+        } else if (event.getStatus().getDescricao().equals(AGUARDANDO_PAGAMENTO)) {
             log.info("realizar envio de mensagem para servico de pagamento");
         }
 
         cotacaoRepository.save(cotacao);
     }
 
-    private String converterParaJson(final CotacaoRoot cotacaoRoot) {
+
+    private String converterParaJson(final CotacaoResource cotacaoResource) {
         try {
-            return objectMapper.writeValueAsString(new ImpressaoCotacaoResource(cotacaoRoot));
+            return objectMapper.writeValueAsString(cotacaoResource);
         } catch (JsonProcessingException e) {
             throw new NegocioException(e.getMessage());
         }
     }
 
-    public void enviarDadosCotacaoImpressao(final CotacaoRoot cotacaoRoot) {
-        final String mensagem = converterParaJson(cotacaoRoot);
-        kafkaTemplate.send("cotacao-residencial", mensagem);
+    private void enviarDadosCotacaoImpressao(final CotacaoResource cotacaoResource) {
+        String mensagem = converterParaJson(cotacaoResource);
+        kafkaTemplate.send(COTACAO_RESIDENCIAL, mensagem);
     }
 
+    private void atualzarObjCotacao(CotacaoStatusAtualizadaEvent event, CotacaoRoot cotacao) {
+        cotacao.setStatus(event.getStatus());
+        cotacao.setDataAtualizacao(OffsetDateTime.now());
+    }
 }
 

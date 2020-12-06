@@ -4,7 +4,6 @@ import com.seguro.residencial.application.interfaces.ICustomJpaRepository;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -21,9 +20,7 @@ public interface ICotacaoQueryRepository extends ICustomJpaRepository<CotacaoRoo
     Optional<CotacaoRoot> consultarCotacao(String codigoCotocao);
 
     @Query("select c from CotacaoRoot c left join fetch c.tipoCalculo " +
-            "left join fetch c.tipoVigencia " +
-            "left join fetch c.segurado " +
-            "left join fetch c.item " +
-            "left join fetch c.questionario")
+            "left join fetch c.tipoVigencia")
     List<CotacaoRoot> buscarTodos();
+
 }

@@ -1,21 +1,18 @@
-package com.seguro.residencial.application.models.view.coberturas;
+package com.seguros.relatorio.application.assembler.relatorios.cotacoes;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 /**
- * @criado 16/11/2020 - 21:15
+ * @criado 05/12/2020 - 18:29
  * @projeto Seguro Residencial Simplificado
  * @autor Bruno Leite
  */
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ServicosModel {
-    private Long idCoberturasServicos;
+public class CoberturaServicosResource {
     private String descricao;
     private String detalheServicos;
     private String urlImagemServico;
