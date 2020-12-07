@@ -6,8 +6,8 @@ import lombok.NoArgsConstructor;
 
 /**
  * @criado 05/12/2020 - 18:27
- * @projeto Seguro Residencial Simplificado
- * @autor Bruno Leite
+ * @projeto Impressão de cotação e propostas.
+ * @autor Bruno Leite da
  */
 @Data
 @NoArgsConstructor
