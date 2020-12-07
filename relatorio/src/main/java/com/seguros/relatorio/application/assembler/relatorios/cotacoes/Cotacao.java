@@ -26,7 +26,7 @@ public class Cotacao {
     private StatusCotacaoResource status;
     private ItemResource item;
     private SeguradoResource segurado;
-    private String TesteUsuario;
+    private String brunoLeite;
 
     @Getter
     @Setter
