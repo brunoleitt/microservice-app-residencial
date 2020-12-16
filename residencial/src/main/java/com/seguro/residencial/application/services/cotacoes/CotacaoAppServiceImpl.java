@@ -13,8 +13,8 @@ import com.seguro.residencial.domain.interfaces.repository.cotacao.IStatusCotaca
 import com.seguro.residencial.domain.interfaces.repository.cotacao.ITipoCalculoRepository;
 import com.seguro.residencial.domain.interfaces.repository.cotacao.ITipoVigenciaRepository;
 import com.seguro.residencial.domain.models.root.cotacoes.StatusCotacao;
+import com.seguro.residencial.service.ICotacaoCommand;
 import lombok.AllArgsConstructor;
-import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -28,9 +28,11 @@ import java.util.UUID;
  */
 @Service
 @AllArgsConstructor
-public class CotacaoAppServiceProjector implements ICotacaoAppService {
+public class CotacaoAppServiceImpl implements ICotacaoAppService {
 
-    private final CommandGateway commandGateway;
+
+    private final ICotacaoCommand cotacaoCommand;
+
     private final ITipoCalculoRepository tipoCalculoRepository;
     private final ITipoVigenciaRepository tipoVigenciaRepository;
     private final IStatusCotacao iStatusCotacao;
@@ -58,7 +60,7 @@ public class CotacaoAppServiceProjector implements ICotacaoAppService {
                 tipoVigencia,
                 statusCotacao);
 
-            commandGateway.sendAndWait(command);
+        cotacaoCommand.command(command);
 
         return new CotacaoRegistradaViewModel(command.getCodigoCotacao());
     }
@@ -71,6 +73,6 @@ public class CotacaoAppServiceProjector implements ICotacaoAppService {
 
         var command = new AtualizarStatusCotacaoCommand(codigoCotaocao,status);
 
-        commandGateway.sendAndWait(command);
+        cotacaoCommand.command(command);
     }
 }

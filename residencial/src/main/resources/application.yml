@@ -38,14 +38,6 @@ spring:
       serialization:
         WRITE_DATES_AS_TIMESTAMPS: false
 
-axon:
-  serializer:
-    general: jackson
-  eventhandling:
-    processors:
-      name:
-        mode: tracking
-
 #TODO EnabledJWT
 #jwt:
 #  config:

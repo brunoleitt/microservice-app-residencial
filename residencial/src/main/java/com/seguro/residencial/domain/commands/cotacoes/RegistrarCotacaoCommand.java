@@ -1,6 +1,5 @@
 package com.seguro.residencial.domain.commands.cotacoes;
 
-import com.seguro.residencial.coreapi.model.basecommand.CotacaoCommand;
 import com.seguro.residencial.domain.commands.validacoes.cotacao.RegistrarCotacaoCommandValidation;
 import com.seguro.residencial.domain.models.root.cotacoes.StatusCotacao;
 import com.seguro.residencial.domain.models.root.cotacoes.TipoCalculo;
@@ -15,7 +14,7 @@ import java.time.LocalDate;
  * @autor Bruno Leite
  */
 @Getter
-public class RegistrarCotacaoCommand extends CotacaoCommand {
+public class RegistrarCotacaoCommand  {
 
     private final int anual = 1;
     private final int bianual = 2;
@@ -27,7 +26,8 @@ public class RegistrarCotacaoCommand extends CotacaoCommand {
                                    TipoCalculo tipoCalculo,
                                    TipoVigencia tipoVigencia,
                                    StatusCotacao status) {
-        super(id, codigoCotacao);
+        this.id =id;
+        this.codigoCotacao = codigoCotacao;
         this.dataCotacao = dataCotacao;
         this.dataVigenciaInicial = dataVigenciaInicial;
         this.tipoCalculo = tipoCalculo;
@@ -37,6 +37,8 @@ public class RegistrarCotacaoCommand extends CotacaoCommand {
         isValid();
     }
 
+    private Long id;
+    private String codigoCotacao;
     private LocalDate dataCotacao;
     private LocalDate dataVigenciaInicial;
     private LocalDate dataVigenciaFinal;
