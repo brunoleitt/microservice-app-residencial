@@ -1,64 +1,57 @@
-package com.seguro.residencial.domain.events.handlers;
+package com.seguro.residencial.service.impl;
 
-import com.seguro.residencial.domain.events.itens.ItemRegistradoEvent;
+import com.seguro.residencial.domain.commands.itens.RegistrarItemCommand;
 import com.seguro.residencial.domain.interfaces.repository.item.IItemEnderecoRepository;
 import com.seguro.residencial.domain.interfaces.repository.item.IItemRepository;
 import com.seguro.residencial.domain.models.root.coberturas.CoberturasPacoteRoot;
 import com.seguro.residencial.domain.models.root.cotacoes.CotacaoRoot;
 import com.seguro.residencial.domain.models.root.itens.ItemEndereco;
 import com.seguro.residencial.domain.models.root.itens.ItemRoot;
+import com.seguro.residencial.service.IItemCommand;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.axonframework.eventhandling.EventHandler;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 /**
- * @criado 07/11/2020 - 16:58
+ * @criado 15/12/2020 - 21:46
  * @projeto Seguro Residencial Simplificado
  * @autor Bruno Leite
  */
-@Slf4j
-@Component
+@Service
 @AllArgsConstructor
-public class ItemCommandHandle {
+public class ItemCommand implements IItemCommand {
 
     private final IItemRepository itemRepository;
 
     private final IItemEnderecoRepository iItemEnderecoRepository;
 
-    @EventHandler
-    @Transactional
-    public String on(ItemRegistradoEvent event) {
+    @Override
+    public void command(RegistrarItemCommand command) {
 
         var cotacao = new CotacaoRoot();
-        cotacao.setCodigoCotacao(event.getCodigoCotacao());
+        cotacao.setCodigoCotacao(command.getIdCotacao());
 
         var item = new ItemRoot();
         item.setCotacao(cotacao);
-        item.setId(event.getId());
+        item.setId(command.getId());
 
         var pacoteCobertura = new CoberturasPacoteRoot();
-        pacoteCobertura.setId(event.getIdPacoteCobertura());
+        pacoteCobertura.setId(command.getIdPacoteCobertura());
 
         item.setCobertura(pacoteCobertura);
-        item.setTipoRisco(event.getTipoRisco());
+        item.setTipoRisco(command.getTipoRisco());
 
         item.setEnderecoItem(new ItemEndereco(UUID.randomUUID().toString(), item,
-                event.getLogradouro(),
-                event.getNumero(),
-                event.getComplemento(),
-                event.getCidade(),
-                event.getUf(),
-                event.getCep()));
+                command.getLogradouro(),
+                command.getNumero(),
+                command.getComplemento(),
+                command.getCidade(),
+                command.getUf(),
+                command.getCep()));
 
         var objItem = itemRepository.save(item);
 
         iItemEnderecoRepository.save(objItem.getEnderecoItem());
-
-        return objItem.getId();
     }
-
 }

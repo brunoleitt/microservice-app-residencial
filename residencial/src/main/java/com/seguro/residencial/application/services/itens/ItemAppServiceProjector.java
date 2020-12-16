@@ -7,8 +7,8 @@ import com.seguro.residencial.domain.exception.CotacaoNaoEncontradaException;
 import com.seguro.residencial.domain.exception.itens.TipoRiscoNaoEncontradaException;
 import com.seguro.residencial.domain.interfaces.repository.cotacao.ICotacaoQueryRepository;
 import com.seguro.residencial.domain.interfaces.repository.item.ITipoRisco;
+import com.seguro.residencial.service.IItemCommand;
 import lombok.AllArgsConstructor;
-import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -22,7 +22,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class ItemAppServiceProjector implements IItemAppService {
 
-    private final CommandGateway commandGateway;
+    private final IItemCommand iItemCommand;
 
     private final ICotacaoQueryRepository iCotacaoQueryRepository;
 
@@ -45,7 +45,7 @@ public class ItemAppServiceProjector implements IItemAppService {
                 item.getNumero(),item.getComplemento(),
                 item.getCidade(),item.getUf(),item.getCep());
 
-        commandGateway.send(commandItem);
+        iItemCommand.command(commandItem);
     }
 
 }

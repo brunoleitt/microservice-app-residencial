@@ -3,7 +3,6 @@ package com.seguros.relatorio.application.assembler;
 import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
-
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,7 +28,7 @@ public class ObjectMapperUtils {
     }
 
     /***
-     * <p> Observação: o objeto outClass deve ter um construtor padrão sem argumentos </p>
+     * <p> Observação: o objeto outClass deve ter um construtor padrão sem argumentos "@NoArgsConstructor" </p>
      * @param <D> 		tipo de objeto de resultado.
      * @param <T> 		tipo de objeto de origem a partir do qual mapear.
      * @param entity    entidade @param que precisa ser mapeada.

@@ -2,15 +2,15 @@ package com.seguro.residencial.application.services.clientes;
 
 import com.seguro.residencial.application.interfaces.segurados.ISeguradoAppService;
 import com.seguro.residencial.application.models.input.segurados.SeguradoInput;
-import com.seguro.residencial.domain.commands.cliente.RegistrarClienteCommand;
+import com.seguro.residencial.domain.commands.cliente.RegistrarSeguradoCommand;
 import com.seguro.residencial.domain.exception.CotacaoNaoEncontradaException;
 import com.seguro.residencial.domain.exception.clientes.ProfissaoNaoEncontradaException;
 import com.seguro.residencial.domain.exception.clientes.SexoNaoEncontradoException;
 import com.seguro.residencial.domain.interfaces.repository.cotacao.ICotacaoRepository;
 import com.seguro.residencial.domain.interfaces.repository.segurados.IProfissaoRepository;
 import com.seguro.residencial.domain.interfaces.repository.segurados.ISexoRepository;
+import com.seguro.residencial.service.ISeguradoCommand;
 import lombok.AllArgsConstructor;
-import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -22,9 +22,9 @@ import java.util.UUID;
  */
 @Service
 @AllArgsConstructor
-public class ClienteAppServicesProjector implements ISeguradoAppService {
+public class SeguradoAppServicesImpl implements ISeguradoAppService {
 
-    private final CommandGateway commandGateway;
+    private final ISeguradoCommand iSeguradoCommand;
 
     private final ISexoRepository iSexoRepository;
 
@@ -46,7 +46,7 @@ public class ClienteAppServicesProjector implements ISeguradoAppService {
         iCotacaoRepository.consultarCodigoCotacao(codigoCotacao)
                 .orElseThrow(() -> new CotacaoNaoEncontradaException(codigoCotacao));
 
-        var command = new RegistrarClienteCommand(UUID.randomUUID().toString(),
+        var command = new RegistrarSeguradoCommand(UUID.randomUUID().toString(),
                 input.getNome(), input.getSobreNome(),
                 input.getCpf(), input.getTelefone(),
                 input.getRg(), input.getEmail(),
@@ -55,7 +55,7 @@ public class ClienteAppServicesProjector implements ISeguradoAppService {
 
         command.isValid();
 
-        commandGateway.sendAndWait(command);
+        iSeguradoCommand.command(command);
 
     }
 }
