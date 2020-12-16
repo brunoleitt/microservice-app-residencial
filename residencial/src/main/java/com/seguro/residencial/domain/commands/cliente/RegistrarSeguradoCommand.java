@@ -3,7 +3,6 @@ package com.seguro.residencial.domain.commands.cliente;
 import com.seguro.residencial.domain.commands.validacoes.cliente.RegistrarClienteCommandValidation;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 import java.time.LocalDate;
 
@@ -14,9 +13,8 @@ import java.time.LocalDate;
  */
 @Getter
 @AllArgsConstructor
-public class RegistrarClienteCommand {
+public class RegistrarSeguradoCommand {
 
-    @TargetAggregateIdentifier
     private String id;
     private String nome;
     private String sobreNome;

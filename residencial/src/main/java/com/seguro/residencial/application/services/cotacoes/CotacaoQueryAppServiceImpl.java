@@ -17,14 +17,14 @@ import java.util.List;
  * @autor Bruno Leite
  */
 @Service
-public class CotacaoQueryAppServiceProjector implements ICotacaoQueryAppService {
+public class CotacaoQueryAppServiceImpl implements ICotacaoQueryAppService {
 
     private final ICotacaoQueryRepository iCotacaoQueryRepository;
 
     @Autowired
     private CotacaoModelAssembler cotacaoModelAssembler;
 
-    public CotacaoQueryAppServiceProjector(ICotacaoQueryRepository iCotacaoQueryRepository) {
+    public CotacaoQueryAppServiceImpl(ICotacaoQueryRepository iCotacaoQueryRepository) {
         this.iCotacaoQueryRepository = iCotacaoQueryRepository;
     }
 

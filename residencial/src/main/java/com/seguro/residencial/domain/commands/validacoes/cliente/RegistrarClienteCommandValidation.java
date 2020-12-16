@@ -1,6 +1,6 @@
 package com.seguro.residencial.domain.commands.validacoes.cliente;
 
-import com.seguro.residencial.domain.commands.cliente.RegistrarClienteCommand;
+import com.seguro.residencial.domain.commands.cliente.RegistrarSeguradoCommand;
 import com.seguro.residencial.domain.exception.NegocioException;
 
 import java.time.LocalDate;
@@ -12,9 +12,9 @@ import java.time.LocalDate;
  */
 public class RegistrarClienteCommandValidation {
 
-    public RegistrarClienteCommand clienteCommand;
+    public RegistrarSeguradoCommand clienteCommand;
 
-    public RegistrarClienteCommandValidation(RegistrarClienteCommand command) {
+    public RegistrarClienteCommandValidation(RegistrarSeguradoCommand command) {
         this.clienteCommand = command;
     }
 

@@ -1,6 +1,5 @@
 package com.seguro.residencial.domain.commands.itens;
 
-import com.seguro.residencial.coreapi.model.basecommand.ItemCommand;
 import lombok.Getter;
 
 /**
@@ -9,13 +8,13 @@ import lombok.Getter;
  * @autor Bruno Leite
  */
 @Getter
-public class RegistrarItemEnderecoCommmand extends ItemCommand {
+public class RegistrarItemEnderecoCommmand {
 
     public RegistrarItemEnderecoCommmand(String id, String idItemEndereco,
                                          String logradouro, String numero,
                                          String complemento, String cidade,
                                          String uf, String cep) {
-        super(id);
+        this.id = id;
         this.idItemEndereco = idItemEndereco;
         this.logradouro = logradouro;
         this.numero = numero;
@@ -25,6 +24,7 @@ public class RegistrarItemEnderecoCommmand extends ItemCommand {
         this.cep = cep;
     }
 
+    private String id;
     private String idItemEndereco;
     private String logradouro;
     private String numero;
