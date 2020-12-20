@@ -2,6 +2,7 @@ language: bash
 services: docker
 before_install:
   - echo "Passando para informar o deretorio"
+  - cd ./
 script:
   - docker-compose build
 before_deploy:
