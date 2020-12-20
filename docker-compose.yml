@@ -1,63 +1,98 @@
 version: '3.4'
 services:
 
-#  db:
-#    image: mysql:8.0
-#    restart: always
-#    environment:
-#      - MYSQL_ROOT_PASSWORD=root
-#      - MYSQL_DATABASE=seguros
-#      - MYSQL_USER=root
-#      - MYSQL_PASSWORD=root
+  db:
+    image: brunoleitt/mysql-residencial-app
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=seguros
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+    ports:
+      - 3307:3306
+    networks:
+      - seguros-network
+#
+#  mongo:
+#    image: mongo:latest
 #    ports:
-#      - 3307:3306
+#      - 27017:27017
+#    hostname: localhost
+#    volumes:
+#      - ./data/db:/data/db
+#    networks:
+#      - seguros-network
+#
+#  zookeeper:
+#    image: confluentinc/cp-zookeeper:latest
+#    environment:
+#      ZOOKEEPER_CLIENT_PORT: 2181
+#      ZOOKEEPER_TICK_TIME: 2000
+#    networks:
+#      - seguros-network
+#
+#  kafka:
+#    image: confluentinc/cp-kafka:latest
+#    depends_on:
+#      - zookeeper
+#    ports:
+#      - 9092:9092
+#    environment:
+#      KAFKA_BROKER_ID: 1
+#      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+#      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+#      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+#      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+#      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 #    networks:
 #      - seguros-network
 
-  zookeeper:
-    image: confluentinc/cp-zookeeper:latest
+  residencial-app:
+    image: brunoleitt/residencial-app
+    restart: always
+    build: ./residencial
+    working_dir: /residencial
     environment:
-      ZOOKEEPER_CLIENT_PORT: 2181
-      ZOOKEEPER_TICK_TIME: 2000
-    networks:
-      - seguros-network
-
-  kafka:
-    image: confluentinc/cp-kafka:latest
+      TZ: America/Sao_Paulo
+      SPRING_BOOT_ENVIRONMENT: Production
     depends_on:
-      - zookeeper
+      - db
+#      - zookeeper
+#      - kafka
+    volumes:
+      - ./residencial:/residencial
+      - ~/.m2:/root/.m2
     ports:
-      - 9092:9092
-    environment:
-      KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
-      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      - "8082:8082"
+    command: mvn clean spring-boot:run
+    links:
+      - db
     networks:
       - seguros-network
-
-#  residencial-app:
-#    image: brunoleitt/residencial-app
-#    restart: always
-#    build: ./residencial
-#    working_dir: /residencial
+#
+#  relatorio-app:
+#    image: brunoleitt/relatorio-app
+##    restart: always
+#    build: ./relatorio
+#    working_dir: /relatorio
 #    environment:
 #      TZ: America/Sao_Paulo
 #      SPRING_BOOT_ENVIRONMENT: Production
 #    depends_on:
-#      - db
+#      - mongo
 #      - zookeeper
 #      - kafka
 #    volumes:
-#      - ./residencial:/residencial
+#      - ./relatorio:/relatorio
 #      - ~/.m2:/root/.m2
 #    ports:
-#      - "8082:8082"
+#      - "8090:8090"
 #    command: mvn clean spring-boot:run
-#    links:
-#      - db
 #    networks:
 #      - seguros-network
 

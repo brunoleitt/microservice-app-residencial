@@ -1,2 +1,2 @@
-FROM mysql:5.7.2.22
+FROM mysql:5.7.32
 EXPOSE 3307

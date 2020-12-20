@@ -1,4 +1,4 @@
-package com.seguros.relatorio.configuration.Mongo;
+package com.seguros.relatorio.configuration.mongo;
 
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
@@ -24,7 +24,7 @@ public class MongoConfig extends AbstractMongoClientConfiguration  {
 
     @Override
     public MongoClient mongoClient() {
-        ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017/impressaodba");
+        ConnectionString connectionString = new ConnectionString("mongodb://mongo:27017/impressaodba");
         MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
                 .applyConnectionString(connectionString)
                 .build();
