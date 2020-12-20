@@ -19,6 +19,7 @@
         <module>residencial</module>
         <module>core</module>
         <module>token</module>
+        <module>relatorio</module>
     </modules>
 
     <properties>

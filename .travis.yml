@@ -1,0 +1,16 @@
+language: bash
+services: docker
+before_install: skip
+script:
+  - docker-compose build
+before_deploy:
+  - echo "${DOCKER_PASSORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
+deploy:
+    provider: script
+    script:
+      docker push brunoleitt/mysql-residencial-app;
+      docker push brunoleitt/residencial-app;
+    on:
+      branch: master
+notifications:
+  email: false
