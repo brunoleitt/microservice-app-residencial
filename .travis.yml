@@ -8,8 +8,8 @@ before_deploy:
 deploy:
     provider: script
     script:
-      docker push brunoleitt/mysql-residencial-app
-      docker push brunoleitt/residencial-app
+      docker push brunoleitt/mysql-residencial-app;
+      docker push brunoleitt/residencial-app;
     on:
       branch: master
 notifications:
