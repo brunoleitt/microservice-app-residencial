@@ -14,8 +14,7 @@ CREATE TABLE IF NOT EXISTS `seguros`.`application_user` (
   `username` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
@@ -27,8 +26,7 @@ CREATE TABLE IF NOT EXISTS `seguros`.`status_cotacao` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 6
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
@@ -40,8 +38,7 @@ CREATE TABLE IF NOT EXISTS `seguros`.`tipo_calculo` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 3
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
@@ -53,8 +50,7 @@ CREATE TABLE IF NOT EXISTS `seguros`.`tipo_vigencia` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 3
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
@@ -65,8 +61,7 @@ CREATE TABLE IF NOT EXISTS `seguros`.`profissao` (
   `descricao` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
@@ -77,8 +72,7 @@ CREATE TABLE IF NOT EXISTS `seguros`.`sexo` (
   `descricao` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
@@ -89,8 +83,7 @@ CREATE TABLE IF NOT EXISTS `seguros`.`tipo_risco` (
   `descricao` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
@@ -108,8 +101,7 @@ CREATE TABLE IF NOT EXISTS `seguros`.`cobertura_pacote` (
     REFERENCES `seguros`.`tipo_risco` (`id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 7
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
@@ -127,8 +119,7 @@ CREATE TABLE IF NOT EXISTS `seguros`.`cobertura` (
     REFERENCES `seguros`.`cobertura_pacote` (`id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 21
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
@@ -145,8 +136,7 @@ CREATE TABLE IF NOT EXISTS `seguros`.`cobertura_servicos` (
     FOREIGN KEY (`id_pacote_cobertura`)
     REFERENCES `seguros`.`cobertura_pacote` (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
@@ -172,8 +162,7 @@ CREATE TABLE IF NOT EXISTS `seguros`.`cotacao` (
     FOREIGN KEY (`id_tipo_vigencia`)
     REFERENCES `seguros`.`tipo_vigencia` (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
@@ -188,8 +177,7 @@ CREATE TABLE IF NOT EXISTS `seguros`.`questionario` (
     FOREIGN KEY (`id_cotacao`)
     REFERENCES `seguros`.`cotacao` (`codigo_cotacao`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARACTER SET = utf8mb4;
 
 
 -- -----------------------------------------------------
@@ -218,8 +206,7 @@ CREATE TABLE IF NOT EXISTS `seguros`.`segurado` (
     FOREIGN KEY (`id_sexo`)
     REFERENCES `seguros`.`sexo` (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARACTER SET = utf8mb4;
 
 -- -----------------------------------------------------
 -- Table `seguros`.`item`
@@ -240,8 +227,7 @@ CREATE TABLE IF NOT EXISTS `seguros`.`item` (
     FOREIGN KEY (`id_tipo_risco`)
     REFERENCES `seguros`.`tipo_risco` (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARACTER SET = utf8mb4;
 
 -- -----------------------------------------------------
 -- Table `seguros`.`item_endereco`
@@ -260,5 +246,4 @@ CREATE TABLE IF NOT EXISTS `seguros`.`item_endereco` (
     FOREIGN KEY (`id_item`)
     REFERENCES `seguros`.`item` (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+DEFAULT CHARACTER SET = utf8mb4;
