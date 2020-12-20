@@ -1,12 +1,8 @@
-com\seguro\residencial\coreapi\model\baseevent\CotacaoEvent.class
 com\seguro\residencial\infra\swagger\BaseSwaggerConfig.class
 com\seguro\residencial\coreapi\model\ApplicationUser.class
 com\seguro\residencial\infra\auth\JwtConfiguration$Header.class
-com\seguro\residencial\coreapi\model\baseevent\ItemEvent.class
 com\seguro\residencial\coreapi\repository\ApplicationUserRepository.class
-com\seguro\residencial\coreapi\model\basecommand\CotacaoCommand.class
 com\seguro\residencial\infra\auth\JwtConfiguration.class
 com\seguro\residencial\coreapi\model\ApplicationUser$ApplicationUserBuilder.class
 com\seguro\residencial\coreapi\model\AbstractEntity.class
-com\seguro\residencial\coreapi\model\basecommand\ItemCommand.class
 META-INF\spring-configuration-metadata.json

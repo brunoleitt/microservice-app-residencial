@@ -1,20 +1,18 @@
 server:
-  port: 8090
+  port: 8084
 
 spring:
   application:
     name: impressao
 
   kafka:
-    bootstrap-servers: localhost:9092
-    listener:
-      concurrency: 1
     consumer:
+      bootstrap-servers: kafka:9092
       group-id: relatorio
-      bootstrapServers: ${spring.kafka.bootstrap-servers}
-      key-deserializer: org.apache.kafka.common.serialization.StringSerializer
-      value-deserializer: org.apache.kafka.common.serialization.StringSerializer
       auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
   jackson:
     serialization:
       WRITE_DATES_AS_TIMESTAMPS: false
