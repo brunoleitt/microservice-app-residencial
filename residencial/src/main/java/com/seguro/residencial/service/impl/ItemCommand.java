@@ -42,16 +42,16 @@ public class ItemCommand implements IItemCommand {
         item.setCobertura(pacoteCobertura);
         item.setTipoRisco(command.getTipoRisco());
 
-        item.setEnderecoItem(new ItemEndereco(UUID.randomUUID().toString(), item,
+         var itemEndereco = new ItemEndereco(UUID.randomUUID().toString(), item,
                 command.getLogradouro(),
                 command.getNumero(),
                 command.getComplemento(),
                 command.getCidade(),
                 command.getUf(),
-                command.getCep()));
+                command.getCep());
 
         var objItem = itemRepository.save(item);
 
-        iItemEnderecoRepository.save(objItem.getEnderecoItem());
+        iItemEnderecoRepository.save(itemEndereco);
     }
 }

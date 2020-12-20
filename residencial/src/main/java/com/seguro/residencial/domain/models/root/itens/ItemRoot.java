@@ -43,6 +43,4 @@ public class ItemRoot {
             , foreignKey = @ForeignKey(name = "fk_tipoRisco"))
     private TipoRisco tipoRisco;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    private ItemEndereco enderecoItem;
 }
