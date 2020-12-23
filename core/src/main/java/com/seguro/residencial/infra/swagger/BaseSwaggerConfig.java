@@ -33,7 +33,7 @@ public class BaseSwaggerConfig {
 
     private ApiInfo metaData() {
         return new ApiInfoBuilder()
-                .title("Spring Boot Microservices - Seguros")
+                .title("Spring Boot Microservices - Seguros/Rapido")
                 .description("Aplicação para modulo de seguro Residencial")
                 .version("1.0")
                 .contact(new Contact("Bruno Leite", "https://github.com/brunoleitt", "brunoleitt@gmail.com"))
