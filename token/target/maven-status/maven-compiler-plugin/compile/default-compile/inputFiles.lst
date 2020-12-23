@@ -1,0 +1,5 @@
+C:\Projetos\microservice-app-seguros\token\src\main\java\com\seguro\residencial\security\config\SecurityTokenConfig.java
+C:\Projetos\microservice-app-seguros\token\src\main\java\com\seguro\residencial\security\util\SecurityContextUtil.java
+C:\Projetos\microservice-app-seguros\token\src\main\java\com\seguro\residencial\security\filter\JwtTokenAuthorizationFilter.java
+C:\Projetos\microservice-app-seguros\token\src\main\java\com\seguro\residencial\security\token\creator\TokenCreator.java
+C:\Projetos\microservice-app-seguros\token\src\main\java\com\seguro\residencial\security\token\converter\TokenConverter.java

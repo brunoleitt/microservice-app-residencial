@@ -1,0 +1,10 @@
+{
+	"logradouro": "teste teste",
+	"numero": "1160",
+	"idTipoRisco": 1,
+	"idPacoteCobertura": 3,
+	"complemento": "Teste complemento",
+	"cidade": "Teste Cida",
+	"uf":"TT",
+	"cep":"05734140"
+}

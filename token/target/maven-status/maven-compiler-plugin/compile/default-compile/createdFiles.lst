@@ -1,0 +1,5 @@
+com\seguro\residencial\security\filter\JwtTokenAuthorizationFilter.class
+com\seguro\residencial\security\token\creator\TokenCreator.class
+com\seguro\residencial\security\token\converter\TokenConverter.class
+com\seguro\residencial\security\config\SecurityTokenConfig.class
+com\seguro\residencial\security\util\SecurityContextUtil.class

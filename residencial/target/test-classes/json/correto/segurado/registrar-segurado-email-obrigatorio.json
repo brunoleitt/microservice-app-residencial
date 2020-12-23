@@ -1,0 +1,10 @@
+{
+	"nome": "Nome Teste",
+	"sobreNome": "Sobrenome Teste",
+	"cpf": "06152932475",
+	"telefone": "11985964270",
+	"rg": "9999999",
+	"dataNascimento": "1987-11-04",
+	"idProfissao": 1,
+	"idSexo": 1
+}

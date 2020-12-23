@@ -1,0 +1,6 @@
+com\seguro\residencial\ResidencialTests.class
+com\seguro\residencial\segurado\RegistrarSeguradoTests.class
+util\ResourceUtils.class
+com\seguro\residencial\itens\RegistrarItemTests.class
+com\seguro\residencial\cotacoes\RegistrarCotacaoTests.class
+com\seguro\residencial\itens\CoberturasTests.class
