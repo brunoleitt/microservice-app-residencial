@@ -7,8 +7,8 @@ python:
   - "3.6"
 before_install:
   - rm ~/.m2/settings.xml
-  - sudo apt-get update
-  - cd residencial
+#  - sudo apt-get update
+#  - cd residencial
   - echo "acessando a pasta maven package"
   - mvn clean package
   - cd ..
