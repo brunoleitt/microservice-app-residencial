@@ -7,11 +7,9 @@ python:
   - "3.6"
 before_install:
   - sudo apt-get update
-  - mvn clean install -DskipTests
-  - cd ..
   - cd residencial
   - echo "acessando a pasta maven package"
-  - mvn clean install -DskipTests
+  - mvn clean install -o
   - cd ..
   - echo "Estou na pasta docker"
 script:
