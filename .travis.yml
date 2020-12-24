@@ -9,7 +9,7 @@ before_install:
   - sudo apt-get update
   - cd residencial
   - echo "acessando a pasta maven package"
-  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  - mvn clean install -DskipTests=true
   - cd ..
   - echo "Estou na pasta docker"
 script:
