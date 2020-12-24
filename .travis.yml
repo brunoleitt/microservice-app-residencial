@@ -10,7 +10,7 @@ before_install:
   - sudo apt-get update
   - cd residencial
   - echo "acessando a pasta maven package"
-  - mvn clean install -DskipTests=true
+  - mvn clean package
   - cd ..
   - echo "Estou na pasta docker"
 script:
