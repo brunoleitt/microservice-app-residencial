@@ -27,9 +27,10 @@ spring:
   #    enabled: false
   datasource:
     #url : jdbc:mysql://localhost:3306/seguros?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=America/Sao_Paulo&allowPublicKeyRetrieval=true&sslMode=DISABLED
-    url : jdbc:mysql://db:3306/seguros?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=America/Sao_Paulo&allowPublicKeyRetrieval=true&sslMode=DISABLED
-    username: root
-    password: root
+    #url : jdbc:mysql://db:3306/seguros?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=America/Sao_Paulo&allowPublicKeyRetrieval=true&sslMode=DISABLED
+    url : jdbc:mysql://mysqlresidencialapp.cdz4qop2kl0i.us-east-1.rds.amazonaws.com:3306/seguros?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=America/Sao_Paulo&allowPublicKeyRetrieval=true&sslMode=DISABLED
+    username: docker
+    password: Docker123
   kafka:
     bootstrap-servers: localhost:9092
     producer:
