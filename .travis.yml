@@ -8,10 +8,10 @@ python:
 before_install:
   - rm ~/.m2/settings.xml
 #  - sudo apt-get update
-  - cd residencial
+#  - cd residencial
   - echo "acessando a pasta maven package"
   - mvn clean package -DskipTests
-  - cd ..
+#  - cd ..
   - echo "Estou na pasta docker"
 script:
   - echo "Vamos lá!"
