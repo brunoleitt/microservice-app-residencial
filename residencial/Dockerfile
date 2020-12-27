@@ -1,7 +1,6 @@
-FROM openjdk:11-jdk
+FROM openjdk:11-jdk-slim
 VOLUME /tpm
-ADD target/residencial.jar app.jar
+ADD target/residencial.jar residencial.jar
 EXPOSE 8082
-RUN bash -c 'touch /app.jar'
-ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app.jar"]
-
+RUN bash -c 'touch /residencial.jar'
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/residencial.jar"]

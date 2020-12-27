@@ -27,7 +27,7 @@ services:
 #      - seguros-network
 
   db:
-    image: mysql:8.0
+    image: do
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=root
